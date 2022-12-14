@@ -8,16 +8,52 @@ A knowledge extraction tool that uses a large language model to extract semantic
 
 Given a short text `abstract.txt` with content such as:
 
-> Marfan syndrome is a genetic disorder that affects connective tissue, which
+> The cGAS/STING-mediated DNA-sensing signaling pathway is crucial
+for interferon (IFN) production and host antiviral
+responses
 > ...
-> Defects or deletions (pathogenic variants) of the fibrillin-1 (FBN1)
-> gene have been shown to cause Marfan
+> ...
+> The underlying mechanism was the
+interaction of US3 with β-catenin and its hyperphosphorylation of
+β-catenin at Thr556 to block its nuclear translocation
+> ...
+> ...
 
-We can extract this into the MendelianDisease datamodel:
+(see [full input](tests/input/cases/gocam-betacat.txt))
+
+We can extract this into the [GO pathway datamodel](src/semantic_llama/templates/gocam.yaml):
 
 ```bash
-semllama extract -t mendelian_disease.MendelianDisease abstract.txt
+semllama extract -t gocam.GoCamAnnotations abstract.txt
 ```
+
+Giving schema-compliant yaml such as:
+
+```yaml
+genes:
+- HGNC:2514
+- HGNC:21367
+- HGNC:27962
+- US3
+- FPLX:Interferon
+- ISG
+gene_gene_interactions:
+- gene1: US3
+  gene2: HGNC:2514
+gene_localizations:
+- gene: HGNC:2514
+  location: Nuclear
+gene_functions:
+- gene: HGNC:2514
+  molecular_activity: Transcription
+- gene: HGNC:21367
+  molecular_activity: Production
+...
+```
+
+See [full output](tests/output/gocam-betacat.yaml)
+
+note in the above the grounding is very preliminary and can be improved. Ungrounded NamedEntities appear as test.
 
 
 ## How it works
