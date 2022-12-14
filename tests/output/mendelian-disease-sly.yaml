@@ -1,0 +1,12 @@
+description: "Autosomal recessive lysosomal storage disease caused by a deficiency\
+  \ of the enzyme \u03B2-glucuronidase"
+genes:
+- HGNC:4696
+inheritance: Autosomal Recessive
+name: Sly Syndrome/Mucopolysaccharidosis Type VII (MPS-VII)
+subclass_of:
+- Lysosomal storage disease
+symptoms:
+- Vary widely
+synonyms:
+- N/A

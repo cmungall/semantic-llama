@@ -1,0 +1,18 @@
+disease: Marfan Syndrome
+drugs:
+- Propranalol
+- drugbank:DB00335
+- drugbank:DB00678
+- Irbesatan
+treatment_mechanisms:
+- mechanism: reduce strength and frequency of the contractions of the heart
+  treatment: "\u03B2-blockers"
+- mechanism: "lower blood pressure and block TGF-\u03B2 activity"
+  treatment: ARBs
+treatments:
+- Avoidance of competitive and contact sports
+- Heavy lifting
+- Rapid or vigorous beating of the heart
+- Moderate exercise
+- "\u03B2-blockers"
+- ARBs

@@ -1,0 +1,44 @@
+id: http://w3id.org/linkml/ai/templates/core
+name: core-template
+title: AI core Template
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  core: http://w3id.org/linkml/ai/templates/core/
+
+default_prefix: core
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+  NamedThing:
+    abstract: true
+    attributes:
+      id:
+        identifier: true
+
+  Relationship:
+    abstract: true
+
+  Publication:
+    attributes:
+      id:
+        description: >-
+          The publication identifier
+      title:
+        description: >-
+          The title of the publication
+      abstract:
+        description: >-
+          The abstract of the publication
+      full_text:
+        description: >-
+          The full text of the publication
+
+  AnnotatorResult:
+    attributes:
+      subject_text:
+      object_id:
+      object_text:

@@ -1,0 +1,52 @@
+activities:
+- Transcription
+- Production
+- Replication
+cellular_processes:
+- DNA-sensing
+- Nuclear translocation
+- Phosphorylation
+gene_functions:
+- gene: HGNC:2514
+  molecular_activity: Transcription
+- gene: HGNC:21367
+  molecular_activity: Production
+- gene: HGNC:27962
+  molecular_activity: Production
+- gene: US3
+  molecular_activity: Replication
+- gene: FPLX:Interferon
+  molecular_activity: Production
+- gene: ISG
+  molecular_activity: Production
+gene_gene_interactions:
+- gene1: US3
+  gene2: HGNC:2514
+gene_localizations:
+- gene: HGNC:2514
+  location: Nuclear
+gene_organisms:
+- gene: HGNC:2514
+  organism: MESH:D008322
+- gene: HGNC:21367
+  organism: MESH:D008322
+- gene: HGNC:27962
+  organism: MESH:D008322
+- gene: US3
+  organism: MESH:D018259
+- gene: FPLX:Interferon
+  organism: MESH:D008322
+- gene: ISG
+  organism: MESH:D008322
+genes:
+- HGNC:2514
+- HGNC:21367
+- HGNC:27962
+- US3
+- FPLX:Interferon
+- ISG
+organisms:
+- MESH:D008322
+- MESH:D018259
+pathways:
+- cGAS/STING Signaling

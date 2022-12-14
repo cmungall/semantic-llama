@@ -1,0 +1,126 @@
+id: http://w3id.org/linkml/ai/templates/gocam
+name: gocam-template
+title: GO-CAM Template
+description: >-
+  A template for GO-CAMs
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  gocam: http://w3id.org/linkml/ai/templates/gocam/
+
+default_prefix: gocam
+default_range: string
+
+imports:
+  - linkml:types
+  - core
+
+classes:
+  GoCamAnnotations:
+    attributes:
+      genes:
+        description: semicolon-separated list of genes
+        multivalued: true
+        range: Gene
+      organisms:
+        description: semicolon-separated list of organism taxons
+        multivalued: true
+        range: Organism
+      gene_organisms:
+        annotations:
+          prompt: semicolon-separated list of asterisk separated gene to organism relationships
+        multivalued: true
+        range: GeneOrganismRelationship
+      activities:
+        description: semicolon-separated list of molecular activities
+        multivalued: true
+        range: MolecularActivity
+      gene_functions:
+        description: semicolon-separated list of gene to molecular activity relationships
+        multivalued: true
+        range: GeneMolecularActivityRelationship
+      cellular_processes:
+        description: semicolon-separated list of cellular processes
+        multivalued: true
+        range: CellularProcess
+      pathways:
+        description: semicolon-separated list of pathways
+        multivalued: true
+        range: Pathway
+      gene_gene_interactions:
+        description: semicolon-separated list of gene to gene interactions
+        multivalued: true
+        range: GeneGeneInteraction
+      gene_localizations:
+        description: semicolon-separated list of gene to subcellular localization relationships
+        multivalued: true
+        range: GeneSubcellularLocalizationRelationship
+
+  Gene:
+    is_a: NamedThing
+    id_prefixes:
+      - HGNC
+    annotations:
+      annotators: gilda:, bioportal:hgnc-nr
+  Pathway:
+    is_a: NamedThing
+    id_prefixes:
+      - GO
+    annotations:
+      annotators: sqlite:obo:go
+  CellularProcess:
+    is_a: NamedThing
+    id_prefixes:
+      - GO
+    annotations:
+      annotators: sqlite:obo:go
+  MolecularActivity:
+    is_a: NamedThing
+    id_prefixes:
+      - GO
+    annotations:
+      annotators: sqlite:obo:go
+  CellularComponent:
+    is_a: NamedThing
+    id_prefixes:
+      - GO
+    annotations:
+      annotators: sqlite:obo:go
+  Organism:
+    is_a: NamedThing
+    id_prefixes:
+      - NCBITaxon
+    annotations:
+      annotators: gilda:, sqlite:obo:ncbitaxon
+
+  GeneOrganismRelationship:
+    is_a: Relationship
+    attributes:
+      gene:
+        range: Gene
+      organism:
+        range: Organism
+
+  GeneMolecularActivityRelationship:
+    is_a: Relationship
+    attributes:
+      gene:
+        range: Gene
+      molecular_activity:
+        range: MolecularActivity
+
+  GeneSubcellularLocalizationRelationship:
+    is_a: Relationship
+    attributes:
+      gene:
+        range: Gene
+      location:
+        range: CellularComponent
+
+  GeneGeneInteraction:
+    is_a: Relationship
+    attributes:
+      gene1:
+        range: Gene
+      gene2:
+        range: Gene

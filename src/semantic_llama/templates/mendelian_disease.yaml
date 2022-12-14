@@ -1,0 +1,77 @@
+id: http://w3id.org/linkml/ai/templates/mendelian_disease
+name: mendelian_disease-template
+title: GO-CAM Template
+description: >-
+  A template for GO-CAMs
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  mendelian_disease: http://w3id.org/linkml/ai/templates/mendelian_disease/
+
+default_prefix: mendelian_disease
+default_range: string
+
+imports:
+  - linkml:types
+  - core
+
+classes:
+  MendelianDisease:
+    attributes:
+      name:
+        description: the name of the disease
+        examples:
+          - value: peroxisome biogenesis disorder
+        identifier: true  ## needed for inlining
+      description:
+        description: a description of the disease
+        examples:
+          - value: >-
+             Peroxisome biogenesis disorders, Zellweger syndrome spectrum (PBD-ZSS) is a group of autosomal recessive disorders affecting the formation of functional peroxisomes, characterized by sensorineural hearing loss, pigmentary retinal degeneration, multiple organ dysfunction and psychomotor impairment
+      synonyms:
+        multivalued: true
+        examples:
+          - value: Zellweger syndrome spectrum
+          - value: PBD-ZSS
+      subclass_of:
+        multivalued: true
+        range: MendelianDisease
+        examples:
+          - value: lysosomal disease
+          - value: autosomal recessive disorder
+      symptoms:
+        range: Symptom
+        multivalued: true
+        examples:
+          - value: sensorineural hearing loss
+          - value: pigmentary retinal degeneration
+      inheritance:
+        range: Inheritance
+        examples:
+          - value: autosomal recessive
+      genes:
+        range: Gene
+        multivalued: true
+        examples:
+          - value: PEX1
+          - value: PEX2
+          - value: PEX3
+
+  Gene:
+    is_a: NamedThing
+    id_prefixes:
+      - HGNC
+    annotations:
+      annotators: gilda:, bioportal:hgnc-nr
+
+  Symptom:
+    is_a: NamedThing
+    id_prefixes:
+      - HP
+    annotations:
+      annotators: sqlite:obo:hp
+
+  Inheritance:
+    is_a: NamedThing
+    annotations:
+      annotators: sqlite:obo:hp
