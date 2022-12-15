@@ -92,6 +92,13 @@ classes:
       - NCBITaxon
     annotations:
       annotators: gilda:, sqlite:obo:ncbitaxon
+  Molecule:
+    is_a: NamedThing
+    id_prefixes:
+      - CHEBI
+      - PR
+    annotations:
+      annotators: gilda:, sqlite:obo:chebi
 
   GeneOrganismRelationship:
     is_a: Relationship
@@ -125,11 +132,15 @@ classes:
       gene:
         range: Gene
         annotations:
-          prompt: the name of the gene in the pair. This comes first.
+          prompt: the name of the gene.
       molecular_activity:
         range: MolecularActivity
         annotations:
-          prompt: the name of the molecular function in the pair. This comes second. May be a GO term.
+          prompt: the name of the molecular activity, for example, ubiquitination. May be a GO term.
+      target:
+        range: Molecule
+        annotations:
+          prompt: the name of the molecular entity that is the target of the molecular activity.
 
   GeneSubcellularLocalizationRelationship:
     is_a: Relationship

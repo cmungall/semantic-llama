@@ -7,6 +7,7 @@ from semantic_llama.knowledge_extractor import KnowledgeExtractor
 from tests import CASES_DIR, OUTPUT_DIR
 
 CASES = [
+    ("gocam.GoCamAnnotations", "gocam-27929086"),
     ("gocam.GoCamAnnotations", "gocam-33246504"),
     ("environmental_sample.Study", "environmental-sample-hyporheic"),
     ("treatment.DiseaseTreatmentSummary", "treatment-marfan"),

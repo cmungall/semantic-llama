@@ -288,6 +288,8 @@ class KnowledgeExtractor(object):
             rng = sv.get_class(slot.range)
             new_ann[field] = []
             for val in vals:
+                if not val:
+                    continue
                 if isinstance(val, tuple):
                     sub_slots = sv.class_induced_slots(rng.name)
                     obj = {}
