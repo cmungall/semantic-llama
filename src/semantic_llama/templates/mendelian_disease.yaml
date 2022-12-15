@@ -58,20 +58,24 @@ classes:
           - value: PEX3
 
   Gene:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - HGNC
     annotations:
       annotators: gilda:, bioportal:hgnc-nr
 
   Symptom:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - HP
     annotations:
       annotators: sqlite:obo:hp
+    attributes:
+      characteristic:
+      affects:
+      severity:
 
   Inheritance:
-    is_a: NamedThing
+    is_a: NamedEntity
     annotations:
       annotators: sqlite:obo:hp

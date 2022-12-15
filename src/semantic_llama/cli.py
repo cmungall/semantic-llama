@@ -37,15 +37,22 @@ def main(verbose: int, quiet: bool):
 
 @main.command()
 @click.option("-t", "--template", required=True, help="Template to use.")
+@click.option("--recurse/--no-recurse",
+              default=False,
+              show_default=True,
+              help="Recursively parse structyres.")
 @click.argument("input", type=click.File("r"), default=sys.stdin)
-def extract(template, input):
+def extract(template, input, **kwargs):
     """Parse openai results."""
     logging.info(f"Creating for {template}")
-    ke = KnowledgeExtractor(template)
+    ke = KnowledgeExtractor(template, **kwargs)
     text = input.read()
     logging.debug(f"Input text: {text}")
     results = ke.extract_from_text(text)
     print(yaml.dump(results.dict()))
+    if ke.named_entities:
+        for ne in ke.named_entities:
+            print(yaml.dump(ne.dict()))
 
 
 @main.command()

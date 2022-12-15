@@ -33,56 +33,56 @@ class GoCamAnnotations(ConfiguredBaseModel):
     
 
 
-class NamedThing(ConfiguredBaseModel):
+class NamedEntity(ConfiguredBaseModel):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Gene(NamedThing):
+class Gene(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Pathway(NamedThing):
+class Pathway(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class CellularProcess(NamedThing):
+class CellularProcess(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class MolecularActivity(NamedThing):
+class MolecularActivity(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class CellularComponent(NamedThing):
+class CellularComponent(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Organism(NamedThing):
+class Organism(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Molecule(NamedThing):
+class Molecule(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
@@ -158,7 +158,7 @@ class AnnotatorResult(ConfiguredBaseModel):
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 GoCamAnnotations.update_forward_refs()
-NamedThing.update_forward_refs()
+NamedEntity.update_forward_refs()
 Gene.update_forward_refs()
 Pathway.update_forward_refs()
 CellularProcess.update_forward_refs()

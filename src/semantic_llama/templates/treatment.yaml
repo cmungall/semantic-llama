@@ -38,31 +38,31 @@ classes:
         range: TreatmentMechanism
 
   Gene:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - HGNC
     annotations:
       annotators: gilda:, obo:sql:hgnc, bioportal:hgnc-nr
 
   Symptom:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - HP
     annotations:
       annotators: sqlite:obo:hp
 
   Disease:
-    is_a: NamedThing
+    is_a: NamedEntity
     annotations:
       annotators: sqlite:obo:mondo
 
   Treatment:
-    is_a: NamedThing
+    is_a: NamedEntity
     annotations:
       annotators: sqlite:obo:maxo, sqlite:obo:ncit
 
   Drug:
-    is_a: NamedThing
+    is_a: NamedEntity
     annotations:
       annotators: sqlite:obo:chebi, sqlite:obo:drugbank
 

@@ -29,37 +29,37 @@ class Study(ConfiguredBaseModel):
     
 
 
-class NamedThing(ConfiguredBaseModel):
+class NamedEntity(ConfiguredBaseModel):
     
     id: Optional[str] = Field(None)
     
 
 
-class Location(NamedThing):
+class Location(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class EnvironmentalMaterial(NamedThing):
+class EnvironmentalMaterial(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Environment(NamedThing):
+class Environment(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Variable(NamedThing):
+class Variable(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Unit(NamedThing):
+class Unit(NamedEntity):
     
     id: Optional[str] = Field(None)
     
@@ -99,7 +99,7 @@ class AnnotatorResult(ConfiguredBaseModel):
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 Study.update_forward_refs()
-NamedThing.update_forward_refs()
+NamedEntity.update_forward_refs()
 Location.update_forward_refs()
 EnvironmentalMaterial.update_forward_refs()
 Environment.update_forward_refs()

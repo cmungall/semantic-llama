@@ -49,21 +49,21 @@ classes:
         range: GeneMolecularActivityRelationship
 
   Gene:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - HGNC
     annotations:
       annotators: sqlite:obo:hgnc
 
   MolecularActivity:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - GO
     annotations:
       annotators: sqlite:obo:go
 
   ChemicalEntity:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - CHEBI
     annotations:

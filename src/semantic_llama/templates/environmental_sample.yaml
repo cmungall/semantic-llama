@@ -50,7 +50,7 @@ classes:
         multivalued: true
 
   Location:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - ENVO
       - GAZ
@@ -58,21 +58,21 @@ classes:
       annotators: sqlite:obo:envo, bioportal:gaz
 
   EnvironmentalMaterial:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - ENVO
     annotations:
       annotators: sqlite:obo:envo
 
   Environment:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - ENVO
     annotations:
       annotators: sqlite:obo:envo
 
   Variable:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - ENVO
       - MIXS
@@ -81,7 +81,7 @@ classes:
       annotators: sqlite:obo:envo, bioportal:bero
 
   Unit:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - UO
       - NCIT

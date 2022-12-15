@@ -5,6 +5,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   linkml: https://w3id.org/linkml/
   core: http://w3id.org/linkml/ai/templates/core/
+description: Core upper level
 
 default_prefix: core
 default_range: string
@@ -13,11 +14,13 @@ imports:
   - linkml:types
 
 classes:
-  NamedThing:
+  NamedEntity:
     abstract: true
     attributes:
       id:
         identifier: true
+        annotations:
+          prompt.skip: "true"
       label:
         description: >-
           The label of the named thing

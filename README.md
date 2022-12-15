@@ -4,20 +4,25 @@ Semantic Large LAnguage Model Annotation
 
 A knowledge extraction tool that uses a large language model to extract semantic information from text.
 
+This exploits the ability of ultra-LLMs such as GPT-3 to return user-defined data structures
+as a response.
+
 ## Usage
 
 Given a short text `abstract.txt` with content such as:
 
-> The cGAS/STING-mediated DNA-sensing signaling pathway is crucial
-for interferon (IFN) production and host antiviral
-responses
-> ...
-> ...
-> The underlying mechanism was the
-interaction of US3 with β-catenin and its hyperphosphorylation of
-β-catenin at Thr556 to block its nuclear translocation
-> ...
-> ...
+   > The cGAS/STING-mediated DNA-sensing signaling pathway is crucial
+   for interferon (IFN) production and host antiviral
+   responses
+   > 
+   > ...
+   > ...
+   > 
+   > The underlying mechanism was the
+   interaction of US3 with β-catenin and its hyperphosphorylation of
+   β-catenin at Thr556 to block its nuclear translocation
+   > ...
+   > ...
 
 (see [full input](tests/input/cases/gocam-betacat.txt))
 
@@ -55,7 +60,6 @@ See [full output](tests/output/gocam-betacat.yaml)
 
 note in the above the grounding is very preliminary and can be improved. Ungrounded NamedEntities appear as test.
 
-
 ## How it works
 
 1. You provide an arbitrary data model, describing the structure you want to extract text into
@@ -66,6 +70,14 @@ note in the above the grounding is very preliminary and can be improved. Ungroun
     - feed the prompt to a language model (currently OpenAI)
     - parse the results into a dictionary structure
     - ground the results using a preferred annotator
+
+## Pre-requisites
+
+- python 3.9+
+- an OpenAI account
+- a BioPortal account (optional)
+
+You will need to set both API keys using OAK
 
 ## How to define your own extraction data model
 
@@ -153,9 +165,15 @@ Run the `make` command at the top level. This will compile the schema to pedanti
 
 ### Step 3: Run the command line
 
-## Limitations
+e.g.
 
-### Two levels of nesting
+```
+emllama extract -t  mendelian_disease.MendelianDisease marfan-wikipedia.txt
+```
+
+## Features
+
+### Multiple L
 
 Currently only two levels of nesting are supported
 
@@ -183,7 +201,13 @@ this can be hard to do reliably via string matching.
 
 However, very soon llama will support N-pass annotation, where nested structures are fed back into the LLM!
 
-## Coupled to OpenAI
+## Limitations
+
+### Non-deterministic
+
+This relies on an existing LLM, and LLMs can be fickle in their responses.
+
+### Coupled to OpenAI
 
 You will need an openai account. In theory any LLM can be used but in practice the parser is tuned for OpenAI
 

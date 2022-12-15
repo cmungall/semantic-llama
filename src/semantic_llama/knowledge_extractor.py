@@ -11,13 +11,14 @@ from typing import Dict, List, Optional, TextIO, Tuple, Union
 import openai
 import pydantic
 from linkml_runtime import SchemaView
-from linkml_runtime.linkml_model import ClassDefinition, SlotDefinition
+from linkml_runtime.linkml_model import ClassDefinition
 from oaklib import get_implementation_from_shorthand
 from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 from oaklib.interfaces import TextAnnotatorInterface
 from oaklib.utilities.apikey_manager import get_apikey_value
 
 from semantic_llama.clients import OpenAIClient
+from semantic_llama.templates.core import NamedEntity
 
 this_path = Path(__file__).parent
 
@@ -42,6 +43,7 @@ class KnowledgeExtractor(object):
     annotators: Dict[str, List[TextAnnotatorInterface]] = None
     client: OpenAIClient = None
     recurse: bool = False
+    named_entities: List[NamedEntity] = None
 
     def __post_init__(self):
         self.template_class = self._get_template_class(self.template)
@@ -156,6 +158,8 @@ class KnowledgeExtractor(object):
         else:
             prompt = "Split the following piece of text into fields in the following format:\n\n"
         for slot in self.schemaview.class_induced_slots(cls.name):
+            if "prompt.skip" in slot.annotations:
+                continue
             if "prompt" in slot.annotations:
                 slot_prompt = slot.annotations["prompt"].value
             elif slot.description:
@@ -212,6 +216,7 @@ class KnowledgeExtractor(object):
         # randomly pluralizaing or replacing spaces with underscores
         field = field.lower().replace(" ", "_")
         cls_slots = sv.class_slots(cls.name)
+        slot = None
         if field in cls_slots:
             slot = sv.induced_slot(field, cls.name)
         else:
@@ -220,7 +225,9 @@ class KnowledgeExtractor(object):
             if field in cls_slots:
                 slot = sv.induced_slot(field, cls.name)
         if not slot:
-            raise ValueError(f"Cannot find slot for {field} in {line}")
+            logging.error(f"Cannot find slot for {field} in {line}")
+            #raise ValueError(f"Cannot find slot for {field} in {line}")
+            return
         inlined = False
         slot_range = sv.get_class(slot.range)
         if slot.range in sv.all_classes():
@@ -278,6 +285,9 @@ class KnowledgeExtractor(object):
             cls = self.template_class
         sv = self.schemaview
         new_ann = {}
+        if ann is None:
+            logging.error(f"Cannot ground None annotation, cls={cls.name}")
+            return
         for field, vals in ann.items():
             if isinstance(vals, list):
                 multivalued = True
@@ -322,7 +332,20 @@ class KnowledgeExtractor(object):
         :return: ID or input string if cannot be grounded
         """
         result = self.ground_text(text, cls)
-        return result.object_id if result else text
+        if result:
+            if self.named_entities is None:
+                self.named_entities = []
+            self.named_entities.append(NamedEntity(id=result.object_id, label=text))
+            return result.object_id
+        if self.recurse and cls:
+            print(f"RECURSING: {text} cls={cls.name}")
+            obj = self.extract_from_text(text, cls)
+            if obj:
+                if self.named_entities is None:
+                    self.named_entities = []
+                obj.id = text
+                self.named_entities.append(obj)
+        return text
 
     def ground_text(self, text: str, cls: ClassDefinition = None) -> Optional[TextAnnotation]:
         """

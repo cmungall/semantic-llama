@@ -57,43 +57,43 @@ classes:
         range: GeneSubcellularLocalizationRelationship
 
   Gene:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - HGNC
     annotations:
       annotators: gilda:, bioportal:hgnc-nr
   Pathway:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - GO
     annotations:
       annotators: sqlite:obo:go
   CellularProcess:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - GO
     annotations:
       annotators: sqlite:obo:go
   MolecularActivity:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - GO
     annotations:
       annotators: sqlite:obo:go
   CellularComponent:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - GO
     annotations:
       annotators: sqlite:obo:go
   Organism:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - NCBITaxon
     annotations:
       annotators: gilda:, sqlite:obo:ncbitaxon
   Molecule:
-    is_a: NamedThing
+    is_a: NamedEntity
     id_prefixes:
       - CHEBI
       - PR

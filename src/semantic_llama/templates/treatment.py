@@ -28,37 +28,37 @@ class DiseaseTreatmentSummary(ConfiguredBaseModel):
     
 
 
-class NamedThing(ConfiguredBaseModel):
+class NamedEntity(ConfiguredBaseModel):
     
     id: Optional[str] = Field(None)
     
 
 
-class Gene(NamedThing):
+class Gene(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Symptom(NamedThing):
+class Symptom(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Disease(NamedThing):
+class Disease(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Treatment(NamedThing):
+class Treatment(NamedEntity):
     
     id: Optional[str] = Field(None)
     
 
 
-class Drug(NamedThing):
+class Drug(NamedEntity):
     
     id: Optional[str] = Field(None)
     
@@ -98,7 +98,7 @@ class AnnotatorResult(ConfiguredBaseModel):
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 DiseaseTreatmentSummary.update_forward_refs()
-NamedThing.update_forward_refs()
+NamedEntity.update_forward_refs()
 Gene.update_forward_refs()
 Symptom.update_forward_refs()
 Disease.update_forward_refs()

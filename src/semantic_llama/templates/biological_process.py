@@ -60,22 +60,22 @@ class GeneMolecularActivityRelationship(ConfiguredBaseModel):
     molecular_activity: Optional[str] = Field(None)
 
 
-class NamedThing(ConfiguredBaseModel):
+class NamedEntity(ConfiguredBaseModel):
 
     id: Optional[str] = Field(None)
 
 
-class Gene(NamedThing):
+class Gene(NamedEntity):
 
     id: Optional[str] = Field(None)
 
 
-class MolecularActivity(NamedThing):
+class MolecularActivity(NamedEntity):
 
     id: Optional[str] = Field(None)
 
 
-class ChemicalEntity(NamedThing):
+class ChemicalEntity(NamedEntity):
 
     id: Optional[str] = Field(None)
 
@@ -99,7 +99,7 @@ class AnnotatorResult(ConfiguredBaseModel):
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 BiologicalProcess.update_forward_refs()
 GeneMolecularActivityRelationship.update_forward_refs()
-NamedThing.update_forward_refs()
+NamedEntity.update_forward_refs()
 Gene.update_forward_refs()
 MolecularActivity.update_forward_refs()
 ChemicalEntity.update_forward_refs()

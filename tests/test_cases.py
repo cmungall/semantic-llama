@@ -33,5 +33,7 @@ class TestAnnotate(unittest.TestCase):
             ke = self.ke_map[template]
             ann = ke.extract_from_file(CASES_DIR / f"{input_file}.txt")
             print(yaml.dump(ann.dict()))
+            for ne in ke.named_entities:
+                print(yaml.dump(ne.dict()))
             with open(str(OUTPUT_DIR / f"{input_file}.yaml"), "w", encoding="utf-8") as f:
                 yaml.dump(ann.dict(), f)
