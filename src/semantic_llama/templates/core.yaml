@@ -18,8 +18,15 @@ classes:
     attributes:
       id:
         identifier: true
+      label:
+        description: >-
+          The label of the named thing
+        range: string
 
   Relationship:
+    abstract: true
+
+  CompoundExpression:
     abstract: true
 
   Publication:

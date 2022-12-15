@@ -5,14 +5,13 @@ drugs:
 - drugbank:DB00678
 - Irbesatan
 treatment_mechanisms:
-- mechanism: reduce strength and frequency of the contractions of the heart
-  treatment: "\u03B2-blockers"
+- mechanism: reduce heart strength and frequency
+  treatment: Beta-blockers
 - mechanism: "lower blood pressure and block TGF-\u03B2 activity"
-  treatment: ARBs
+  treatment: Angiotensin receptor blockers
 treatments:
-- Avoidance of competitive and contact sports
-- Heavy lifting
-- Rapid or vigorous beating of the heart
-- Moderate exercise
-- "\u03B2-blockers"
-- ARBs
+- Avoid competitive and contact sports
+- Heavy lifting restrictions
+- Moving exercises performed in moderation
+- Beta-blockers
+- Angiotensin receptor blockers

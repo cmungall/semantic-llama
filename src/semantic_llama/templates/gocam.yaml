@@ -106,8 +106,30 @@ classes:
     attributes:
       gene:
         range: Gene
+        annotations:
+          prompt: the name of the gene in the pair. This comes first.
       molecular_activity:
         range: MolecularActivity
+        annotations:
+          prompt: the name of the molecular function in the pair. This comes second. May be a GO term.
+    annotations:
+      prompt.example: |-
+        TODO
+        
+        gene: HGNC:1234
+        molecular_activity: GO:0003674
+
+  GeneMolecularActivityRelationship2:
+    is_a: Relationship
+    attributes:
+      gene:
+        range: Gene
+        annotations:
+          prompt: the name of the gene in the pair. This comes first.
+      molecular_activity:
+        range: MolecularActivity
+        annotations:
+          prompt: the name of the molecular function in the pair. This comes second. May be a GO term.
 
   GeneSubcellularLocalizationRelationship:
     is_a: Relationship

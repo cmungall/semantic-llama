@@ -5,12 +5,13 @@ import importlib
 import logging
 from dataclasses import dataclass
 from pathlib import Path
+from types import ModuleType
 from typing import Dict, List, Optional, TextIO, Tuple, Union
 
 import openai
 import pydantic
 from linkml_runtime import SchemaView
-from linkml_runtime.linkml_model import ClassDefinition
+from linkml_runtime.linkml_model import ClassDefinition, SlotDefinition
 from oaklib import get_implementation_from_shorthand
 from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 from oaklib.interfaces import TextAnnotatorInterface
@@ -22,7 +23,7 @@ this_path = Path(__file__).parent
 
 EXAMPLE = Union[str, pydantic.BaseModel]
 FIELD = str
-RESPONSE_ATOM = Union[str, Tuple[str, str]]
+RESPONSE_ATOM = Union[str, "ResponseAtom"]
 RESPONSE_DICT = Dict[FIELD, Union[RESPONSE_ATOM, List[RESPONSE_ATOM]]]
 
 
@@ -33,12 +34,14 @@ class KnowledgeExtractor(object):
     template: str
     template_class: ClassDefinition = None
     template_pyclass = None
+    template_module: ModuleType = None
     schemaview: SchemaView = None
     api_key: str = None
     engine: str = "text-davinci-003"
     annotator: TextAnnotatorInterface = None
     annotators: Dict[str, List[TextAnnotatorInterface]] = None
     client: OpenAIClient = None
+    recurse: bool = False
 
     def __post_init__(self):
         self.template_class = self._get_template_class(self.template)
@@ -46,16 +49,20 @@ class KnowledgeExtractor(object):
         self.api_key = self._get_openai_api_key()
         openai.api_key = self.api_key
 
-    def extract_from_text(self, text: str) -> pydantic.BaseModel:
+    def extract_from_text(self, text: str, cls: ClassDefinition = None) -> pydantic.BaseModel:
         """
         Extract annotations from the given text.
 
         :param text:
         :return:
         """
-        raw_text = self._raw_extract(text)
+        raw_text = self._raw_extract(text, cls)
         logging.info(f"RAW TEXT: {raw_text}")
-        return self.parse_completion_payload(raw_text)
+        return self.parse_completion_payload(raw_text, cls)
+
+    def _extract_from_text_to_dict(self, text: str, cls: ClassDefinition = None) -> RESPONSE_DICT:
+        raw_text = self._raw_extract(text, cls)
+        return self._parse_response_to_dict(raw_text, cls)
 
     def extract_from_file(self, file: Union[str, Path, TextIO]) -> pydantic.BaseModel:
         """
@@ -106,7 +113,7 @@ class KnowledgeExtractor(object):
         # return os.environ.get("OPENAI_API_KEY")
         return get_apikey_value("openai")
 
-    def _raw_extract(self, text) -> str:
+    def _raw_extract(self, text, cls: ClassDefinition = None) -> str:
         """
         Extract annotations from the given text.
 
@@ -114,16 +121,10 @@ class KnowledgeExtractor(object):
         :return:
         """
 
-        prompt = self.get_completion_prompt()
+        prompt = self.get_completion_prompt(cls, text)
         full_text = f"{prompt}\n\nText:\n{text}"
         payload = self.client.complete(full_text)
         return payload
-        # response = openai.Completion.create(
-        #    engine=self.engine,
-        #    prompt=full_text,
-        #    max_tokens=3000,
-        # )
-        # return response.choices[0].text
 
     def _get_template_class(self, template: str) -> ClassDefinition:
         """Get the class for the given template."""
@@ -132,6 +133,7 @@ class KnowledgeExtractor(object):
         templates_path = this_path / "templates"
         path_to_template = str(templates_path / f"{module_name}.yaml")
         mod = importlib.import_module(f"semantic_llama.templates.{module_name}")
+        self.template_module = mod
         self.template_pyclass = mod.__dict__[class_name]
         sv = SchemaView(path_to_template)
         self.schemaview = sv
@@ -145,10 +147,15 @@ class KnowledgeExtractor(object):
             raise ValueError(f"Template {template} not found")
         return cls
 
-    def get_completion_prompt(self) -> str:
+    def get_completion_prompt(self, cls: ClassDefinition = None, text: str = None) -> str:
         """Get the prompt for the given template."""
-        prompt = "From the text below, extract the following entities in the following format:\n\n"
-        for slot in self.schemaview.class_induced_slots(self.template_class.name):
+        if cls is None:
+            cls = self.template_class
+        if not text or ("\n" in text or len(text) > 60):
+            prompt = "From the text below, extract the following entities in the following format:\n\n"
+        else:
+            prompt = "Split the following piece of text into fields in the following format:\n\n"
+        for slot in self.schemaview.class_induced_slots(cls.name):
             if "prompt" in slot.annotations:
                 slot_prompt = slot.annotations["prompt"].value
             elif slot.description:
@@ -159,66 +166,103 @@ class KnowledgeExtractor(object):
                 else:
                     slot_prompt = f"the value for {slot.name}"
             prompt += f"{slot.name}: <{slot_prompt}>\n"
+        #prompt += "Do not answer if you don't know\n\n"
         return prompt
 
-    def _parse_response_to_dict(self, results: str) -> RESPONSE_DICT:
+    def _parse_response_to_dict(self, results: str, cls: ClassDefinition = None) -> Optional[RESPONSE_DICT]:
         """
-        Parses the pseudo-YAML response from OpenAI into a dictionary object
+        Parses the pseudo-YAML response from OpenAI into a dictionary object.
+
+        E.g.
+
+            foo: a; b; c
+
+        becomes
+
+            {"foo": ["a", "b", "c"]}
 
         :param results:
         :return:
         """
         lines = results.splitlines()
-        sv = self.schemaview
         ann = {}
         for line in lines:
-            # each line is a key-value pair
-            logging.info(f"PARSING LINE: {line}")
             line = line.strip()
             if not line:
                 continue
-            field, val = line.split(":", 1)
-            if not val:
-                logging.warning(f"Cannot parse {line}")
-            field = field.lower().replace(" ", "_")
-            slot = sv.induced_slot(field, self.template_class.name)
-            val = val.strip()
-            if slot.multivalued:
-                vals = [v.strip() for v in val.split(";")]
+            if ":" not in line:
+                logging.warning(f"Line {line} does not contain a colon")
+                return
+            r = self._parse_line_to_dict(line, cls)
+            if r is not None:
+                field, val = r
+                ann[field] = val
+        return ann
+
+    def _parse_line_to_dict(self, line: str, cls: ClassDefinition = None) -> Optional[Tuple[FIELD, RESPONSE_ATOM]]:
+        if cls is None:
+            cls = self.template_class
+        sv = self.schemaview
+        # each line is a key-value pair
+        logging.info(f"PARSING LINE: {line}")
+        field, val = line.split(":", 1)
+        if not val:
+            logging.warning(f"Cannot parse {line}")
+        # The LLML may mutate the output format somewhat,
+        # randomly pluralizaing or replacing spaces with underscores
+        field = field.lower().replace(" ", "_")
+        cls_slots = sv.class_slots(cls.name)
+        if field in cls_slots:
+            slot = sv.induced_slot(field, cls.name)
+        else:
+            if field.endswith("s"):
+                field = field[:-1]
+            if field in cls_slots:
+                slot = sv.induced_slot(field, cls.name)
+        if not slot:
+            raise ValueError(f"Cannot find slot for {field} in {line}")
+        inlined = False
+        slot_range = sv.get_class(slot.range)
+        if slot.range in sv.all_classes():
+            inlined = sv.get_identifier_slot(slot_range.name) is None
+        val = val.strip()
+        if slot.multivalued:
+            vals = [v.strip() for v in val.split(";")]
+        else:
+            vals = [val]
+        vals = [val for val in vals if val]
+
+        if inlined:
+            transformed = False
+            slots_of_range = sv.class_slots(slot_range.name)
+            if self.recurse or len(slots_of_range) > 2:
+                vals = [self._extract_from_text_to_dict(v, slot_range) for v in vals]
             else:
-                vals = [val]
-            vals = [val for val in vals if val]
-            inlined = False
-            if slot.range in sv.all_classes():
-                rng = sv.get_class(slot.range).name
-                inlined = not sv.get_identifier_slot(rng) is not None
-                print(f"SLOT: {slot.name} RANGE: {rng}, INLINED: {inlined}")
-            if inlined:
-                transformed = False
                 for sep in [" - ", ":", "/", "*", "-"]:
                     if all([sep in v for v in vals]):
-                        vals = [tuple(v.split(sep, 1)) for v in vals]
+                        vals = [dict(zip(slots_of_range, v.split(sep, 1))) for v in vals]
                         transformed = True
                         break
                 if not transformed:
                     logging.warning(f"Did not find separator in {vals} for line {line}")
-                    continue
-            if slot.multivalued:
-                ann[field] = vals
-            else:
-                ann[field] = vals[0]
-        return ann
+                    return
+        # transform back from list to single value if not multivalued
+        if slot.multivalued:
+            final_val = vals
+        else:
+            final_val = vals[0]
+        return field, final_val
 
-    def parse_completion_payload(self, results: str) -> pydantic.BaseModel:
+    def parse_completion_payload(self, results: str, cls: ClassDefinition = None) -> pydantic.BaseModel:
         """
         Parse the completion payload into a pydantic class.
 
         :param results:
         :return:
         """
-        raw = self._parse_response_to_dict(results)
+        raw = self._parse_response_to_dict(results, cls)
         print(f"RAW: {raw}")
-        return self.ground_annotation_object(raw)
+        return self.ground_annotation_object(raw, cls)
 
     def ground_annotation_object(
         self, ann: RESPONSE_DICT, cls: ClassDefinition = None
@@ -254,6 +298,8 @@ class KnowledgeExtractor(object):
                             logging.error(f"Cannot find range for {sub_slot.name}")
                         result = self.ground_text_to_id(val[i], sub_rng)
                         obj[sub_slot.name] = result
+                elif isinstance(val, dict):
+                    obj = self.ground_annotation_object(val, rng)
                 else:
                     obj = self.ground_text_to_id(val, rng)
                 if multivalued:
@@ -262,7 +308,8 @@ class KnowledgeExtractor(object):
                     new_ann[field] = obj
         logging.debug(f"Creating object from dict {new_ann}")
         print(new_ann)
-        return self.template_pyclass(**new_ann)
+        py_cls = self.template_module.__dict__[cls.name]
+        return py_cls(**new_ann)
 
     def ground_text_to_id(self, text: str, cls: ClassDefinition = None) -> str:
         """

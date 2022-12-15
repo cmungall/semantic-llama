@@ -1,43 +1,39 @@
 activities:
-- Transcription
-- Production
-- Replication
+- Protein kinase activity
+- DNA-sensing signaling
+- Interferon production
+- Host antiviral responses
 cellular_processes:
-- DNA-sensing
-- Nuclear translocation
-- Phosphorylation
+- Wnt signaling Pathway
+- cGAS/STING signaling Pathway
 gene_functions:
 - gene: HGNC:2514
-  molecular_activity: Transcription
-- gene: HGNC:21367
-  molecular_activity: Production
-- gene: HGNC:27962
-  molecular_activity: Production
+  molecular_activity: enhance transcription of type I interferon
 - gene: US3
-  molecular_activity: Replication
-- gene: FPLX:Interferon
-  molecular_activity: Production
-- gene: ISG
-  molecular_activity: Production
+  molecular_activity: antagonizes prospective of IFN
+- gene: US3
+  molecular_activity: "hyperphosphorylation of \u03B2-catenin"
+- gene: US3
+  molecular_activity: block nuclear translocation
 gene_gene_interactions:
 - gene1: US3
   gene2: HGNC:2514
 gene_localizations:
-- gene: HGNC:2514
-  location: Nuclear
+- gene: US3
+  location: Subcellular localization
 gene_organisms:
 - gene: HGNC:2514
-  organism: MESH:D008322
+  organism: MESH:D006801
 - gene: HGNC:21367
-  organism: MESH:D008322
+  organism: MESH:D006801
 - gene: HGNC:27962
-  organism: MESH:D008322
+  organism: MESH:D006801
 - gene: US3
   organism: MESH:D018259
 - gene: FPLX:Interferon
-  organism: MESH:D008322
+  organism: MESH:D006801
 - gene: ISG
-  organism: MESH:D008322
+  organism: MESH:D006801
 genes:
 - HGNC:2514
 - HGNC:21367
@@ -46,7 +42,7 @@ genes:
 - FPLX:Interferon
 - ISG
 organisms:
-- MESH:D008322
+- MESH:D006801
 - MESH:D018259
 pathways:
-- cGAS/STING Signaling
+- cGAS/STING Signaling Pathway

@@ -83,7 +83,7 @@ RAW_PARSE = {
 }
 
 
-class TestAnnotate(unittest.TestCase):
+class TestCore(unittest.TestCase):
     """Test annotation."""
 
     def setUp(self) -> None:
@@ -111,6 +111,21 @@ class TestAnnotate(unittest.TestCase):
         ann = ke.extract_from_text(PAPER)
         print(f"RESULTS={ann}")
         print(yaml.dump(ann.dict()))
+
+    def test_subextract(self):
+        """Tests end to end knowledge extraction."""
+        ke = self.ke
+        cls = ke.schemaview.get_class("GeneMolecularActivityRelationship")
+        ann = ke.extract_from_text("β-Catenin-Translocation", cls)
+        print(f"RESULTS={ann}")
+        print(yaml.dump(ann.dict()))
+        self.assertEqual({'gene': 'HGNC:2514', 'molecular_activity': 'Translocation'},
+                            ann.dict())
+        # try and fool it
+        ann = ke._extract_from_text_to_dict("foobaz", cls)
+        print(f"RESULTS={ann}")
+        self.assertIsNone(ann)
+        #print(yaml.dump(ann.dict()))
 
     def test_prompt(self):
         """Tests prompt generation.
@@ -156,14 +171,14 @@ class TestAnnotate(unittest.TestCase):
         print(f"PARSED={ann}")
         print(yaml.dump(ann))
         self.assertIn("STING", ann["genes"])
-        self.assertIn(("cGAS", "host"), ann["gene_organisms"])
+        self.assertIn({'gene': 'β-Catenin', 'organism': 'host'}, ann["gene_organisms"])
         # test resilience to missing internal separators
         ann = ke._parse_response_to_dict("gene_organisms: a ; b ; c\ngenes: g")
         self.assertEqual(ann["genes"], ["g"])
         self.assertEqual(["genes"], list(ann.keys()))
         # test resilience to multiple internal separators
         ann = ke._parse_response_to_dict("gene_organisms: a-b-c")
-        self.assertEqual(ann["gene_organisms"], [("a", "b-c")])
+        self.assertEqual(ann["gene_organisms"], [{'gene': 'a', 'organism': 'b-c'}])
 
     def test_parse2(self):
         """Tests parsing of textual payload from openai API.

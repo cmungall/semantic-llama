@@ -1,16 +1,14 @@
-environment: Hyporheic Zone of Columbia River
+environment: hyporheic zone of the Columbia River;
 environmental_material:
-- Dissolved Organic Carbon (Non-purgeable)
-- Nitrate
-- Dissolved Oxygen
+- NPOC
+- CHEBI:17632
+- DO
 location:
 - T2
 - T3
 - T4
 measurements: []
 variables:
-- Hydraulic Regime
-- Dissolved Organic Carbon (Non-purgeable)
-- Nitrate Concentrations
-- Dissolved Oxygen Concentration
+- hydraulic regime
+- water chemistry data
 - ENVO:09200014
