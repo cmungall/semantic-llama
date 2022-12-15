@@ -1,0 +1,117 @@
+- _combo:
+  - label
+  _input:
+    label: pseudouridine 5'-phosphatase activity
+  description: 'Catalysis of the reaction: pseudouridine 5''-phosphate + H2O = pseudouridine
+    + phosphate.'
+  id: null
+  label: pseudouridine 5'-phosphatase activity
+  left_side:
+  - CHEBI:18116
+  - H2O
+  right_side:
+  - CHEBI:17802
+  - CHEBI:26020
+  subclass_of: nucleoside-triphosphatase activity
+  synonyms: []
+- _combo:
+  - description
+  _input:
+    description: 'Catalysis of the reaction: pseudouridine 5''-phosphate + H2O = pseudouridine
+      + phosphate.'
+  description: 'Catalysis of the reaction: pseudouridine 5''-phosphate + H2O = pseudouridine
+    + phosphate.'
+  id: null
+  label: Pseudouridine 5'-phosphate pyrophosphatase activity
+  left_side:
+  - CHEBI:18116
+  - H2O
+  right_side:
+  - CHEBI:17802
+  - CHEBI:26020
+  subclass_of: GO:0016462
+  synonyms: []
+- _combo:
+  - label
+  - description
+  _input:
+    description: 'Catalysis of the reaction: pseudouridine 5''-phosphate + H2O = pseudouridine
+      + phosphate.'
+    label: pseudouridine 5'-phosphatase activity
+  description: 'Catalysis of the reaction: pseudouridine 5''-phosphate + H2O = pseudouridine
+    + phosphate.'
+  id: null
+  label: pseudouridine 5'-phosphatase activity
+  left_side:
+  - CHEBI:18116
+  - H2O
+  right_side:
+  - CHEBI:17802
+  - CHEBI:26020
+  subclass_of: GO:0016791
+  synonyms: []
+- _combo:
+  - label
+  _input:
+    label: L-altrarate dehydratase activity
+  description: 'Catalysis of the reaction: L-altrarate + H2O => 2-oxopent-4-enoate
+    + H2.'
+  id: null
+  label: L-altrarate dehydratase activity
+  left_side:
+  - L-altrarate
+  - H2O
+  right_side:
+  - CHEBI:11641
+  - H2
+  subclass_of: GO:0016829
+  synonyms: []
+- _combo:
+  - description
+  _input:
+    description: 'Catalysis of the reaction: L-altrarate = 5-dehydro-4-deoxy-D-glucarate
+      + H2O.'
+  description: 'Catalysis of the reaction: L-altrarate = 5-dehydro-4-deoxy-D-glucarate
+    + H2O.'
+  id: null
+  label: null
+  left_side:
+  - L-altrarate
+  right_side:
+  - 5-dehydro-4-deoxy-D-glucarate
+  - H2O
+  subclass_of: altrarate dehydrogenase activity
+  synonyms: []
+- _combo:
+  - label
+  - description
+  _input:
+    description: 'Catalysis of the reaction: L-altrarate = 5-dehydro-4-deoxy-D-glucarate
+      + H2O.'
+    label: L-altrarate dehydratase activity
+  description: 'Catalysis of the reaction: L-altrarate = 5-dehydro-4-deoxy-D-glucarate
+    + H2O.'
+  id: null
+  label: L-altrarate dehydratase activity
+  left_side:
+  - L-altrarate
+  right_side:
+  - 5-dehydro-4-deoxy-D-glucarate
+  - H2O
+  subclass_of: GO:0016829
+  synonyms: []
+- _combo:
+  - description
+  _input:
+    description: ent-copalyl diphosphate + H2O = diphosphate + ent-manool
+  description: ent-copalyl diphosphate + H2O = diphosphate + ent-manool
+  id: null
+  label: ent-copalyl diphosphate mannohydrolase activity
+  left_side:
+  - ent-copalyl diphosphate
+  - H2O
+  right_side:
+  - diphosphate
+  - CHEBI:76948
+  subclass_of: diphosphate-lyase activity
+  synonyms: []

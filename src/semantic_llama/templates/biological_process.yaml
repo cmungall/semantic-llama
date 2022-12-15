@@ -17,8 +17,9 @@ imports:
 
 classes:
   BiologicalProcess:
+    is_a: NamedEntity
     attributes:
-      name:
+      label:
         description: the name of the biological process
       description:
         description: a textual description of the biological process

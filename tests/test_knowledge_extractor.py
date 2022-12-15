@@ -2,8 +2,10 @@
 import unittest
 
 import yaml
+from oaklib import get_implementation_from_shorthand
 
 from semantic_llama.knowledge_extractor import KnowledgeExtractor
+from semantic_llama.templates.biological_process import BiologicalProcess
 
 TEMPLATE = "gocam.GoCamAnnotations"
 
@@ -105,6 +107,38 @@ class TestCore(unittest.TestCase):
         self.assertEqual(slot.multivalued, True)
         self.assertEqual(slot.range, "Gene")
 
+    def test_generalize(self):
+        """Tests generalization."""
+        ke = KnowledgeExtractor("biological_process.BiologicalProcess")
+        ke.labelers = [get_implementation_from_shorthand("sqlite:obo:go")]
+        examples = [
+            """
+            label: mannose biosynthesis
+            description: The chemical reactions and pathways resulting in the formation of mannose, the aldohexose manno-hexose, the C-2 epimer of glucose
+            synonyms: mannose anabolism
+            subclass_of: hexose biosynthesis
+            outputs: mannose
+            """,
+            """
+            label: maltose biosynthesis
+            description: The chemical reactions and pathways resulting in the formation of the disaccharide maltose (4-O-alpha-D-glucopyranosyl-D-glucopyranose)
+            subclass_of: disaccharide biosynthesis
+            outputs: maltose
+            """,
+            BiologicalProcess(
+                label="autophagosome assembly",
+                description="The formation of a double membrane-bounded structure, the autophagosome, that occurs when a specialized membrane sac, called the isolation membrane, starts to enclose a portion of the cytoplasm",
+                subclass_of="GO:0022607",
+                outputs=["GO:0005776"],
+            ),
+        ]
+        label = "beta-D-lyxofuranose biosynthesis"
+        ann = ke.generalize({"label": label}, examples)
+        print(f"RESULTS={ann}")
+        print(yaml.dump(ann.dict()))
+        self.assertEqual(label, ann.label)
+        self.assertEqual(["CHEBI:151400"], ann.outputs)
+
     def test_extract(self):
         """Tests end to end knowledge extraction."""
         ke = self.ke
@@ -119,13 +153,12 @@ class TestCore(unittest.TestCase):
         ann = ke.extract_from_text("β-Catenin-Translocation", cls)
         print(f"RESULTS={ann}")
         print(yaml.dump(ann.dict()))
-        self.assertEqual({'gene': 'HGNC:2514', 'molecular_activity': 'Translocation'},
-                            ann.dict())
+        self.assertEqual({"gene": "HGNC:2514", "molecular_activity": "Translocation"}, ann.dict())
         # try and fool it
         ann = ke._extract_from_text_to_dict("foobaz", cls)
         print(f"RESULTS={ann}")
         self.assertIsNone(ann)
-        #print(yaml.dump(ann.dict()))
+        # print(yaml.dump(ann.dict()))
 
     def test_prompt(self):
         """Tests prompt generation.
@@ -171,14 +204,14 @@ class TestCore(unittest.TestCase):
         print(f"PARSED={ann}")
         print(yaml.dump(ann))
         self.assertIn("STING", ann["genes"])
-        self.assertIn({'gene': 'β-Catenin', 'organism': 'host'}, ann["gene_organisms"])
+        self.assertIn({"gene": "β-Catenin", "organism": "host"}, ann["gene_organisms"])
         # test resilience to missing internal separators
         ann = ke._parse_response_to_dict("gene_organisms: a ; b ; c\ngenes: g")
         self.assertEqual(ann["genes"], ["g"])
         self.assertEqual(["genes"], list(ann.keys()))
         # test resilience to multiple internal separators
         ann = ke._parse_response_to_dict("gene_organisms: a-b-c")
-        self.assertEqual(ann["gene_organisms"], [{'gene': 'a', 'organism': 'b-c'}])
+        self.assertEqual(ann["gene_organisms"], [{"gene": "a", "organism": "b-c"}])
 
     def test_parse2(self):
         """Tests parsing of textual payload from openai API.

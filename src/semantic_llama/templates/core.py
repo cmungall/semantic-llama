@@ -26,49 +26,10 @@ class ConfiguredBaseModel(
     pass
 
 
-class DiseaseTreatmentSummary(ConfiguredBaseModel):
-
-    disease: Optional[str] = Field(None, description="""the name of the disease that is treated""")
-    drugs: Optional[List[str]] = Field(
-        default_factory=list, description="""semicolon-separated list of drugs"""
-    )
-    treatments: Optional[List[str]] = Field(
-        default_factory=list, description="""semicolon-separated list of treatments"""
-    )
-    treatment_mechanisms: Optional[List[TreatmentMechanism]] = Field(
-        default_factory=list,
-        description="""semicolon-separated list of treatment to asterisk-separated mechanism associations""",
-    )
-
-
 class NamedEntity(ConfiguredBaseModel):
 
     id: Optional[str] = Field(None)
-
-
-class Gene(NamedEntity):
-
-    id: Optional[str] = Field(None)
-
-
-class Symptom(NamedEntity):
-
-    id: Optional[str] = Field(None)
-
-
-class Disease(NamedEntity):
-
-    id: Optional[str] = Field(None)
-
-
-class Treatment(NamedEntity):
-
-    id: Optional[str] = Field(None)
-
-
-class Drug(NamedEntity):
-
-    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
 
 
 class Relationship(ConfiguredBaseModel):
@@ -76,10 +37,9 @@ class Relationship(ConfiguredBaseModel):
     None
 
 
-class TreatmentMechanism(Relationship):
+class CompoundExpression(ConfiguredBaseModel):
 
-    treatment: Optional[str] = Field(None)
-    mechanism: Optional[str] = Field(None)
+    None
 
 
 class Publication(ConfiguredBaseModel):
@@ -99,14 +59,8 @@ class AnnotatorResult(ConfiguredBaseModel):
 
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
-DiseaseTreatmentSummary.update_forward_refs()
 NamedEntity.update_forward_refs()
-Gene.update_forward_refs()
-Symptom.update_forward_refs()
-Disease.update_forward_refs()
-Treatment.update_forward_refs()
-Drug.update_forward_refs()
 Relationship.update_forward_refs()
-TreatmentMechanism.update_forward_refs()
+CompoundExpression.update_forward_refs()
 Publication.update_forward_refs()
 AnnotatorResult.update_forward_refs()

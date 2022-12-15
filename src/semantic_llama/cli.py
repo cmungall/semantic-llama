@@ -37,10 +37,9 @@ def main(verbose: int, quiet: bool):
 
 @main.command()
 @click.option("-t", "--template", required=True, help="Template to use.")
-@click.option("--recurse/--no-recurse",
-              default=False,
-              show_default=True,
-              help="Recursively parse structyres.")
+@click.option(
+    "--recurse/--no-recurse", default=False, show_default=True, help="Recursively parse structyres."
+)
 @click.argument("input", type=click.File("r"), default=sys.stdin)
 def extract(template, input, **kwargs):
     """Parse openai results."""

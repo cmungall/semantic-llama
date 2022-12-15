@@ -1,0 +1,32 @@
+activities:
+- ubiquitination
+- proteasomal degradation
+cellular_processes:
+- inflammasome activation
+gene_functions:
+- gene: HGNC:16400
+  molecular_activity: ubiquitination
+- gene: HGNC:16400
+  molecular_activity: proteasomal degradation
+- gene: HGNC:16289
+  molecular_activity: ubiquitination
+- gene: HGNC:16289
+  molecular_activity: proteasomal degradation
+gene_gene_interactions:
+- gene1: HGNC:16400
+  gene2: HGNC:16289
+gene_localizations:
+- gene: HGNC:16400
+  location: subcellular localization
+gene_organisms:
+- gene: HGNC:16400
+  organism: MESH:D006801
+- gene: HGNC:16289
+  organism: MESH:D006801
+genes:
+- HGNC:16400
+- HGNC:16289
+organisms:
+- MESH:D006801
+pathways:
+- NLRP3 inflammasome

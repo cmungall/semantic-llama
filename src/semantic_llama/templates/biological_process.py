@@ -26,16 +26,28 @@ class ConfiguredBaseModel(
     pass
 
 
-class BiologicalProcess(ConfiguredBaseModel):
+class GeneMolecularActivityRelationship(ConfiguredBaseModel):
 
-    name: Optional[str] = Field(None, description="""the name of the biological process""")
+    gene: Optional[str] = Field(None)
+    molecular_activity: Optional[str] = Field(None)
+
+
+class NamedEntity(ConfiguredBaseModel):
+
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+
+
+class BiologicalProcess(NamedEntity):
+
+    label: Optional[str] = Field(None, description="""the name of the biological process""")
     description: Optional[str] = Field(
         None, description="""a textual description of the biological process"""
     )
     synonyms: Optional[List[str]] = Field(
         default_factory=list, description="""alternative names of the biological process"""
     )
-    subclass_of: Optional[BiologicalProcess] = Field(
+    subclass_of: Optional[str] = Field(
         None, description="""the category to which this biological process belongs"""
     )
     inputs: Optional[List[str]] = Field(
@@ -52,32 +64,35 @@ class BiologicalProcess(ConfiguredBaseModel):
         default_factory=list,
         description="""semicolon-separated list of gene to molecular activity relationships""",
     )
-
-
-class GeneMolecularActivityRelationship(ConfiguredBaseModel):
-
-    gene: Optional[str] = Field(None)
-    molecular_activity: Optional[str] = Field(None)
-
-
-class NamedEntity(ConfiguredBaseModel):
-
     id: Optional[str] = Field(None)
 
 
 class Gene(NamedEntity):
 
     id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
 
 
 class MolecularActivity(NamedEntity):
 
     id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
 
 
 class ChemicalEntity(NamedEntity):
 
     id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+
+
+class Relationship(ConfiguredBaseModel):
+
+    None
+
+
+class CompoundExpression(ConfiguredBaseModel):
+
+    None
 
 
 class Publication(ConfiguredBaseModel):
@@ -97,11 +112,13 @@ class AnnotatorResult(ConfiguredBaseModel):
 
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
-BiologicalProcess.update_forward_refs()
 GeneMolecularActivityRelationship.update_forward_refs()
 NamedEntity.update_forward_refs()
+BiologicalProcess.update_forward_refs()
 Gene.update_forward_refs()
 MolecularActivity.update_forward_refs()
 ChemicalEntity.update_forward_refs()
+Relationship.update_forward_refs()
+CompoundExpression.update_forward_refs()
 Publication.update_forward_refs()
 AnnotatorResult.update_forward_refs()

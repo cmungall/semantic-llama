@@ -6,13 +6,13 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 from types import ModuleType
-from typing import Dict, List, Optional, TextIO, Tuple, Union
+from typing import Dict, List, Optional, TextIO, Tuple, Union, Any
 
 import openai
 import pydantic
 from linkml_runtime import SchemaView
-from linkml_runtime.linkml_model import ClassDefinition
-from oaklib import get_implementation_from_shorthand
+from linkml_runtime.linkml_model import ClassDefinition, SlotDefinition
+from oaklib import get_implementation_from_shorthand, BasicOntologyInterface
 from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 from oaklib.interfaces import TextAnnotatorInterface
 from oaklib.utilities.apikey_manager import get_apikey_value
@@ -22,7 +22,7 @@ from semantic_llama.templates.core import NamedEntity
 
 this_path = Path(__file__).parent
 
-EXAMPLE = Union[str, pydantic.BaseModel]
+EXAMPLE = Union[str, pydantic.BaseModel, dict]
 FIELD = str
 RESPONSE_ATOM = Union[str, "ResponseAtom"]
 RESPONSE_DICT = Dict[FIELD, Union[RESPONSE_ATOM, List[RESPONSE_ATOM]]]
@@ -41,6 +41,7 @@ class KnowledgeExtractor(object):
     engine: str = "text-davinci-003"
     annotator: TextAnnotatorInterface = None
     annotators: Dict[str, List[TextAnnotatorInterface]] = None
+    labelers: List[BasicOntologyInterface] = None
     client: OpenAIClient = None
     recurse: bool = False
     named_entities: List[NamedEntity] = None
@@ -93,22 +94,48 @@ class KnowledgeExtractor(object):
         """
         prompt = "example:\n"
         for example in examples:
-            prompt += f"{example}\n\n"
+            prompt += f"{self._serialize_example(example)}\n\n"
         prompt += "\n\n===\n\n"
         if isinstance(object, pydantic.BaseModel):
             object = object.dict()
-        prompt = ""
         for k, v in object.items():
             if v:
                 prompt += f"{k}: {v}\n"
+        print(f"PROMPT: {prompt}")
         payload = self.client.complete(prompt)
-        return self.parse_completion_payload(payload)
-        # response = openai.Completion.create(
-        #    engine=self.engine,
-        #    prompt=prompt,
-        #    max_tokens=3000,
-        # )
-        # return self.parse_completion_payload(response.choices[0].text)
+        return self.parse_completion_payload(payload, object=object)
+
+    def _serialize_example(self, example: EXAMPLE, cls: ClassDefinition = None) -> str:
+        if cls is None:
+            cls = self.template_class
+        if isinstance(example, str):
+            return example
+        if isinstance(example, pydantic.BaseModel):
+            example = example.dict()
+        lines = []
+        sv = self.schemaview
+        for k, v in example.items():
+            slot = sv.induced_slot(k, cls.name)
+            v_serialized = self._serialize_value(v, slot)
+            lines.append(f"{k}: {v_serialized}")
+        return "\n".join(lines)
+
+    def _serialize_value(self, val: Any, slot: SlotDefinition) -> str:
+        if val is None:
+            return ""
+        if isinstance(val, list):
+            return "; ".join([self._serialize_value(v, slot) for v in val if v])
+        if isinstance(val, dict):
+            for _k, v in val.items():
+                return " - ".join([self._serialize_value(v, slot) for v in val if v])
+        sv = self.schemaview
+        if slot.range in sv.all_classes():
+            if self.labelers:
+                for labeler in self.labelers:
+                    label = labeler.label(val)
+                    if label:
+                        return label
+        return val
 
     def _get_openai_api_key(self):
         """Get the OpenAI API key from the environment."""
@@ -154,7 +181,9 @@ class KnowledgeExtractor(object):
         if cls is None:
             cls = self.template_class
         if not text or ("\n" in text or len(text) > 60):
-            prompt = "From the text below, extract the following entities in the following format:\n\n"
+            prompt = (
+                "From the text below, extract the following entities in the following format:\n\n"
+            )
         else:
             prompt = "Split the following piece of text into fields in the following format:\n\n"
         for slot in self.schemaview.class_induced_slots(cls.name):
@@ -170,10 +199,12 @@ class KnowledgeExtractor(object):
                 else:
                     slot_prompt = f"the value for {slot.name}"
             prompt += f"{slot.name}: <{slot_prompt}>\n"
-        #prompt += "Do not answer if you don't know\n\n"
+        # prompt += "Do not answer if you don't know\n\n"
         return prompt
 
-    def _parse_response_to_dict(self, results: str, cls: ClassDefinition = None) -> Optional[RESPONSE_DICT]:
+    def _parse_response_to_dict(
+        self, results: str, cls: ClassDefinition = None
+    ) -> Optional[RESPONSE_DICT]:
         """
         Parses the pseudo-YAML response from OpenAI into a dictionary object.
 
@@ -203,7 +234,9 @@ class KnowledgeExtractor(object):
                 ann[field] = val
         return ann
 
-    def _parse_line_to_dict(self, line: str, cls: ClassDefinition = None) -> Optional[Tuple[FIELD, RESPONSE_ATOM]]:
+    def _parse_line_to_dict(
+        self, line: str, cls: ClassDefinition = None
+    ) -> Optional[Tuple[FIELD, RESPONSE_ATOM]]:
         if cls is None:
             cls = self.template_class
         sv = self.schemaview
@@ -226,7 +259,7 @@ class KnowledgeExtractor(object):
                 slot = sv.induced_slot(field, cls.name)
         if not slot:
             logging.error(f"Cannot find slot for {field} in {line}")
-            #raise ValueError(f"Cannot find slot for {field} in {line}")
+            # raise ValueError(f"Cannot find slot for {field} in {line}")
             return
         inlined = False
         slot_range = sv.get_class(slot.range)
@@ -260,15 +293,21 @@ class KnowledgeExtractor(object):
             final_val = vals[0]
         return field, final_val
 
-    def parse_completion_payload(self, results: str, cls: ClassDefinition = None) -> pydantic.BaseModel:
+    def parse_completion_payload(
+        self, results: str, cls: ClassDefinition = None, object: dict = None
+    ) -> pydantic.BaseModel:
         """
         Parse the completion payload into a pydantic class.
 
         :param results:
+        :param cls:
+        :param object:
         :return:
         """
         raw = self._parse_response_to_dict(results, cls)
         print(f"RAW: {raw}")
+        if object:
+            raw = {**object, **raw}
         return self.ground_annotation_object(raw, cls)
 
     def ground_annotation_object(
