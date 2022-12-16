@@ -1,14 +1,14 @@
-id: http://w3id.org/linkml/ai/templates/environmental-sample
-name: environmental-sample
-title: Environmental Sample Template
+id: http://w3id.org/linkml/ai/templates/metagenome
+name: environmental-metagenome
+title: Environmental Metagenome Template
 description: >-
-  A template for Environmental Samples
+  A template for Environmental Metagenome Studies
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   linkml: https://w3id.org/linkml/
-  sample: http://w3id.org/linkml/ai/templates/environmental-sample/
+  eg: http://w3id.org/linkml/ai/templates/environmental-metagenome/
 
-default_prefix: sample
+default_prefix: eg
 default_range: string
 
 imports:
@@ -18,6 +18,37 @@ imports:
 classes:
   Study:
     attributes:
+
+      environments:
+        annotations:
+          prompt: semicolon-separated list of environmental systems or biomes in which the study was conducted
+        multivalued: true
+        range: Environment
+
+      causal_relationships:
+        annotations:
+          prompt: semicolon-separated list of cause-effect pairs, for example, effect of temperature on growth
+        range: CausalRelationship
+        multivalued: true
+
+      variables:
+        annotations:
+          prompt: semicolon-separated list of environmental variables which are studies. E.g. temperature, pH, salinity
+        range: Variable
+        multivalued: true
+
+      treatments:
+        annotations:
+          prompt: semicolon-separated list of treatments that are applied
+        range: Treatment
+        multivalued: true
+
+      measurements:
+        annotations:
+          prompt: semicolon-separated list of value-measurement pairs
+        range: Measurement
+        multivalued: true
+
       location:
         description: the sites at which the study was conducted
         annotations:
@@ -32,29 +63,15 @@ classes:
         range: EnvironmentalMaterial
         multivalued: true
 
-      environments:
+      sequencing_technologies:
         annotations:
-          prompt: semicolon-separated list of environmental contexts in which the study was conducted
-        multivalued: true
-        range: Environment
+          prompt: semicolon-separated list of  sequencing technologies used in the project
+        range: SequencingTechnology
 
-      causal_relationships:
-        annotations:
-          prompt: semicolon-separated list of cause-effect pairs, for example, effect of temperature on growth
-        range: CausalRelationship
+      organisms:
+        description: semicolon-separated list of all studied organism taxons
         multivalued: true
-
-      variables:
-        annotations:
-          prompt: semicolon-separated list of study variables
-        range: Variable
-        multivalued: true
-
-      measurements:
-        annotations:
-          prompt: semicolon-separated list of value-measurement pairs
-        range: Measurement
-        multivalued: true
+        range: Organism
 
   Location:
     is_a: NamedEntity
@@ -115,3 +132,26 @@ classes:
       effect:
         description: the things that is affected
         range: Variable
+
+  SequencingTechnology:
+    is_a: NamedEntity
+    id_prefixes:
+      - IDO
+      - EFO
+    annotations:
+      annotators: sqlite:obo:obi, sqlite:obo:efo, bioportal:bero
+
+  Treatment:
+    is_a: NamedEntity
+    id_prefixes:
+      - PECO
+      - OBI
+    annotations:
+      annotators: sqlite:obo:peco, sqlite:obo:obi, bioportal:bero
+
+  Organism:
+    is_a: NamedEntity
+    id_prefixes:
+      - NCBITaxon
+    annotations:
+      annotators: "sqlite:obo:ncbitaxon, gilda:"

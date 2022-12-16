@@ -1,32 +1,99 @@
-activities:
-- ubiquitination
-- proteasomal degradation
-cellular_processes:
-- inflammasome activation
-gene_functions:
-- gene: HGNC:16400
-  molecular_activity: ubiquitination
-- gene: HGNC:16400
-  molecular_activity: proteasomal degradation
-- gene: HGNC:16289
-  molecular_activity: ubiquitination
-- gene: HGNC:16289
-  molecular_activity: proteasomal degradation
-gene_gene_interactions:
-- gene1: HGNC:16400
-  gene2: HGNC:16289
-gene_localizations:
-- gene: HGNC:16400
-  location: subcellular localization
-gene_organisms:
-- gene: HGNC:16400
-  organism: MESH:D006801
-- gene: HGNC:16289
-  organism: MESH:D006801
-genes:
-- HGNC:16400
-- HGNC:16289
-organisms:
-- MESH:D006801
-pathways:
-- NLRP3 inflammasome
+input_id: /Users/cjm/repos/semantic-llama/tests/input/cases/gocam-27929086.txt
+input_text: "Title: The E3 ubiquitin ligase TRIM31 attenuates NLRP3 inflammasome\n\
+  activation by promoting proteasomal degradation of NLRP3\n\nAbstract: The NLRP3\
+  \ inflammasome has a fundamental role in host\ndefence against microbial pathogens\
+  \ and its deregulation may cause\ndiverse inflammatory diseases. NLRP3 protein expression\
+  \ is a\nrate-limiting step for inflammasome activation, thus its expression\nmust\
+  \ be tightly controlled to maintain immune homeostasis and avoid\ndetrimental effects.\
+  \ However, how NLRP3 expression is regulated\nremains largely unknown. In this study,\
+  \ we identify E3 ubiquitin\nligase TRIM31 as a feedback suppressor of NLRP3 inflammasome.\
+  \ TRIM31\ndirectly binds to NLRP3, promotes K48-linked polyubiquitination and\n\
+  proteasomal degradation of NLRP3. Consequently, TRIM31 deficiency\nenhances NLRP3\
+  \ inflammasome activation and aggravates alum-induced\nperitonitis in vivo. Furthermore,\
+  \ TRIM31 deficiency attenuates the\nseverity of dextran sodium sulfate (DSS)-induced\
+  \ colitis, an\ninflammatory bowel diseases model in which NLRP3 possesses protective\n\
+  roles. Thus, our research describes a mechanism by which TRIM31 limits\nNLRP3 inflammasome\
+  \ activity under physiological conditions and\nsuggests TRIM31 as a potential therapeutic\
+  \ target for the intervention\nof NLRP3 inflammasome related diseases.\n\nFigure\
+  \ 1: TRIM31 specifically inhibits NLRP3 inflammasome activation\nFigure 2. TRIM31\
+  \ promotes proteasomal degradation of NLRP3\nFigure 3. TRIM31 interacts with NLRP3\n\
+  Figure 4. TRIM31 promotes K48-linked polyubiquitination of NLRP3.\nFigure 5. IL-1\u03B2\
+  \ and LPS induce TRIM31 expression\nFigure 6. TRIM31 deficiency enhances IL-1\u03B2\
+  \ secretion and aggravates\nAlum-induced peritonitis in vivo\nFigure 7. TRIM31 deficiency\
+  \ ameliorates DSS-induced colitis\nFigure 8. Working model for TRIM31 inhibiting\
+  \ NLRP3 inflammasome activation.\n"
+input_title: null
+named_entities:
+- id: HGNC:16289
+  label: TRIM31
+- id: HGNC:16400
+  label: NLRP3
+- id: MESH:D006801
+  label: Homo sapiens
+- id: HGNC:16289
+  label: TRIM31
+- id: MESH:D006801
+  label: Homo sapiens
+- id: HGNC:16400
+  label: NLRP3
+- id: MESH:D006801
+  label: Homo sapiens
+- id: proteasomal degradation
+  label: Proteasomal Degradation
+- id: K48-linked polyubiquitination
+  label: K48-linked polyubiquitination
+- id: TRIM31*
+  label: TRIM31
+- id: proteasomal degradation
+  label: Proteasomal Degradation
+- id: TRIM31*,
+  label: TRIM31*
+- id: K48-linked polyubiquitination
+  label: K48-linked polyubiquitination
+- id: GO:0044546
+  label: NLRP3 inflammasome activation
+- id: NLRP3 expression regulation
+  label: NLRP3 Expression Regulation
+- id: host defence against microbial pathogens
+  label: Host Defence Against Microbial Pathogens
+- id: immune homeostasis
+  label: Immune Homeostasis
+- id: HGNC:16289
+  label: TRIM31
+- id: HGNC:16400
+  label: NLRP3
+- id: HGNC:16400
+  label: NLRP3
+- id: subcellular localization
+  label: subcellular localization
+results:
+  activities:
+  - proteasomal degradation
+  - K48-linked polyubiquitination
+  cellular_processes:
+  - GO:0044546
+  - NLRP3 expression regulation
+  gene_functions:
+  - gene: TRIM31*
+    molecular_activity: proteasomal degradation
+  - gene: TRIM31*,
+    molecular_activity: K48-linked polyubiquitination
+  gene_gene_interactions:
+  - gene1: HGNC:16289
+    gene2: HGNC:16400
+  gene_localizations:
+  - gene: HGNC:16400
+    location: subcellular localization
+  gene_organisms:
+  - gene: HGNC:16289
+    organism: MESH:D006801
+  - gene: HGNC:16400
+    organism: MESH:D006801
+  genes:
+  - HGNC:16289
+  - HGNC:16400
+  organisms:
+  - MESH:D006801
+  pathways:
+  - host defence against microbial pathogens
+  - immune homeostasis

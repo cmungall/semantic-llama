@@ -30,11 +30,11 @@ classes:
         description: the category to which this biological process belongs
         range: ReactionGrouping
       left_side:
-        description: the chemical entities on the left side
+        description: semicolon separated list of chemical entities on the left side
         multivalued: true
         range: ChemicalEntity
       right_side:
-        description: the chemical entities on the right side
+        description: semicolon separated list of chemical entities on the right side
         multivalued: true
         range: ChemicalEntity
 
@@ -45,11 +45,40 @@ classes:
         description: name of the gene that catalyzes the reaction
       reactions:
         range: Reaction
-        description: semicolon separated list of reaction equations catalyzed by the gene
+        description: semicolon separated list of reaction equations (e.g. A+B = C+D) catalyzed by the gene
         multivalued: true
         inlined: true
       organism:
         range: Organism
+
+  MultiGeneToReaction:
+    attributes:
+      genes:
+        range: Gene
+        description: semicolon separated list of genes that catalyzes the mentioned reactions
+        multivalued: true
+      reactions:
+        range: Reaction
+        description: semicolon separated list of reaction equations (e.g. A+B = C+D) catalyzed by the gene
+        multivalued: true
+        inlined: true
+      gene_reaction_pairings:
+        range: GeneReactionPairing
+        description: semicolon separated list of gene to reaction pairings
+        multivalued: true
+        inlined: true
+      organism:
+        range: Organism
+
+  GeneReactionPairing:
+    is_a: Relationship
+    attributes:
+      gene:
+        range: Gene
+        description: name of the gene that catalyzes the reaction
+      reaction:
+        range: Reaction
+        description: equation describing the reaction (e.g. A+B = C+D) catalyzed by the gene
 
   ReactionGrouping:
     is_a: NamedEntity

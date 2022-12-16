@@ -8,11 +8,11 @@
   label: pseudouridine 5'-phosphatase activity
   left_side:
   - CHEBI:18116
-  - H2O
+  - CHEBI:15377
   right_side:
   - CHEBI:17802
   - CHEBI:26020
-  subclass_of: nucleoside-triphosphatase activity
+  subclass_of: nucleoside 5'-phosphatase activity
   synonyms: []
 - _combo:
   - description
@@ -22,14 +22,14 @@
   description: 'Catalysis of the reaction: pseudouridine 5''-phosphate + H2O = pseudouridine
     + phosphate.'
   id: null
-  label: Pseudouridine 5'-phosphate pyrophosphatase activity
+  label: null
   left_side:
   - CHEBI:18116
-  - H2O
+  - CHEBI:15377
   right_side:
   - CHEBI:17802
   - CHEBI:26020
-  subclass_of: GO:0016462
+  subclass_of: pseudouridine 5'-phosphate phosphohydrolase activity
   synonyms: []
 - _combo:
   - label
@@ -44,7 +44,7 @@
   label: pseudouridine 5'-phosphatase activity
   left_side:
   - CHEBI:18116
-  - H2O
+  - CHEBI:15377
   right_side:
   - CHEBI:17802
   - CHEBI:26020
@@ -54,17 +54,17 @@
   - label
   _input:
     label: L-altrarate dehydratase activity
-  description: 'Catalysis of the reaction: L-altrarate + H2O => 2-oxopent-4-enoate
+  description: 'Catalysis of the reaction: L-altrarate + H2O = 2-dehydro-3-deoxy-L-altronate
     + H2.'
   id: null
   label: L-altrarate dehydratase activity
   left_side:
-  - L-altrarate
-  - H2O
+  - CHEBI:37547
+  - CHEBI:15377
   right_side:
-  - CHEBI:11641
-  - H2
-  subclass_of: GO:0016829
+  - 2-dehydro-3-deoxy-L-altronate
+  - CHEBI:18276
+  subclass_of: amino acid dehydratase activity
   synonyms: []
 - _combo:
   - description
@@ -76,11 +76,11 @@
   id: null
   label: null
   left_side:
-  - L-altrarate
+  - CHEBI:37547
   right_side:
-  - 5-dehydro-4-deoxy-D-glucarate
-  - H2O
-  subclass_of: altrarate dehydrogenase activity
+  - CHEBI:16369
+  - CHEBI:15377
+  subclass_of: GO:0016491
   synonyms: []
 - _combo:
   - label
@@ -94,10 +94,10 @@
   id: null
   label: L-altrarate dehydratase activity
   left_side:
-  - L-altrarate
+  - CHEBI:37547
   right_side:
-  - 5-dehydro-4-deoxy-D-glucarate
-  - H2O
+  - CHEBI:16369
+  - CHEBI:15377
   subclass_of: GO:0016829
   synonyms: []
 - _combo:
@@ -106,12 +106,12 @@
     description: ent-copalyl diphosphate + H2O = diphosphate + ent-manool
   description: ent-copalyl diphosphate + H2O = diphosphate + ent-manool
   id: null
-  label: ent-copalyl diphosphate mannohydrolase activity
+  label: Ent-copalyl-diphosphate DD-hydrolase activity
   left_side:
-  - ent-copalyl diphosphate
-  - H2O
+  - ent-copalyl-diphosphate
+  - CHEBI:15377
   right_side:
-  - diphosphate
+  - CHEBI:18361
   - CHEBI:76948
-  subclass_of: diphosphate-lyase activity
+  subclass_of: GO:0016787
   synonyms: []

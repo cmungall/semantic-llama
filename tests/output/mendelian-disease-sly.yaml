@@ -1,13 +1,25 @@
-description: "An autosomal recessive lysosomal storage disease caused by a deficiency\
-  \ of the enzyme \u03B2-glucuronidase"
-genes:
-- HGNC:4696
-inheritance: Autosomal recessive
-name: Sly Syndrome
-subclass_of:
-- N/A
-symptoms:
-- Buildup in many tissues and organs of the body
-- Severity of the disease can vary widely
-synonyms:
-- Mucopolysaccharidosis Type VII (MPS-VII)
+input_file: /Users/cjm/repos/semantic-llama/tests/input/cases/mendelian-disease-sly.txt
+named_entities:
+- id: HP:0000007
+  label: Autosomal Recessive
+- id: HGNC:4696
+  label: Beta-glucuronidase
+results:
+  description: "Autosomal recessive lysosomal storage disease caused by deficiency\
+    \ of enzyme \u03B2-glucuronidase"
+  genes:
+  - HGNC:4696
+  inheritance: HP:0000007
+  name: Sly Syndrome
+  subclass_of:
+  - Autosomal Recessive Lysosomal Storage Disease
+  symptoms:
+  - Buildup in many tissues and organs of the body
+  synonyms:
+  - Mucopolysaccharidosis Type VII (MPS-VII)
+text: "Sly syndrome, also called mucopolysaccharidosis type VII (MPS-VII), is an autosomal\
+  \ recessive lysosomal storage disease caused by a deficiency of the enzyme \u03B2\
+  -glucuronidase. This enzyme is responsible for breaking down large sugar molecules\
+  \ called glycosaminoglycans (AKA GAGs, or mucopolysaccharides). The inability to\
+  \ break down GAGs leads to a buildup in many tissues and organs of the body. The\
+  \ severity of the disease can vary widely.\n"

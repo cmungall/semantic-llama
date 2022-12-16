@@ -6,7 +6,7 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 from types import ModuleType
-from typing import Dict, List, Optional, TextIO, Tuple, Union, Any
+from typing import Dict, List, Optional, TextIO, Tuple, Union, Any, Iterator
 
 import openai
 import pydantic
@@ -18,7 +18,7 @@ from oaklib.interfaces import TextAnnotatorInterface
 from oaklib.utilities.apikey_manager import get_apikey_value
 
 from semantic_llama.clients import OpenAIClient
-from semantic_llama.templates.core import NamedEntity
+from semantic_llama.templates.core import NamedEntity, ExtractionResult
 
 this_path = Path(__file__).parent
 
@@ -45,6 +45,7 @@ class KnowledgeExtractor(object):
     client: OpenAIClient = None
     recurse: bool = False
     named_entities: List[NamedEntity] = None
+    last_text: str = None
 
     def __post_init__(self):
         self.template_class = self._get_template_class(self.template)
@@ -52,16 +53,21 @@ class KnowledgeExtractor(object):
         self.api_key = self._get_openai_api_key()
         openai.api_key = self.api_key
 
-    def extract_from_text(self, text: str, cls: ClassDefinition = None) -> pydantic.BaseModel:
+    def extract_from_text(self, text: str, cls: ClassDefinition = None) -> ExtractionResult:
         """
         Extract annotations from the given text.
 
         :param text:
+        :param cls:
         :return:
         """
         raw_text = self._raw_extract(text, cls)
         logging.info(f"RAW TEXT: {raw_text}")
-        return self.parse_completion_payload(raw_text, cls)
+        r = self.parse_completion_payload(raw_text, cls)
+        return ExtractionResult(input_text=text,
+                                raw_completion_output=raw_text,
+                                results=r,
+                                named_entities=self.named_entities)
 
     def _extract_from_text_to_dict(self, text: str, cls: ClassDefinition = None) -> RESPONSE_DICT:
         raw_text = self._raw_extract(text, cls)
@@ -81,7 +87,10 @@ class KnowledgeExtractor(object):
                 text = f.read()
         else:
             text = file.read()
-        return self.extract_from_text(text)
+        self.last_text = text
+        r = self.extract_from_text(text)
+        r.input_id = str(file)
+        return r
 
     def generalize(
         self, object: Union[pydantic.BaseModel, dict], examples: List[EXAMPLE]
@@ -151,7 +160,7 @@ class KnowledgeExtractor(object):
         """
 
         prompt = self.get_completion_prompt(cls, text)
-        full_text = f"{prompt}\n\nText:\n{text}"
+        full_text = f"{prompt}\n\nText:\n{text}\n\n===\n\n"
         payload = self.client.complete(full_text)
         return payload
 
@@ -245,8 +254,9 @@ class KnowledgeExtractor(object):
         field, val = line.split(":", 1)
         if not val:
             logging.warning(f"Cannot parse {line}")
+            return
         # The LLML may mutate the output format somewhat,
-        # randomly pluralizaing or replacing spaces with underscores
+        # randomly pluralizing or replacing spaces with underscores
         field = field.lower().replace(" ", "_")
         cls_slots = sv.class_slots(cls.name)
         slot = None
@@ -261,17 +271,18 @@ class KnowledgeExtractor(object):
             logging.error(f"Cannot find slot for {field} in {line}")
             # raise ValueError(f"Cannot find slot for {field} in {line}")
             return
-        inlined = False
+        inlined = slot.inlined
         slot_range = sv.get_class(slot.range)
-        if slot.range in sv.all_classes():
-            inlined = sv.get_identifier_slot(slot_range.name) is None
+        if not inlined:
+            if slot.range in sv.all_classes():
+                inlined = sv.get_identifier_slot(slot_range.name) is None
         val = val.strip()
         if slot.multivalued:
             vals = [v.strip() for v in val.split(";")]
         else:
             vals = [val]
         vals = [val for val in vals if val]
-
+        logging.debug(f"SLOT: {slot.name} INL: {inlined} VALS: {vals}")
         if inlined:
             transformed = False
             slots_of_range = sv.class_slots(slot_range.name)
@@ -290,6 +301,8 @@ class KnowledgeExtractor(object):
         if slot.multivalued:
             final_val = vals
         else:
+            if len(vals) != 1:
+                logging.error(f"Expected 1 value for {slot.name} in '{line}' but got {vals}")
             final_val = vals[0]
         return field, final_val
 
@@ -378,7 +391,7 @@ class KnowledgeExtractor(object):
             return result.object_id
         if self.recurse and cls:
             print(f"RECURSING: {text} cls={cls.name}")
-            obj = self.extract_from_text(text, cls)
+            obj = self.extract_from_text(text, cls).results
             if obj:
                 if self.named_entities is None:
                     self.named_entities = []
@@ -417,3 +430,13 @@ class KnowledgeExtractor(object):
                     return result
             except Exception as e:
                 logging.error(f"Error with {annotator} for {text}: {e}")
+
+    def cached_completions(self, search_term: str = None, engine: str = None) -> Iterator[Tuple[str, str]]:
+        if engine is None:
+            engine = self.engine
+        cur = self.client.db_connection()
+        res = cur.execute("SELECT prompt, payload FROM cache WHERE engine=?", (engine,))
+        for row in res:
+            if search_term and search_term not in row[0]:
+                continue
+            yield row

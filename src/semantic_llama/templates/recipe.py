@@ -19,14 +19,13 @@ class ConfiguredBaseModel(WeakRefShimBaseModel,
     pass                    
 
 
-class Study(ConfiguredBaseModel):
+class Recipe(ConfiguredBaseModel):
     
-    location: Optional[List[str]] = Field(default_factory=list, description="""the sites at which the study was conducted""")
-    environmental_material: Optional[List[str]] = Field(default_factory=list, description="""the environmental material that was sampled""")
-    environments: Optional[List[str]] = Field(default_factory=list)
-    causal_relationships: Optional[List[CausalRelationship]] = Field(default_factory=list)
-    variables: Optional[List[str]] = Field(default_factory=list)
-    measurements: Optional[List[Measurement]] = Field(default_factory=list)
+    label: Optional[str] = Field(None, description="""the name of the recipe""")
+    description: Optional[str] = Field(None, description="""a brief textual description of the recipe""")
+    category: Optional[List[str]] = Field(default_factory=list, description="""a semicolon separated list of the categories to which this recipe belongs""")
+    ingredients: Optional[List[Ingredient]] = Field(default_factory=list, description="""a semicolon separated list of the ingredients plus quantities of the recipe""")
+    steps: Optional[List[Step]] = Field(default_factory=list, description="""a semicolon separated list of the individual steps involved in this recipe""")
     
 
 
@@ -37,35 +36,21 @@ class NamedEntity(ConfiguredBaseModel):
     
 
 
-class Location(NamedEntity):
+class FoodItem(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class EnvironmentalMaterial(NamedEntity):
+class RecipeCategory(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Environment(NamedEntity):
-    
-    id: Optional[str] = Field(None)
-    label: Optional[str] = Field(None, description="""The label of the named thing""")
-    
-
-
-class Variable(NamedEntity):
-    
-    id: Optional[str] = Field(None)
-    label: Optional[str] = Field(None, description="""The label of the named thing""")
-    
-
-
-class Unit(NamedEntity):
+class Action(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
@@ -78,17 +63,18 @@ class Relationship(ConfiguredBaseModel):
     
 
 
-class Measurement(Relationship):
+class Ingredient(Relationship):
     
-    value: Optional[str] = Field(None, description="""the value of the measurement""")
-    unit: Optional[str] = Field(None, description="""the unit of the measurement""")
+    food_item: Optional[str] = Field(None, description="""the food item""")
+    quantity: Optional[str] = Field(None, description="""the quantity of the ingredient""")
     
 
 
-class CausalRelationship(Relationship):
+class Step(Relationship):
     
-    cause: Optional[str] = Field(None, description="""the variable that is the cause of the effect""")
-    effect: Optional[str] = Field(None, description="""the things that is affected""")
+    action: Optional[str] = Field(None, description="""the action taken in this step (e.g. mix, add)""")
+    inputs: Optional[List[str]] = Field(default_factory=list, description="""a semicolon separated list of the inputs of this step""")
+    outputs: Optional[List[str]] = Field(default_factory=list, description="""a semicolon separated list of the outputs of this step""")
     
 
 
@@ -118,16 +104,14 @@ class AnnotatorResult(ConfiguredBaseModel):
 
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
-Study.update_forward_refs()
+Recipe.update_forward_refs()
 NamedEntity.update_forward_refs()
-Location.update_forward_refs()
-EnvironmentalMaterial.update_forward_refs()
-Environment.update_forward_refs()
-Variable.update_forward_refs()
-Unit.update_forward_refs()
+FoodItem.update_forward_refs()
+RecipeCategory.update_forward_refs()
+Action.update_forward_refs()
 Relationship.update_forward_refs()
-Measurement.update_forward_refs()
-CausalRelationship.update_forward_refs()
+Ingredient.update_forward_refs()
+Step.update_forward_refs()
 CompoundExpression.update_forward_refs()
 Publication.update_forward_refs()
 AnnotatorResult.update_forward_refs()

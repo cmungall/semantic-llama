@@ -23,12 +23,12 @@ classes:
         range: Disease
 
       drugs:
-        description: semicolon-separated list of drugs
+        description: semicolon-separated list of named small molecule drugs
         multivalued: true
         range: Drug
 
       treatments:
-        description: semicolon-separated list of treatments
+        description: semicolon-separated list of therapies and treatments
         multivalued: true
         range: Treatment
 
@@ -36,6 +36,15 @@ classes:
         description: semicolon-separated list of treatment to asterisk-separated mechanism associations
         multivalued: true
         range: TreatmentMechanism
+        annotations:
+          prompt.separator: "*"
+
+      treatment_efficacies:
+        description: semicolon-separated list of treatment to efficacy associations, e.g. Imatinib*effective
+        multivalued: true
+        range: TreatmentEfficacy
+        annotations:
+          prompt.separator: "*"
 
   Gene:
     is_a: NamedEntity
@@ -61,6 +70,11 @@ classes:
     annotations:
       annotators: sqlite:obo:maxo, sqlite:obo:ncit
 
+  Mechanism:
+    is_a: NamedEntity
+    annotations:
+      annotators: sqlite:obo:go, sqlite:obo:ncit
+
   Drug:
     is_a: NamedEntity
     annotations:
@@ -72,4 +86,12 @@ classes:
       treatment:
         range: Treatment
       mechanism:
+        range: Mechanism
+
+  TreatmentEfficacy:
+    is_a: Relationship
+    attributes:
+      treatment:
+        range: Treatment
+      efficacy:
         range: string

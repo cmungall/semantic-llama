@@ -1,7 +1,7 @@
 RUN = poetry run
 PACKAGE = semantic_llama
 TEMPLATE_DIR = src/$(PACKAGE)/templates
-TEMPLATES = core gocam mendelian_disease biological_process treatment environmental_sample reaction
+TEMPLATES = core gocam mendelian_disease biological_process treatment environmental_sample metagenome_study reaction recipe
 
 all: $(patsubst %, $(TEMPLATE_DIR)/%.py, $(TEMPLATES))
 

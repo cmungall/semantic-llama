@@ -18,8 +18,9 @@ sphinx-autodoc-typehints = {version = "^1.19.4", extras = ["docs"]}
 sphinx-click = {version = "^4.3.0", extras = ["docs"]}
 myst-parser = {version = "^0.18.1", extras = ["docs"]}
 openai = "^0.25.0"
-oaklib = "^0.1.62"
+oaklib = "^0.1.64"
 gilda = "^0.10.3"
+jsonlines = "^3.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

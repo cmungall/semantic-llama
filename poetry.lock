@@ -748,6 +748,17 @@ python-versions = ">=3.6"
 hbreader = "*"
 
 [[package]]
+name = "jsonlines"
+version = "3.1.0"
+description = "Library with helpers for the jsonlines file format"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+attrs = ">=19.2.0"
+
+[[package]]
 name = "jsonpatch"
 version = "1.32"
 description = "Apply JSON-Patches (RFC 6902)"
@@ -1080,7 +1091,7 @@ viz = ["pygraphviz"]
 
 [[package]]
 name = "oaklib"
-version = "0.1.62"
+version = "0.1.64"
 description = "Ontology Access Kit: Python library for common ontology operations over a variety of backends"
 category = "main"
 optional = false
@@ -2267,7 +2278,7 @@ docs = ["sphinx", "sphinx-rtd-theme", "sphinx-autodoc-typehints", "sphinx-click"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "6227d9f9a5f0ac9323421e01d873ad43b0801339f345878084717a773faa00bf"
+content-hash = "aece5ca0ab7187aa58e80348f043d4c7dd22eec916e9163ff0d8fb21c0765ad5"
 
 [metadata.files]
 adeft = []
@@ -2331,6 +2342,7 @@ joblib = []
 json-flattener = []
 jsonasobj = []
 jsonasobj2 = []
+jsonlines = []
 jsonpatch = []
 jsonpath-ng = []
 jsonpointer = []

@@ -1,20 +1,45 @@
-description: A genetic disorder that affects connective tissue
-genes:
-- Fibrillin-1 (FBN1)
-inheritance: Autosomal Dominant
-name: Marfan Syndrome
-subclass_of:
-- --
-symptoms:
-- Overgrowth of long bones of arms and legs
-- Abnormal curvature of spine
-- Pectus deformity
-- HP:0001083
-- Nearsightedness
-- Aneurysm
-- Tear of the aorta
-- HP:0001634
-- Aortic and mitral regurgitation
-synonyms:
-- Marfan's Syndrome
-- Marfansyndroom
+input_file: /Users/cjm/repos/semantic-llama/tests/input/cases/mendelian-disease-marfan.txt
+named_entities:
+- id: HP:0000007
+  label: Autosomal Recessive
+- id: HGNC:4696
+  label: Beta-glucuronidase
+- id: HP:0000545
+  label: Nearsightedness
+- id: HP:0000006
+  label: Autosomal dominant
+results:
+  description: A genetic disorder that affects connective tissue
+  genes:
+  - Fibrillin-1 (FBN1) gene
+  inheritance: HP:0000006
+  name: Marfan Syndrome
+  subclass_of:
+  - N/A
+  symptoms:
+  - Overgrowth of the long bones of the arms and legs
+  - Abnormal side-to-side curvature of the spine
+  - Indentation or protrusion of the chest wall
+  - Dislocation of the lenses of the eyes
+  - HP:0000545
+  - Widening and tear of the main artery that carries blood away from the heart
+  - Floppiness of the mitral valve
+  - Backward flow of blood through the aortic and mitral valves
+  synonyms:
+  - Marfsan Syndrome
+text: Marfan syndrome is a genetic disorder that affects connective tissue, which
+  is the material between cells of the body that gives the tissues form and strength.
+  Connective tissue is found all over the body and multiple organ systems may be affected
+  in individuals with Marfan syndrome. The heart and blood vessels (cardiovascular),
+  skeletal, and eye (ocular) systems are most often affected. Major symptoms include
+  overgrowth of the long bones of the arms and legs, abnormal side-to-side curvature
+  of the spine (scoliosis), indentation or protrusion of the chest wall (pectus deformity),
+  dislocation of the lenses of the eyes (ectopia lentis), nearsightedness (myopia),
+  widening (aneurysm) and tear (dissection) of the main artery that carries blood
+  away from the heart (aorta), floppiness of the mitral valve (mitral valve prolapse)
+  and backward flow of blood through the aortic and mitral valves (aortic and mitral
+  regurgitation). The specific symptoms and the severity of Marfan syndrome vary greatly
+  from person to person. Marfan syndrome is inherited as an autosomal dominant trait,
+  meaning that only one abnormal copy of the Marfan gene inherited from one parent
+  is sufficient to have the condition. Defects or deletions (pathogenic variants)
+  of the fibrillin-1 (FBN1) gene have been shown to cause Marfan syndrome.

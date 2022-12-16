@@ -6,6 +6,7 @@ from oaklib import get_implementation_from_shorthand
 
 from semantic_llama.knowledge_extractor import KnowledgeExtractor
 from semantic_llama.templates.biological_process import BiologicalProcess
+from semantic_llama.templates.gocam import GoCamAnnotations
 
 TEMPLATE = "gocam.GoCamAnnotations"
 
@@ -145,6 +146,11 @@ class TestCore(unittest.TestCase):
         ann = ke.extract_from_text(PAPER)
         print(f"RESULTS={ann}")
         print(yaml.dump(ann.dict()))
+        results = ann.results
+        if not isinstance(results, GoCamAnnotations):
+            raise ValueError(f"Expected GoCamAnnotations, got {type(results)}")
+        self.assertIn("HGNC:2514", results.genes)
+
 
     def test_subextract(self):
         """Tests end to end knowledge extraction."""

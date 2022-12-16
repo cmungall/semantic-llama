@@ -14,6 +14,26 @@ imports:
   - linkml:types
 
 classes:
+  Any:
+    class_uri: linkml:Any
+
+  ExtractionResult:
+    description: >-
+      A result of extracting knowledge on text
+    attributes:
+      input_id:
+      input_title:
+      input_text:
+      raw_completion_output:
+      results:
+        range: Any
+        inlined: true
+      named_entities:
+        range: Any
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
   NamedEntity:
     abstract: true
     attributes:

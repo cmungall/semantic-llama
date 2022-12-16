@@ -19,13 +19,17 @@ class ConfiguredBaseModel(WeakRefShimBaseModel,
     pass                    
 
 
-class DiseaseTreatmentSummary(ConfiguredBaseModel):
+class Study(ConfiguredBaseModel):
     
-    disease: Optional[str] = Field(None, description="""the name of the disease that is treated""")
-    drugs: Optional[List[str]] = Field(default_factory=list, description="""semicolon-separated list of named small molecule drugs""")
-    treatments: Optional[List[str]] = Field(default_factory=list, description="""semicolon-separated list of therapies and treatments""")
-    treatment_mechanisms: Optional[List[TreatmentMechanism]] = Field(default_factory=list, description="""semicolon-separated list of treatment to asterisk-separated mechanism associations""")
-    treatment_efficacies: Optional[List[TreatmentEfficacy]] = Field(default_factory=list, description="""semicolon-separated list of treatment to efficacy associations, e.g. Imatinib*effective""")
+    environments: Optional[List[str]] = Field(default_factory=list)
+    causal_relationships: Optional[List[CausalRelationship]] = Field(default_factory=list)
+    variables: Optional[List[str]] = Field(default_factory=list)
+    treatments: Optional[List[str]] = Field(default_factory=list)
+    measurements: Optional[List[Measurement]] = Field(default_factory=list)
+    location: Optional[List[str]] = Field(default_factory=list, description="""the sites at which the study was conducted""")
+    environmental_material: Optional[List[str]] = Field(default_factory=list, description="""the environmental material that was sampled""")
+    sequencing_technologies: Optional[str] = Field(None)
+    organisms: Optional[List[str]] = Field(default_factory=list, description="""semicolon-separated list of all studied organism taxons""")
     
 
 
@@ -36,7 +40,6 @@ class ExtractionResult(ConfiguredBaseModel):
     input_id: Optional[str] = Field(None)
     input_title: Optional[str] = Field(None)
     input_text: Optional[str] = Field(None)
-    raw_completion_output: Optional[str] = Field(None)
     results: Optional[Any] = Field(None)
     named_entities: Optional[List[Any]] = Field(default_factory=list)
     
@@ -49,21 +52,42 @@ class NamedEntity(ConfiguredBaseModel):
     
 
 
-class Gene(NamedEntity):
+class Location(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Symptom(NamedEntity):
+class EnvironmentalMaterial(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
     
 
 
-class Disease(NamedEntity):
+class Environment(NamedEntity):
+    
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+    
+
+
+class Variable(NamedEntity):
+    
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+    
+
+
+class Unit(NamedEntity):
+    
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+    
+
+
+class SequencingTechnology(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
@@ -77,14 +101,7 @@ class Treatment(NamedEntity):
     
 
 
-class Mechanism(NamedEntity):
-    
-    id: Optional[str] = Field(None)
-    label: Optional[str] = Field(None, description="""The label of the named thing""")
-    
-
-
-class Drug(NamedEntity):
+class Organism(NamedEntity):
     
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
@@ -97,17 +114,17 @@ class Relationship(ConfiguredBaseModel):
     
 
 
-class TreatmentMechanism(Relationship):
+class Measurement(Relationship):
     
-    treatment: Optional[str] = Field(None)
-    mechanism: Optional[str] = Field(None)
+    value: Optional[str] = Field(None, description="""the value of the measurement""")
+    unit: Optional[str] = Field(None, description="""the unit of the measurement""")
     
 
 
-class TreatmentEfficacy(Relationship):
+class CausalRelationship(Relationship):
     
-    treatment: Optional[str] = Field(None)
-    efficacy: Optional[str] = Field(None)
+    cause: Optional[str] = Field(None, description="""the variable that is the cause of the effect""")
+    effect: Optional[str] = Field(None, description="""the things that is affected""")
     
 
 
@@ -137,18 +154,20 @@ class AnnotatorResult(ConfiguredBaseModel):
 
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
-DiseaseTreatmentSummary.update_forward_refs()
+Study.update_forward_refs()
 ExtractionResult.update_forward_refs()
 NamedEntity.update_forward_refs()
-Gene.update_forward_refs()
-Symptom.update_forward_refs()
-Disease.update_forward_refs()
+Location.update_forward_refs()
+EnvironmentalMaterial.update_forward_refs()
+Environment.update_forward_refs()
+Variable.update_forward_refs()
+Unit.update_forward_refs()
+SequencingTechnology.update_forward_refs()
 Treatment.update_forward_refs()
-Mechanism.update_forward_refs()
-Drug.update_forward_refs()
+Organism.update_forward_refs()
 Relationship.update_forward_refs()
-TreatmentMechanism.update_forward_refs()
-TreatmentEfficacy.update_forward_refs()
+Measurement.update_forward_refs()
+CausalRelationship.update_forward_refs()
 CompoundExpression.update_forward_refs()
 Publication.update_forward_refs()
 AnnotatorResult.update_forward_refs()

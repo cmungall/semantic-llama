@@ -22,7 +22,16 @@ class ConfiguredBaseModel(WeakRefShimBaseModel,
 class GeneToReaction(ConfiguredBaseModel):
     
     gene: Optional[str] = Field(None, description="""name of the gene that catalyzes the reaction""")
-    reactions: Optional[List[Reaction]] = Field(default_factory=list, description="""semicolon separated list of reactions catalyzed by the gene""")
+    reactions: Optional[List[Reaction]] = Field(default_factory=list, description="""semicolon separated list of reaction equations (e.g. A+B = C+D) catalyzed by the gene""")
+    organism: Optional[str] = Field(None)
+    
+
+
+class MultiGeneToReaction(ConfiguredBaseModel):
+    
+    genes: Optional[List[str]] = Field(default_factory=list, description="""semicolon separated list of genes that catalyzes the mentioned reactions""")
+    reactions: Optional[List[Reaction]] = Field(default_factory=list, description="""semicolon separated list of reaction equations (e.g. A+B = C+D) catalyzed by the gene""")
+    gene_reaction_pairings: Optional[List[GeneReactionPairing]] = Field(default_factory=list, description="""semicolon separated list of gene to reaction pairings""")
     organism: Optional[str] = Field(None)
     
 
@@ -40,8 +49,8 @@ class Reaction(NamedEntity):
     description: Optional[str] = Field(None, description="""a textual description of the reaction""")
     synonyms: Optional[List[str]] = Field(default_factory=list, description="""alternative names of the reaction""")
     subclass_of: Optional[str] = Field(None, description="""the category to which this biological process belongs""")
-    left_side: Optional[List[str]] = Field(default_factory=list, description="""the chemical entities on the left side""")
-    right_side: Optional[List[str]] = Field(default_factory=list, description="""the chemical entities on the right side""")
+    left_side: Optional[List[str]] = Field(default_factory=list, description="""semicolon separated list of chemical entities on the left side""")
+    right_side: Optional[List[str]] = Field(default_factory=list, description="""semicolon separated list of chemical entities on the right side""")
     id: Optional[str] = Field(None)
     
 
@@ -80,6 +89,13 @@ class Relationship(ConfiguredBaseModel):
     
 
 
+class GeneReactionPairing(Relationship):
+    
+    gene: Optional[str] = Field(None, description="""name of the gene that catalyzes the reaction""")
+    reaction: Optional[str] = Field(None, description="""equation describing the reaction (e.g. A+B = C+D) catalyzed by the gene""")
+    
+
+
 class CompoundExpression(ConfiguredBaseModel):
     
     None
@@ -107,6 +123,7 @@ class AnnotatorResult(ConfiguredBaseModel):
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 GeneToReaction.update_forward_refs()
+MultiGeneToReaction.update_forward_refs()
 NamedEntity.update_forward_refs()
 Reaction.update_forward_refs()
 ReactionGrouping.update_forward_refs()
@@ -114,6 +131,7 @@ ChemicalEntity.update_forward_refs()
 Gene.update_forward_refs()
 Organism.update_forward_refs()
 Relationship.update_forward_refs()
+GeneReactionPairing.update_forward_refs()
 CompoundExpression.update_forward_refs()
 Publication.update_forward_refs()
 AnnotatorResult.update_forward_refs()
