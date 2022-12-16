@@ -25,6 +25,7 @@ classes:
       input_title:
       input_text:
       raw_completion_output:
+      prompt:
       results:
         range: Any
         inlined: true

@@ -27,6 +27,7 @@ class ExtractionResult(ConfiguredBaseModel):
     input_title: Optional[str] = Field(None)
     input_text: Optional[str] = Field(None)
     raw_completion_output: Optional[str] = Field(None)
+    prompt: Optional[str] = Field(None)
     results: Optional[Any] = Field(None)
     named_entities: Optional[List[Any]] = Field(default_factory=list)
     

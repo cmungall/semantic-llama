@@ -46,6 +46,7 @@ class KnowledgeExtractor(object):
     recurse: bool = False
     named_entities: List[NamedEntity] = None
     last_text: str = None
+    last_prompt: str = None
 
     def __post_init__(self):
         self.template_class = self._get_template_class(self.template)
@@ -66,6 +67,7 @@ class KnowledgeExtractor(object):
         r = self.parse_completion_payload(raw_text, cls)
         return ExtractionResult(input_text=text,
                                 raw_completion_output=raw_text,
+                                prompt=self.last_prompt,
                                 results=r,
                                 named_entities=self.named_entities)
 
@@ -160,6 +162,7 @@ class KnowledgeExtractor(object):
         """
 
         prompt = self.get_completion_prompt(cls, text)
+        self.last_prompt = prompt
         full_text = f"{prompt}\n\nText:\n{text}\n\n===\n\n"
         payload = self.client.complete(full_text)
         return payload

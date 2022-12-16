@@ -37,17 +37,17 @@ __
 
 - Preventative measures
 
-- Exercise NCIT:C16567
+- Exercise [NCIT:C16567](https://bioregistry.io/NCIT:C16567)
 
-- Physical therapy MAXO:0000011
+- Physical therapy [MAXO:0000011](https://bioregistry.io/MAXO:0000011)
 
 - Assitive devices
 
 - Bandages
 
-- Calcium CHEBI:22984
+- Calcium [CHEBI:22984](https://bioregistry.io/CHEBI:22984)
 
-- Vitamin D CHEBI:27300
+- Vitamin D [CHEBI:27300](https://bioregistry.io/CHEBI:27300)
 
 - DEXA bone density scans
 
@@ -61,7 +61,7 @@ __
   - Superficial stiches
 
 - mechanism:
-  - wound healing GO:0042060
+  - wound healing [GO:0042060](https://bioregistry.io/GO:0042060)
 
 
 - treatment:
@@ -72,24 +72,24 @@ __
 
 
 - treatment:
-  - Exercise NCIT:C16567
+  - Exercise [NCIT:C16567](https://bioregistry.io/NCIT:C16567)
 
 - mechanism:
   - dislocations
 
 
 - treatment:
-  - Physical therapy MAXO:0000011
+  - Physical therapy [MAXO:0000011](https://bioregistry.io/MAXO:0000011)
 
 - mechanism:
-  - musculoskeletal pain NCIT:C3244
+  - musculoskeletal pain [NCIT:C3244](https://bioregistry.io/NCIT:C3244)
 
 
 - treatment:
-  - Assistive devices NCIT:C157792
+  - Assistive devices [NCIT:C157792](https://bioregistry.io/NCIT:C157792)
 
 - mechanism:
-  - quality of life NCIT:C17047
+  - quality of life [NCIT:C17047](https://bioregistry.io/NCIT:C17047)
 
 
 - treatment:
@@ -100,31 +100,31 @@ __
 
 
 - treatment:
-  - Calcium CHEBI:22984
+  - Calcium [CHEBI:22984](https://bioregistry.io/CHEBI:22984)
 
 - mechanism:
-  - bone density NCIT:C61545
+  - bone density [NCIT:C61545](https://bioregistry.io/NCIT:C61545)
 
 
 - treatment:
-  - Vitamin D CHEBI:27300
+  - Vitamin D [CHEBI:27300](https://bioregistry.io/CHEBI:27300)
 
 - mechanism:
-  - bone density NCIT:C61545
+  - bone density [NCIT:C61545](https://bioregistry.io/NCIT:C61545)
 
 
 - treatment:
   - DEXA bone density scans
 
 - mechanism:
-  - screening NCIT:C48261
+  - screening [NCIT:C48261](https://bioregistry.io/NCIT:C48261)
 
 
 - treatment:
   - Eye exams
 
 - mechanism:
-  - glaucoma NCIT:C26782
+  - glaucoma [NCIT:C26782](https://bioregistry.io/NCIT:C26782)
 
 
 
@@ -146,21 +146,21 @@ __
 
 
 - treatment:
-  - Exercise NCIT:C16567
+  - Exercise [NCIT:C16567](https://bioregistry.io/NCIT:C16567)
 
 - efficacy:
   - preventive
 
 
 - treatment:
-  - Physical therapy MAXO:0000011
+  - Physical therapy [MAXO:0000011](https://bioregistry.io/MAXO:0000011)
 
 - efficacy:
   - pain management
 
 
 - treatment:
-  - Assistive devices NCIT:C157792
+  - Assistive devices [NCIT:C157792](https://bioregistry.io/NCIT:C157792)
 
 - efficacy:
   - pain management
@@ -174,14 +174,14 @@ __
 
 
 - treatment:
-  - Calcium CHEBI:22984
+  - Calcium [CHEBI:22984](https://bioregistry.io/CHEBI:22984)
 
 - efficacy:
   - bone density maximization
 
 
 - treatment:
-  - Vitamin D CHEBI:27300
+  - Vitamin D [CHEBI:27300](https://bioregistry.io/CHEBI:27300)
 
 - efficacy:
   - bone density maximization
@@ -291,6 +291,22 @@ named_entities:
   label: Calcium
 - id: CHEBI:27300
   label: Vitamin D
+prompt: 'From the text below, extract the following entities in the following format:
+
+
+  disease: <the name of the disease that is treated>
+
+  drugs: <semicolon-separated list of named small molecule drugs>
+
+  treatments: <semicolon-separated list of therapies and treatments>
+
+  treatment_mechanisms: <semicolon-separated list of treatment to asterisk-separated
+  mechanism associations>
+
+  treatment_efficacies: <semicolon-separated list of treatment to efficacy associations,
+  e.g. Imatinib*effective>
+
+  '
 raw_completion_output: "\nDisease: Ehlers Danlos Syndrome; \nDrugs: Ascorbic Acid\
   \ (Vitamin C); \nTreatments: Superficial stiches; Preventative measures; Exercise;\
   \ Physical therapy; Assitive devices; Bandages; Calcium; Vitamin D; DEXA bone density\
@@ -359,6 +375,23 @@ results:
   - CHEBI:27300
   - DEXA bone density scans
   - Eye exams
+
+```
+
+</details>
+
+
+Prompt:
+
+<details>
+```
+From the text below, extract the following entities in the following format:
+
+disease: <the name of the disease that is treated>
+drugs: <semicolon-separated list of named small molecule drugs>
+treatments: <semicolon-separated list of therapies and treatments>
+treatment_mechanisms: <semicolon-separated list of treatment to asterisk-separated mechanism associations>
+treatment_efficacies: <semicolon-separated list of treatment to efficacy associations, e.g. Imatinib*effective>
 
 ```
 

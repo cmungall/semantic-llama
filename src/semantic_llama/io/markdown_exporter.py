@@ -7,6 +7,9 @@ import yaml
 
 from semantic_llama.templates.core import ExtractionResult
 
+def _is_curie(s: str) -> bool:
+    return ":" in s and " " not in s
+
 
 @dataclass
 class MarkdownExporter:
@@ -25,6 +28,8 @@ class MarkdownExporter:
         self.export_object(obj, extraction_output, output, -1)
         output.write("\n\nYAML:\n\n")
         self.details(yaml.dump(extraction_output.dict()), output, code="yaml")
+        output.write("\n\nPrompt:\n\n")
+        self.details(extraction_output.prompt, output)
         output.write("\n\nCompletion:\n\n")
         self.details(extraction_output.raw_completion_output, output)
 
@@ -48,11 +53,11 @@ class MarkdownExporter:
         output.write("\n")
 
     def export_atom(self, value, extraction_output: ExtractionResult, output: TextIO, indent: int):
-        matches = [ne for ne in extraction_output.named_entities if ne.id == value]
+        matches = [ne for ne in extraction_output.named_entities if ne.id == value and _is_curie(ne.id)]
         output.write(f"\n{'  ' * indent}- ")
         if matches:
             match = matches[0]
-            output.write(f"{match.label} {match.id}")
+            output.write(f"{match.label} {self.link(match.id)}")
         else:
             output.write(f"{value}")
         output.write("\n")
