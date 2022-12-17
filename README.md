@@ -79,6 +79,11 @@ note in the above the grounding is very preliminary and can be improved. Ungroun
 
 You will need to set both API keys using OAK
 
+```
+poetry run runoak set-apikey openai <your openai api key>
+poetry run runoak set-apikey bioportal <your bioportal api key>
+```
+
 ## How to define your own extraction data model
 
 ### Step 1: Define a schema
@@ -171,9 +176,20 @@ e.g.
 emllama extract -t  mendelian_disease.MendelianDisease marfan-wikipedia.txt
 ```
 
+## Web Application
+
+There is a bare bones web application
+
+```
+poetry run webllama
+```
+
+Note that the agent running uvicorn must have the API key set, so for obvious reasons
+don't host this publicaly without authentication unless you want your credits drained. 
+
 ## Features
 
-### Multiple L
+### Multiple Levels of nesting
 
 Currently only two levels of nesting are supported
 
@@ -196,10 +212,7 @@ The generated prompt is:
 
 `gene_functions : <semicolon-separated list of gene to molecular activities relationships>`
 
-llama will do its best to parse the return payload into *tuples* of gene and molecular activity, but
-this can be hard to do reliably via string matching.
-
-However, very soon llama will support N-pass annotation, where nested structures are fed back into the LLM!
+The output of this is then passed through further llama iterations.
 
 ## Limitations
 
@@ -210,9 +223,6 @@ This relies on an existing LLM, and LLMs can be fickle in their responses.
 ### Coupled to OpenAI
 
 You will need an openai account. In theory any LLM can be used but in practice the parser is tuned for OpenAI
-
-
-
 
 
 

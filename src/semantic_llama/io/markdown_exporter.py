@@ -5,14 +5,12 @@ from typing import TextIO, Union
 import pydantic
 import yaml
 
+from semantic_llama.io.exporter import Exporter, is_curie
 from semantic_llama.templates.core import ExtractionResult
-
-def _is_curie(s: str) -> bool:
-    return ":" in s and " " not in s
 
 
 @dataclass
-class MarkdownExporter:
+class MarkdownExporter(Exporter):
 
     def export(self, extraction_output: ExtractionResult, output: Union[str, Path, TextIO]):
         if isinstance(output, Path):
@@ -53,7 +51,7 @@ class MarkdownExporter:
         output.write("\n")
 
     def export_atom(self, value, extraction_output: ExtractionResult, output: TextIO, indent: int):
-        matches = [ne for ne in extraction_output.named_entities if ne.id == value and _is_curie(ne.id)]
+        matches = [ne for ne in extraction_output.named_entities if ne.id == value and is_curie(ne.id)]
         output.write(f"\n{'  ' * indent}- ")
         if matches:
             match = matches[0]

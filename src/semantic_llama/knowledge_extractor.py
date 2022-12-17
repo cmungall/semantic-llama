@@ -28,6 +28,16 @@ RESPONSE_ATOM = Union[str, "ResponseAtom"]
 RESPONSE_DICT = Dict[FIELD, Union[RESPONSE_ATOM, List[RESPONSE_ATOM]]]
 
 
+DATAMODELS = [
+    "treatment.DiseaseTreatmentSummary",
+    "gocam.GoCamAnnotations",
+    "bioloigical_process.BiologicalProcess",
+    "environmental_sample.Study",
+    "mendelian_disease.MendelianDisease",
+    "reaction.Reaction",
+    "recipe.Recipe",
+]
+
 @dataclass
 class KnowledgeExtractor(object):
     """Knowledge extractor."""
