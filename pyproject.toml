@@ -26,6 +26,7 @@ uvicorn = "^0.20.0"
 Jinja2 = "^3.1.2"
 python-multipart = "^0.0.5"
 mkdocs-mermaid2-plugin = "^0.6.0"
+linkml-owl = "^0.2.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

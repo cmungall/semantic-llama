@@ -4,7 +4,6 @@ import unittest
 import yaml
 
 from semantic_llama.knowledge_extractor import KnowledgeExtractor
-from semantic_llama.templates.reaction import Reaction
 from tests import OUTPUT_DIR, INSTANCES_DIR
 
 CASES = [

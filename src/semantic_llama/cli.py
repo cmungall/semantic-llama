@@ -55,7 +55,7 @@ def main(verbose: int, quiet: bool):
                 help="Output format.")
 @click.argument("input", type=click.File("r"), default=sys.stdin)
 def extract(template, input, output, output_format, **kwargs):
-    """Parse openai results."""
+    """Extract knowledge from text."""
     logging.info(f"Creating for {template}")
     ke = KnowledgeExtractor(template, **kwargs)
     text = input.read()
@@ -71,6 +71,36 @@ def extract(template, input, output, output_format, **kwargs):
         output = codecs.getwriter("utf-8")(output)
         output.write(yaml.dump(results.dict()))
 
+
+@main.command()
+@click.option("-t", "--template", required=True, help="Template to use.")
+@click.option("-e", "--engine", help="Engine to use, e.g. text-davinci-003.")
+@click.option("-E", "--examples",
+              type=click.File("r"),
+              help="File of example objects.")
+@click.option(
+    "--recurse/--no-recurse", default=False, show_default=True, help="Recursively parse structyres."
+)
+@click.option("-o", "--output",
+              type=click.File(mode="wb"),
+              default=sys.stdout,
+              help="Output file.")
+@click.option("-O", "--output-format",
+                type=click.Choice(["json", "yaml", "pickle", "md"]),
+                default="yaml",
+                help="Output format.")
+@click.argument("object")
+def fill(template, object: str, examples, output, output_format, **kwargs):
+    """Fills in missing values."""
+    logging.info(f"Creating for {template}")
+    ke = KnowledgeExtractor(template, **kwargs)
+    object = yaml.safe_load(object)
+    logging.info(f"Object to fill =  {object}")
+    logging.info(f"Loading {examples}")
+    examples = yaml.safe_load(examples)
+    logging.debug(f"Input object: {object}")
+    results = ke.generalize(object, examples)
+    output.write(yaml.dump(results.dict()))
 
 @main.command()
 @click.option("-t", "--template", default="gocam", help="Template to use.")

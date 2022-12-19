@@ -1,0 +1,36 @@
+format-version: 1.2
+
+[Term]
+id: GO:0000017
+name: alpha-glucoside transport
+namespace: biological_process
+def: "The directed movement of alpha-glucosides into, out of or within a cell, or between cells, by means of some agent such as a transporter or pore. Alpha-glucosides are glycosides in which the sugar group is a glucose residue, and the anomeri
+c carbon of the bond is in an alpha configuration." [GOC:jl, ISBN:0198506732, PMID:9919658]
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:60979 ! alpha-glucoside
+
+[Term]
+id: GO:0000024
+name: maltose biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of the disaccharide maltose (4-O-alpha-D-glucopyranosyl-D-glucopyranose)." [GOC:jl, ISBN:0198506732]
+synonym: "malt sugar biosynthesis" EXACT []
+synonym: "malt sugar biosynthetic process" EXACT []
+synonym: "maltose anabolism" EXACT []
+synonym: "maltose biosynthesis" EXACT []
+synonym: "maltose formation" EXACT []
+synonym: "maltose synthesis" EXACT []
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:17306 ! maltose
+
+[Term]
+id: GO:0000256
+name: allantoin catabolic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the breakdown of allantoin, (2,5-dioxo-4-imidazolidinyl)urea." [GOC:mah, ISBN:0198547684]
+synonym: "allantoin breakdown" EXACT []
+synonym: "allantoin catabolism" EXACT []
+synonym: "allantoin degradation" EXACT []
+is_a: GO:0043605 ! amide catabolic process
+intersection_of: GO:0009056 ! catabolic process
+intersection_of: has_primary_input CHEBI:15676 ! allantoin

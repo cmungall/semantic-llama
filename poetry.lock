@@ -987,6 +987,21 @@ linkml-runtime = ">=1.1.6"
 "ruamel.yaml" = "*"
 
 [[package]]
+name = "linkml-owl"
+version = "0.2.4"
+description = "OWL mappings for Linked Open Data Modeling Language"
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.dependencies]
+click = "*"
+funowl = ">=0.1.12,<0.2.0"
+Jinja2 = ">=3.0.3,<4.0.0"
+linkml = ">=1.3.0,<2.0.0"
+linkml-runtime = ">=1.3.4,<2.0.0"
+
+[[package]]
 name = "linkml-runtime"
 version = "1.3.7"
 description = "Runtime environment for LinkML, the Linked open data modeling language"
@@ -2515,7 +2530,7 @@ docs = ["sphinx", "sphinx-rtd-theme", "sphinx-autodoc-typehints", "sphinx-click"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "bfae08e694e903461a82edfc0d71c1228697ac101730f0f41bde44aa2fbd176e"
+content-hash = "90bd696ed0f097cb3850f95e131fe667a42752186e2624514f1c9db20ce1d5db"
 
 [metadata.files]
 adeft = []
@@ -2595,6 +2610,7 @@ kgcl-schema = []
 lark = []
 linkml = []
 linkml-dataops = []
+linkml-owl = []
 linkml-runtime = []
 markdown = []
 markdown-it-py = []

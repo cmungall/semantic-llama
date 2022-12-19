@@ -73,6 +73,13 @@ gene_gene_interactions: US3 - β-Catenin; β-Catenin - US3
 gene_localizations: β-Catenin - Nuclear; US3 - Hyperphosphorylation
 """
 
+TEST_PROCESS = BiologicalProcess(
+                label="autophagosome assembly",
+                description="The formation of a double membrane-bounded structure, the autophagosome, that occurs when a specialized membrane sac, called the isolation membrane, starts to enclose a portion of the cytoplasm",
+                subclass_of="GO:0022607",
+                outputs=["GO:0005776"],
+            )
+
 RAW_PARSE = {
     "genes": ["β-Catenin", "cGAS", "STING", "US3", "IFN", "ISG"],
     "gene_organisms": [
@@ -126,12 +133,7 @@ class TestCore(unittest.TestCase):
             subclass_of: disaccharide biosynthesis
             outputs: maltose
             """,
-            BiologicalProcess(
-                label="autophagosome assembly",
-                description="The formation of a double membrane-bounded structure, the autophagosome, that occurs when a specialized membrane sac, called the isolation membrane, starts to enclose a portion of the cytoplasm",
-                subclass_of="GO:0022607",
-                outputs=["GO:0005776"],
-            ),
+            TEST_PROCESS,
         ]
         label = "beta-D-lyxofuranose biosynthesis"
         ann = ke.generalize({"label": label}, examples)
@@ -139,6 +141,13 @@ class TestCore(unittest.TestCase):
         print(yaml.dump(ann.dict()))
         self.assertEqual(label, ann.label)
         self.assertEqual(["CHEBI:151400"], ann.outputs)
+
+    def test_serialize_example(self):
+        ke = KnowledgeExtractor("biological_process.BiologicalProcess")
+        ke.labelers = [get_implementation_from_shorthand("sqlite:obo:go")]
+        ser = ke._serialize_example(TEST_PROCESS)
+        #print(f"SERIALIZED={ser}")
+        self.assertIn("outputs: autophagosome", ser)
 
     def test_extract(self):
         """Tests end to end knowledge extraction."""

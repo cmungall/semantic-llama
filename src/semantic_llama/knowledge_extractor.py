@@ -110,6 +110,7 @@ class KnowledgeExtractor(object):
         """
         Generalize the given examples.
 
+        :param object:
         :param examples:
         :return:
         """
@@ -136,6 +137,8 @@ class KnowledgeExtractor(object):
         lines = []
         sv = self.schemaview
         for k, v in example.items():
+            if not v:
+                continue
             slot = sv.induced_slot(k, cls.name)
             v_serialized = self._serialize_value(v, slot)
             lines.append(f"{k}: {v_serialized}")
@@ -147,8 +150,7 @@ class KnowledgeExtractor(object):
         if isinstance(val, list):
             return "; ".join([self._serialize_value(v, slot) for v in val if v])
         if isinstance(val, dict):
-            for _k, v in val.items():
-                return " - ".join([self._serialize_value(v, slot) for v in val if v])
+            return " - ".join([self._serialize_value(v, slot) for v in val.values() if v])
         sv = self.schemaview
         if slot.range in sv.all_classes():
             if self.labelers:
