@@ -1,23 +1,135 @@
-input_file: /Users/cjm/repos/semantic-llama/tests/input/cases/environmental-sample-hyporheic.txt
+input_id: /Users/cjm/repos/semantic-llama/tests/input/cases/environmental-sample-hyporheic.txt
+input_text: "Sediment communities from the hyporheic zone of the Columbia River along\
+  \ the Hanford Reach were sampled from April 30, 2014 to November 25, 2014, using\
+  \ sand packs deployed at three equivalent hyporheic zone locations approximately\
+  \ 100m apart along the river (T2, T3, and T4) for six weeks at a time [22]. Water\
+  \ chemistry data taken in parallel at the three sites showed similar, yet not identical\
+  \ temporal patterns. A mid-year shift in hydraulic regime was observed, with higher\
+  \ influx of surface water in the spring resulting in higher levels of dissolved\
+  \ organic carbon (measured as non-purgeable organic carbon) (NPOC) (0.8\u20131.0\
+  \ mg/L) (Fig 2A) and low levels of nitrate (10\u201315 \u03BCM) (Fig 2B), transitioning\
+  \ to a more groundwater-influenced condition in the fall, increasing the nitrate\
+  \ concentrations (up to 300 \u03BCM) and decreasing NPOC concentration (down to\
+  \ <0.4 mg/L). Because the groundwater in this system is oxic, the DO concentration\
+  \ was fairly constant for the duration of sampling, ranging from ~60\u2013100% saturation\
+  \ (Fig 2C). The water temperature followed expected seasonal trends, warming in\
+  \ the summer and cooling in the fall (Fig 2D). Sampling times were categorized as\
+  \ early (Apr 30 through Jul 22) or late (Sep 2 through Nov 30), based on these observations.\n"
+input_title: null
 named_entities:
+- id: PEATcosm
+  label: PEATcosm
+- id: SPRUCE
+  label: Spruce
+- id: Minnesota
+  label: Minnesota
+- id: Ericaceae
+  label: Ericaceae
+- id: sedge rhizosphere peat
+  label: null
 - id: ENVO:00000107
   label: heath
+- id: sedge
+  label: sedge
+- id: Ericaceae and sedge rhizosphere peat, at two depths, in both high and low water
+    manipulative treatments
+  label: null
+- id: 14 plots/5 depths
+  label: Plots/Depths
+- id: water table
+  label: Water Table
+- id: peatland vegetation on trace gas flux
+  label: Trace Gas Flux
+- id: oxygen and labile C
+  label: null
+- id: ENVO:00005774
+  label: peat
+- id: experimental warming
+  label: Experimental Warming
+- id: '-'
+  label: Paleontologist
+- id: CO2 enrichment
+  label: CO2 enrichment
 - id: PATO:0000915
   label: thickness
 - id: http://purl.obolibrary.org/obo/MESH_D002621
   label: chemistry
 - id: NCIT:C180567
   label: enzyme activity
+- id: microorganisms
+  label: microorganisms
+- id: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C18902
+  label: N/A
+- id: T2
+  label: T2
+- id: T3
+  label: T3
+- id: T4
+  label: T4
+- id: Non-purgeable Organic Carbon (NPOC)
+  label: Non-purgeable Organic Carbon (NPOC)
 - id: CHEBI:17632
   label: Nitrate
+- id: Hyporheic Zone
+  label: Hyporheic Zone
 - id: ENVO:00002042
   label: Surface Water
 - id: ENVO:01001004
   label: Groundwater
+- id: Non-purgeable Organic Carbon (NPOC)
+  label: Non-purgeable Organic Carbon (NPOC)
+- id: Surface Water Influx
+  label: Surface Water Influx
+- id: CHEBI:17632
+  label: Nitrate
+- id: Groundwater Influence
+  label: Groundwater Influence
 - id: ENVO:09200014
   label: Water Temperature
+- id: Seasonal Trends
+  label: Seasonal Trends
+- id: Hydraulic Regime
+  label: Hydraulic Regime
+- id: Dissolved Organic Carbon
+  label: Dissolved Organic Carbon
+- id: Nitrate Concentrations
+  label: Nitrate Concentrations
+- id: Non-Purgeable Organic Carbon
+  label: Non-Purgeable Organic Carbon
+- id: DO Concentration
+  label: DO Concentration
+- id: ENVO:09200014
+  label: Water Temperature
+- id: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C64572
+  label: mg/L
+- id: "\u03BCM"
+  label: "micromolar (\u03BCM)"
+- id: '% saturation'
+  label: '% Saturation'
+- id: (Warming in Summer, Cooling in Fall)
+  label: Warming in Summer, Cooling in Fall
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: "Location: T2;T3;T4\nEnvironmental Material: Non-purgeable\
+  \ Organic Carbon (NPOC);Nitrate \nEnvironments: Hyporheic Zone; Surface Water; Groundwater\
+  \ \nCausal Relationships: Non-purgeable Organic Carbon (NPOC) & Surface Water Influx;\
+  \ Nitrate & Groundwater Influence;Water Temperature & Seasonal Trends\nVariables:\
+  \ Hydraulic Regime;Dissolved Organic Carbon;Nitrate Concentrations;Non-Purgeable\
+  \ Organic Carbon;DO Concentration;Water Temperature \nMeasurements: Non-Purgeable\
+  \ Organic Carbon (0.8\u20131.0 mg/L); Nitrate (10\u201315 \u03BCM); DO Concentration\
+  \ (~60\u2013100% saturation); Water Temperature (Warming in Summer, Cooling in Fall)"
 results:
-  causal_relationships: []
+  causal_relationships:
+  - cause: Non-purgeable Organic Carbon (NPOC)
+    effect: Surface Water Influx
+  - cause: CHEBI:17632
+    effect: Groundwater Influence
+  - cause: ENVO:09200014
+    effect: Seasonal Trends
   environmental_material:
   - Non-purgeable Organic Carbon (NPOC)
   - CHEBI:17632
@@ -29,7 +141,15 @@ results:
   - T2
   - T3
   - T4
-  measurements: []
+  measurements:
+  - unit: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C64572
+    value: 0.8-1.0
+  - unit: "\u03BCM"
+    value: "10\u201315"
+  - unit: '% saturation'
+    value: 60-100
+  - unit: (Warming in Summer, Cooling in Fall)
+    value: Water Temperature
   variables:
   - Hydraulic Regime
   - Dissolved Organic Carbon
@@ -37,19 +157,3 @@ results:
   - Non-Purgeable Organic Carbon
   - DO Concentration
   - ENVO:09200014
-text: "Sediment communities from the hyporheic zone of the Columbia River along the\
-  \ Hanford Reach were sampled from April 30, 2014 to November 25, 2014, using sand\
-  \ packs deployed at three equivalent hyporheic zone locations approximately 100m\
-  \ apart along the river (T2, T3, and T4) for six weeks at a time [22]. Water chemistry\
-  \ data taken in parallel at the three sites showed similar, yet not identical temporal\
-  \ patterns. A mid-year shift in hydraulic regime was observed, with higher influx\
-  \ of surface water in the spring resulting in higher levels of dissolved organic\
-  \ carbon (measured as non-purgeable organic carbon) (NPOC) (0.8\u20131.0 mg/L) (Fig\
-  \ 2A) and low levels of nitrate (10\u201315 \u03BCM) (Fig 2B), transitioning to\
-  \ a more groundwater-influenced condition in the fall, increasing the nitrate concentrations\
-  \ (up to 300 \u03BCM) and decreasing NPOC concentration (down to <0.4 mg/L). Because\
-  \ the groundwater in this system is oxic, the DO concentration was fairly constant\
-  \ for the duration of sampling, ranging from ~60\u2013100% saturation (Fig 2C).\
-  \ The water temperature followed expected seasonal trends, warming in the summer\
-  \ and cooling in the fall (Fig 2D). Sampling times were categorized as early (Apr\
-  \ 30 through Jul 22) or late (Sep 2 through Nov 30), based on these observations.\n"

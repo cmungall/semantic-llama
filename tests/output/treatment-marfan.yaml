@@ -1,28 +1,6 @@
-input_file: /Users/cjm/repos/semantic-llama/tests/input/cases/treatment-marfan.txt
-named_entities:
-- id: MONDO:0007947
-  label: Marfan Syndrome
-- id: CHEBI:2904
-  label: Atenolol
-- id: CHEBI:6541
-  label: Losartan
-results:
-  disease: MONDO:0007947
-  drugs:
-  - Propranalol
-  - CHEBI:2904
-  - CHEBI:6541
-  - Irbesatan
-  treatment_mechanisms: []
-  treatments:
-  - Avoid competitive and contact sports
-  - Heavy lifting
-  - Exercise moderation
-  - Takebeta-adrenergic receptor blocking drugs
-  - Take angiotensin receptor blockers
-  - "Consider combination of \u03B2-blocker and ARB therapy"
-text: "The treatment of Marfan syndrome is directed toward the specific symptoms that\
-  \ are apparent in each individual. Treatment may require the coordinated efforts\
+input_id: /Users/cjm/repos/semantic-llama/tests/input/cases/treatment-marfan.txt
+input_text: "The treatment of Marfan syndrome is directed toward the specific symptoms\
+  \ that are apparent in each individual. Treatment may require the coordinated efforts\
   \ of a team of specialists including geneticists, surgeons, cardiologists, dental\
   \ specialists, eye specialists (ophthalmologists), orthopedists, and other healthcare\
   \ professionals.\n\nIndividuals with Marfan syndrome are encouraged to avoid competitive\
@@ -58,3 +36,73 @@ text: "The treatment of Marfan syndrome is directed toward the specific symptoms
   \ be guided by the particular circumstances. A combination of \u03B2-blocker and\
   \ ARB therapy can be considered in circumstances where one or the other type of\
   \ medication does not achieve an adequate response.\n"
+input_title: null
+named_entities:
+- id: MONDO:0007947
+  label: Marfan Syndrome
+- id: CHEBI:8499
+  label: Propranolol
+- id: CHEBI:2904
+  label: Atenolol
+- id: CHEBI:6541
+  label: Losartan
+- id: Irbesatan
+  label: Irbesatan
+- id: CHEBI:35530
+  label: Beta-blockers
+- id: NCIT:C66930
+  label: Angiotensin receptor blockers
+- id: NCIT:C16567
+  label: Exercise
+- id: Avoid contact sports
+  label: Avoid contact sports
+- id: Avoid heavy lifting
+  label: Avoid heavy lifting
+- id: CHEBI:35530
+  label: Beta-blockers
+- id: reduce strength and frequency of heart contractions
+  label: Reduce Strength and Frequency of Heart Contractions
+- id: ARBs
+  label: ARBs
+- id: "lower blood pressure, block TGF-\u03B2 activity"
+  label: "block TGF-\u03B2 activity"
+- id: CHEBI:35530
+  label: Beta-blockers
+- id: ARBs
+  label: ARBs
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: "\nDisease: Marfan Syndrome \nDrugs: Propranolol; Atenolol;\
+  \ Losartan; Irbesatan \nTreatments: Beta-blockers; Angiotensin receptor blockers;\
+  \ Exercise; Avoid contact sports; Avoid heavy lifting\nTreatment Mechanisms: Beta-blockers*reduce\
+  \ strength and frequency of heart contractions; ARBs*lower blood pressure, block\
+  \ TGF-\u03B2 activity \nTreatment Efficacies: Beta-blockers*delay need for heart\
+  \ surgery; ARBs*better tolerated than beta-blockers, often as good as or better\
+  \ than beta-blockers in suppressing aneurysm growth"
+results:
+  disease: MONDO:0007947
+  drugs:
+  - CHEBI:8499
+  - CHEBI:2904
+  - CHEBI:6541
+  - Irbesatan
+  treatment_efficacies:
+  - efficacy: delay need for heart surgery
+    treatment: CHEBI:35530
+  - efficacy: better than beta-blockers or as good as beta-blockers
+    treatment: ARBs
+  treatment_mechanisms:
+  - mechanism: reduce strength and frequency of heart contractions
+    treatment: CHEBI:35530
+  - mechanism: "lower blood pressure, block TGF-\u03B2 activity"
+    treatment: ARBs
+  treatments:
+  - CHEBI:35530
+  - NCIT:C66930
+  - NCIT:C16567
+  - Avoid contact sports
+  - Avoid heavy lifting

@@ -106,7 +106,7 @@ class KnowledgeExtractor(object):
 
     def generalize(
         self, object: Union[pydantic.BaseModel, dict], examples: List[EXAMPLE]
-    ) -> pydantic.BaseModel:
+    ) -> ExtractionResult:
         """
         Generalize the given examples.
 
@@ -114,6 +114,8 @@ class KnowledgeExtractor(object):
         :param examples:
         :return:
         """
+        cls = self.template_class
+        sv = self.schemaview
         prompt = "example:\n"
         for example in examples:
             prompt += f"{self._serialize_example(example)}\n\n"
@@ -122,10 +124,16 @@ class KnowledgeExtractor(object):
             object = object.dict()
         for k, v in object.items():
             if v:
-                prompt += f"{k}: {v}\n"
+                slot = sv.induced_slot(k, cls.name)
+                prompt += f"{k}: {self._serialize_value(v, slot)}\n"
         print(f"PROMPT: {prompt}")
         payload = self.client.complete(prompt)
-        return self.parse_completion_payload(payload, object=object)
+        prediction = self.parse_completion_payload(payload, object=object)
+        return ExtractionResult(input_text=prompt,
+                                raw_completion_output=payload,
+                                #prompt=self.last_prompt,
+                                results=[prediction],
+                                named_entities=self.named_entities)
 
     def _serialize_example(self, example: EXAMPLE, cls: ClassDefinition = None) -> str:
         if cls is None:
@@ -172,7 +180,6 @@ class KnowledgeExtractor(object):
         :param text:
         :return:
         """
-
         prompt = self.get_completion_prompt(cls, text)
         self.last_prompt = prompt
         full_text = f"{prompt}\n\nText:\n{text}\n\n===\n\n"

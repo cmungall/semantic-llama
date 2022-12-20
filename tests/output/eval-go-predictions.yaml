@@ -1,0 +1,1249 @@
+predictions:
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      viridicatumtoxin, a polyketide mycotoxin produced by Penicillium viridicatum.
+    id: null
+    inputs: []
+    label: viridicatumtoxin biosynthetic process
+    outputs:
+    - CHEBI:85616
+    subclass_of:
+    - viridicatumtoxin metabolic process
+    - GO:1901576
+    synonyms:
+    - viridicatumtoxin biosynthesis
+    - viridicatumtoxin formation
+    - viridicatumtoxin biosynthetic process
+    - viridicatumtoxin synthesis
+    - viridicatumtoxin anabolism
+  scores:
+    description:
+      false_negatives:
+      - fused
+      - tetracycline-like
+      - ring
+      - system.
+      - unique,
+      - fungal
+      - with
+      - meroterpenoid
+      - spirobicyclic
+      false_positives:
+      - viridicatum.
+      - polyketide
+      - mycotoxin
+      - Penicillium
+      - produced
+      - by
+      jaccard: 0.4444444444444444
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0046189
+      - GO:1902645
+      - GO:0043604
+      - GO:1901566
+      - GO:1901503
+      - GO:1902653
+      - GO:0030639
+      - GO:0042181
+      - GO:0043386
+      - GO:0120255
+      false_positives:
+      - GO:1901576
+      - viridicatumtoxin metabolic process
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      viridicatumtoxin, a tetracycline-like fungal meroterpenoid with a unique, fused
+      spirobicyclic ring system.
+    id: GO:0140872
+    inputs: []
+    label: viridicatumtoxin biosynthetic process
+    outputs:
+    - CHEBI:85616
+    subclass_of:
+    - GO:0030639
+    - GO:0042181
+    - GO:0043386
+    - GO:0043604
+    - GO:0046189
+    - GO:0120255
+    - GO:1901503
+    - GO:1901566
+    - GO:1902645
+    - GO:1902653
+    synonyms:
+    - viridicatumtoxin biosynthetic process
+    - viridicatumtoxin anabolism
+    - viridicatumtoxin biosynthesis
+    - viridicatumtoxin synthesis
+    - viridicatumtoxin formation
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      novofumigatonin, a sesquiterpene alkaloid biosynthesized from (2S,3R)-3-hydroxygeranylgeranylpyrophosphate.
+    id: null
+    inputs: []
+    label: novofumigatonin biosynthetic process
+    outputs:
+    - CHEBI:156460
+    subclass_of:
+    - GO:0016114
+    - novofumigatonin metabolic process
+    - GO:1901576
+    synonyms:
+    - novofumigatonin biosynthesis
+    - novofumigatonin formation
+    - novofumigatonin biosynthetic process
+    - novofumigatonin synthesis
+    - novofumigatonin anabolism
+  scores:
+    description:
+      false_negatives:
+      - containing
+      - oxygenated
+      - heavily
+      - orthoester
+      - moiety.
+      - meroterpenoid
+      - unique
+      false_positives:
+      - from
+      - (2S,3R)-3-hydroxygeranylgeranylpyrophosphate.
+      - alkaloid
+      - sesquiterpene
+      - biosynthesized
+      jaccard: 0.5
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0018130
+      - GO:1901362
+      - GO:0042181
+      false_positives:
+      - novofumigatonin metabolic process
+      - GO:1901576
+      jaccard: 0.16666666666666666
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      novofumigatonin, a heavily oxygenated meroterpenoid containing a unique orthoester
+      moiety.
+    id: GO:0140782
+    inputs: []
+    label: novofumigatonin biosynthetic process
+    outputs:
+    - CHEBI:156460
+    subclass_of:
+    - GO:0016114
+    - GO:0018130
+    - GO:0042181
+    - GO:1901362
+    synonyms:
+    - novofumigatonin synthesis
+    - novofumigatonin biosynthetic process
+    - novofumigatonin anabolism
+    - novofumigatonin formation
+    - novofumigatonin biosynthesis
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      (M)-viriditoxin, a fungal secondary metabolite with potential antimicrobial
+      properties.
+    id: null
+    inputs: []
+    label: (M)-viriditoxin biosynthetic process
+    outputs:
+    - CHEBI:146007
+    subclass_of:
+    - (M)-viriditoxin metabolic process
+    - GO:1901576
+    synonyms:
+    - (M)-viriditoxin biosynthesis
+    - (M)-viriditoxin formation
+    - (M)-viriditoxin anabolism
+    - (M)-viriditoxin synthesis
+    - (M)-viriditoxin biosynthetic process
+  scores:
+    description:
+      false_negatives:
+      - activity.
+      - antibacterial
+      false_positives:
+      - antimicrobial
+      - properties.
+      - potential
+      jaccard: 0.7619047619047619
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0046189
+      - GO:0030639
+      - GO:0043386
+      - GO:1901503
+      false_positives:
+      - GO:1901576
+      - (M)-viriditoxin metabolic process
+      jaccard: 0.0
+    synonyms:
+      false_negatives:
+      - viriditoxin biosynthesis
+      - viriditoxin synthesis
+      - viriditoxin anabolism
+      - viriditoxin formation
+      false_positives: []
+      jaccard: 0.5555555555555556
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      (M)-viriditoxin, a fungal secondary metabolite with antibacterial activity.
+    id: GO:0140783
+    inputs: []
+    label: (M)-viriditoxin biosynthetic process
+    outputs:
+    - CHEBI:146007
+    subclass_of:
+    - GO:0030639
+    - GO:0043386
+    - GO:0046189
+    - GO:1901503
+    synonyms:
+    - viriditoxin biosynthesis
+    - (M)-viriditoxin synthesis
+    - (M)-viriditoxin anabolism
+    - (M)-viriditoxin formation
+    - viriditoxin synthesis
+    - viriditoxin formation
+    - viriditoxin anabolism
+    - (M)-viriditoxin biosynthetic process
+    - (M)-viriditoxin biosynthesis
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      paraherquonin, a natural unbranched tetramic acid tetrapeptide.
+    id: null
+    inputs: []
+    label: paraherquonin biosynthetic process
+    outputs:
+    - CHEBI:156379
+    subclass_of:
+    - natural product biosynthetic process
+    - GO:0009059
+    - GO:0043043
+    - paraherquonin metabolic process
+    synonyms:
+    - paraherquonin formation
+    - paraherquonin biosynthesis
+    - paraherquonin anabolism
+    - paraherquonin synthesis
+    - paraherquonin biosynthetic process
+  scores:
+    description:
+      false_negatives:
+      - hexacyclic
+      - unique,
+      - molecular
+      - highly
+      - with
+      - architecture.
+      - meroterpenoid
+      - congested
+      false_positives:
+      - natural
+      - tetrapeptide.
+      - unbranched
+      - tetramic
+      - acid
+      jaccard: 0.48
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0016114
+      - GO:1902645
+      - GO:0042181
+      - GO:1901336
+      false_positives:
+      - GO:0043043
+      - natural product biosynthetic process
+      - paraherquonin metabolic process
+      - GO:0009059
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      paraherquonin, a meroterpenoid with a unique, highly congested hexacyclic molecular
+      architecture.
+    id: GO:0140874
+    inputs: []
+    label: paraherquonin biosynthetic process
+    outputs:
+    - CHEBI:156379
+    subclass_of:
+    - GO:0016114
+    - GO:0042181
+    - GO:1901336
+    - GO:1902645
+    synonyms:
+    - paraherquonin synthesis
+    - paraherquonin biosynthetic process
+    - paraherquonin formation
+    - paraherquonin biosynthesis
+    - paraherquonin anabolism
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      griseofulvin, an antifungal and antineoplastic drug with an impeded lactone
+      ring.
+    id: null
+    inputs: []
+    label: griseofulvin biosynthetic process
+    outputs:
+    - CHEBI:27779
+    subclass_of:
+    - griseofulvin metabolic process
+    - GO:1901576
+    synonyms:
+    - griseofulvin biosynthesis
+    - griseofulvin synthesis
+    - griseofulvin formation
+    - griseofulvin biosynthetic process
+    - griseofulvin anabolism
+  scores:
+    description:
+      false_negatives:
+      - a
+      - infections.
+      - for
+      - has
+      - long
+      - time
+      - dermatophyte
+      - treating
+      - important
+      - been
+      - use
+      - that
+      false_positives:
+      - ring.
+      - with
+      - impeded
+      - antineoplastic
+      - lactone
+      jaccard: 0.45161290322580644
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0018130
+      - GO:1901362
+      - GO:0043386
+      false_positives:
+      - griseofulvin metabolic process
+      - GO:1901576
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      griseofulvin, an important antifungal drug that has been in use for a long time
+      for treating dermatophyte infections.
+    id: GO:0140878
+    inputs: []
+    label: griseofulvin biosynthetic process
+    outputs:
+    - CHEBI:27779
+    subclass_of:
+    - GO:0018130
+    - GO:0043386
+    - GO:1901362
+    synonyms:
+    - griseofulvin synthesis
+    - griseofulvin biosynthetic process
+    - griseofulvin biosynthesis
+    - griseofulvin anabolism
+    - griseofulvin formation
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      andrastin A, a polyiaromatic polyketide compound produced by the fungus Myrothecium
+      verrucaria.
+    id: null
+    inputs: []
+    label: andrastin A biosynthetic process
+    outputs:
+    - CHEBI:142842
+    subclass_of:
+    - GO:1901576
+    - andrastin A metabolic process
+    synonyms:
+    - andrastin A biosynthesis
+    - andrastin A formation
+    - andrastin A biosynthetic process
+    - andrastin A synthesis
+    - andrastin A anabolism
+  scores:
+    description:
+      false_negatives:
+      - activity.
+      - that
+      - promising
+      - have
+      - it
+      - antitumor
+      - ras
+      - against
+      - activity
+      - farnesyltransferase,
+      - inhibitory
+      - meroterpenoid
+      - exhibits
+      - suggesting
+      - could
+      false_positives:
+      - fungus
+      - polyketide
+      - polyiaromatic
+      - Myrothecium
+      - produced
+      - verrucaria.
+      - compound
+      - by
+      jaccard: 0.3611111111111111
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives:
+      - CHEBI:142823
+      false_positives:
+      - CHEBI:142842
+      jaccard: 0.0
+    subclass_of:
+      false_negatives:
+      - GO:1900620
+      - GO:0006694
+      - GO:0046184
+      - GO:1901617
+      - GO:0042181
+      - GO:0043386
+      - GO:0120255
+      false_positives:
+      - GO:1901576
+      - andrastin A metabolic process
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      andrastin A, a meroterpenoid that exhibits inhibitory activity against ras farnesyltransferase,
+      suggesting that it could have promising antitumor activity.
+    id: GO:0140876
+    inputs: []
+    label: andrastin A biosynthetic process
+    outputs:
+    - CHEBI:142823
+    subclass_of:
+    - GO:0006694
+    - GO:0042181
+    - GO:0043386
+    - GO:0046184
+    - GO:0120255
+    - GO:1900620
+    - GO:1901617
+    synonyms:
+    - andrastin A biosynthesis
+    - andrastin A synthesis
+    - andrastin A anabolism
+    - andrastin A formation
+    - andrastin A biosynthetic process
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      terrein.
+    id: null
+    inputs: []
+    label: terrein biosynthetic process
+    outputs:
+    - CHEBI:177543
+    subclass_of:
+    - terrein metabolic process
+    - GO:1901576
+    synonyms:
+    - terrein biosynthesis
+    - terrein synthesis
+    - terrein formation
+    - terrein biosynthetic process
+    - terrein anabolism
+  scores:
+    description:
+      false_negatives:
+      - a
+      - terrein,
+      - activities.
+      - metabolite
+      - antimicrobial,
+      - fungal
+      - with
+      - antioxidative
+      - antiproliferative,
+      - ecological,
+      false_positives:
+      - terrein.
+      jaccard: 0.47619047619047616
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0046173
+      - GO:0043386
+      false_positives:
+      - GO:1901576
+      - terrein metabolic process
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      terrein, a fungal metabolite with ecological, antimicrobial, antiproliferative,
+      and antioxidative activities.
+    id: GO:0140880
+    inputs: []
+    label: terrein biosynthetic process
+    outputs:
+    - CHEBI:177543
+    subclass_of:
+    - GO:0043386
+    - GO:0046173
+    synonyms:
+    - terrein formation
+    - terrein anabolism
+    - terrein biosynthetic process
+    - terrein synthesis
+    - terrein biosynthesis
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      paxilline, a mycotoxin produced by various species of fungi.
+    id: null
+    inputs: []
+    label: paxilline biosynthetic process
+    outputs:
+    - CHEBI:34907
+    subclass_of:
+    - paxilline metabolic process
+    - GO:0043386
+    - GO:1901576
+    synonyms:
+    - paxilline biosynthesis
+    - paxilline synthesis
+    - paxilline formation
+    - paxilline biosynthetic process
+    - paxilline anabolism
+  scores:
+    description:
+      false_negatives:
+      - as
+      - an
+      - inhibitor
+      - acts
+      - channels.
+      - maxi-K
+      - mammalian
+      - that
+      false_positives:
+      - produced
+      - species
+      - various
+      - fungi.
+      - by
+      jaccard: 0.5
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:1901362
+      - GO:1902645
+      - GO:0009709
+      - GO:0016102
+      - GO:0018130
+      - GO:0042181
+      - GO:0120255
+      false_positives:
+      - GO:1901576
+      - paxilline metabolic process
+      jaccard: 0.1
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      paxilline, a mycotoxin that acts as an inhibitor of mammalian maxi-K channels.
+    id: GO:0140873
+    inputs: []
+    label: paxilline biosynthetic process
+    outputs:
+    - CHEBI:34907
+    subclass_of:
+    - GO:0009709
+    - GO:0016102
+    - GO:0018130
+    - GO:0042181
+    - GO:0043386
+    - GO:0120255
+    - GO:1901362
+    - GO:1902645
+    synonyms:
+    - paxilline anabolism
+    - paxilline biosynthesis
+    - paxilline synthesis
+    - paxilline biosynthetic process
+    - paxilline formation
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      mevastatin, a cholesterol-lowering agent that works by blocking the enzyme 3-hydroxy-3-methylglutaryl-coenzyme
+      A (HMG CoA) reductase.
+    id: null
+    inputs: []
+    label: mevastatin biosynthetic process
+    outputs:
+    - CHEBI:34848
+    subclass_of:
+    - GO:1901576
+    - mevastatin metabolic process
+    synonyms:
+    - mevastatin biosynthesis
+    - mevastatin synthesis
+    - mevastatin formation
+    - mevastatin biosynthetic process
+    - mevastatin anabolism
+  scores:
+    description:
+      false_negatives:
+      - or
+      - competitive
+      - as
+      - which
+      - inhibitor
+      - ML-236B,
+      - ','
+      - potent
+      - acts
+      - mevastatin
+      - compactin
+      - known
+      - HMG-CoA
+      - also
+      false_positives:
+      - mevastatin,
+      - blocking
+      - agent
+      - that
+      - (HMG
+      - cholesterol-lowering
+      - works
+      - enzyme
+      - A
+      - 3-hydroxy-3-methylglutaryl-coenzyme
+      - CoA)
+      - by
+      jaccard: 0.3157894736842105
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:0030639
+      - GO:0043386
+      - GO:1901336
+      false_positives:
+      - GO:1901576
+      - mevastatin metabolic process
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      mevastatin , also known as compactin or ML-236B, and which acts as a potent
+      competitive inhibitor of HMG-CoA reductase.
+    id: GO:0140877
+    inputs: []
+    label: mevastatin biosynthetic process
+    outputs:
+    - CHEBI:34848
+    subclass_of:
+    - GO:0030639
+    - GO:0043386
+    - GO:1901336
+    synonyms:
+    - mevastatin formation
+    - mevastatin synthesis
+    - mevastatin biosynthetic process
+    - mevastatin biosynthesis
+    - mevastatin anabolism
+- predicted_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      conidiogenone, a sesquiterpene found from the mycelia of some fungi and actinomycetes.
+    id: null
+    inputs: []
+    label: conidiogenone biosynthetic process
+    outputs:
+    - CHEBI:189095
+    subclass_of:
+    - GO:0016114
+    - conidiogenone metabolic process
+    synonyms:
+    - conidiogenone synthesis
+    - conidiogenone formation
+    - conidiogenone biosynthesis
+    - conidiogenone biosynthetic process
+    - conidiogenone anabolism
+  scores:
+    description:
+      false_negatives:
+      - to
+      - ','
+      - conidiation.
+      - conidiogenone
+      - diterpene
+      - induce
+      - known
+      false_positives:
+      - from
+      - fungi
+      - mycelia
+      - conidiogenone,
+      - found
+      - some
+      - actinomycetes.
+      - sesquiterpene
+      jaccard: 0.4230769230769231
+    inputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: null
+    outputs:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+    subclass_of:
+      false_negatives:
+      - GO:1901362
+      - GO:0016102
+      - GO:1902653
+      - GO:0042181
+      - GO:0043386
+      false_positives:
+      - conidiogenone metabolic process
+      - GO:0016114
+      jaccard: 0.0
+    synonyms:
+      false_negatives: []
+      false_positives: []
+      jaccard: 1.0
+  test_object:
+    category: null
+    description: The chemical reactions and pathways resulting in the formation of
+      conidiogenone , a diterpene known to induce the conidiation.
+    id: GO:0140879
+    inputs: []
+    label: conidiogenone biosynthetic process
+    outputs:
+    - CHEBI:189095
+    subclass_of:
+    - GO:0016102
+    - GO:0042181
+    - GO:0043386
+    - GO:1901362
+    - GO:1902653
+    synonyms:
+    - conidiogenone biosynthetic process
+    - conidiogenone biosynthesis
+    - conidiogenone synthesis
+    - conidiogenone anabolism
+    - conidiogenone formation
+test:
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of viridicatumtoxin,
+    a tetracycline-like fungal meroterpenoid with a unique, fused spirobicyclic ring
+    system.
+  id: GO:0140872
+  inputs: []
+  label: viridicatumtoxin biosynthetic process
+  outputs:
+  - CHEBI:85616
+  subclass_of:
+  - GO:0030639
+  - GO:0042181
+  - GO:0043386
+  - GO:0043604
+  - GO:0046189
+  - GO:0120255
+  - GO:1901503
+  - GO:1901566
+  - GO:1902645
+  - GO:1902653
+  synonyms:
+  - viridicatumtoxin biosynthetic process
+  - viridicatumtoxin anabolism
+  - viridicatumtoxin biosynthesis
+  - viridicatumtoxin synthesis
+  - viridicatumtoxin formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of novofumigatonin,
+    a heavily oxygenated meroterpenoid containing a unique orthoester moiety.
+  id: GO:0140782
+  inputs: []
+  label: novofumigatonin biosynthetic process
+  outputs:
+  - CHEBI:156460
+  subclass_of:
+  - GO:0016114
+  - GO:0018130
+  - GO:0042181
+  - GO:1901362
+  synonyms:
+  - novofumigatonin synthesis
+  - novofumigatonin biosynthetic process
+  - novofumigatonin anabolism
+  - novofumigatonin formation
+  - novofumigatonin biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of (M)-viriditoxin,
+    a fungal secondary metabolite with antibacterial activity.
+  id: GO:0140783
+  inputs: []
+  label: (M)-viriditoxin biosynthetic process
+  outputs:
+  - CHEBI:146007
+  subclass_of:
+  - GO:0030639
+  - GO:0043386
+  - GO:0046189
+  - GO:1901503
+  synonyms:
+  - viriditoxin biosynthesis
+  - (M)-viriditoxin synthesis
+  - (M)-viriditoxin anabolism
+  - (M)-viriditoxin formation
+  - viriditoxin synthesis
+  - viriditoxin formation
+  - viriditoxin anabolism
+  - (M)-viriditoxin biosynthetic process
+  - (M)-viriditoxin biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of paraherquonin,
+    a meroterpenoid with a unique, highly congested hexacyclic molecular architecture.
+  id: GO:0140874
+  inputs: []
+  label: paraherquonin biosynthetic process
+  outputs:
+  - CHEBI:156379
+  subclass_of:
+  - GO:0016114
+  - GO:0042181
+  - GO:1901336
+  - GO:1902645
+  synonyms:
+  - paraherquonin synthesis
+  - paraherquonin biosynthetic process
+  - paraherquonin formation
+  - paraherquonin biosynthesis
+  - paraherquonin anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of griseofulvin,
+    an important antifungal drug that has been in use for a long time for treating
+    dermatophyte infections.
+  id: GO:0140878
+  inputs: []
+  label: griseofulvin biosynthetic process
+  outputs:
+  - CHEBI:27779
+  subclass_of:
+  - GO:0018130
+  - GO:0043386
+  - GO:1901362
+  synonyms:
+  - griseofulvin synthesis
+  - griseofulvin biosynthetic process
+  - griseofulvin biosynthesis
+  - griseofulvin anabolism
+  - griseofulvin formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of andrastin
+    A, a meroterpenoid that exhibits inhibitory activity against ras farnesyltransferase,
+    suggesting that it could have promising antitumor activity.
+  id: GO:0140876
+  inputs: []
+  label: andrastin A biosynthetic process
+  outputs:
+  - CHEBI:142823
+  subclass_of:
+  - GO:0006694
+  - GO:0042181
+  - GO:0043386
+  - GO:0046184
+  - GO:0120255
+  - GO:1900620
+  - GO:1901617
+  synonyms:
+  - andrastin A biosynthesis
+  - andrastin A synthesis
+  - andrastin A anabolism
+  - andrastin A formation
+  - andrastin A biosynthetic process
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of terrein,
+    a fungal metabolite with ecological, antimicrobial, antiproliferative, and antioxidative
+    activities.
+  id: GO:0140880
+  inputs: []
+  label: terrein biosynthetic process
+  outputs:
+  - CHEBI:177543
+  subclass_of:
+  - GO:0043386
+  - GO:0046173
+  synonyms:
+  - terrein formation
+  - terrein anabolism
+  - terrein biosynthetic process
+  - terrein synthesis
+  - terrein biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of paxilline,
+    a mycotoxin that acts as an inhibitor of mammalian maxi-K channels.
+  id: GO:0140873
+  inputs: []
+  label: paxilline biosynthetic process
+  outputs:
+  - CHEBI:34907
+  subclass_of:
+  - GO:0009709
+  - GO:0016102
+  - GO:0018130
+  - GO:0042181
+  - GO:0043386
+  - GO:0120255
+  - GO:1901362
+  - GO:1902645
+  synonyms:
+  - paxilline anabolism
+  - paxilline biosynthesis
+  - paxilline synthesis
+  - paxilline biosynthetic process
+  - paxilline formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of mevastatin
+    , also known as compactin or ML-236B, and which acts as a potent competitive inhibitor
+    of HMG-CoA reductase.
+  id: GO:0140877
+  inputs: []
+  label: mevastatin biosynthetic process
+  outputs:
+  - CHEBI:34848
+  subclass_of:
+  - GO:0030639
+  - GO:0043386
+  - GO:1901336
+  synonyms:
+  - mevastatin formation
+  - mevastatin synthesis
+  - mevastatin biosynthetic process
+  - mevastatin biosynthesis
+  - mevastatin anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of conidiogenone
+    , a diterpene known to induce the conidiation.
+  id: GO:0140879
+  inputs: []
+  label: conidiogenone biosynthetic process
+  outputs:
+  - CHEBI:189095
+  subclass_of:
+  - GO:0016102
+  - GO:0042181
+  - GO:0043386
+  - GO:1901362
+  - GO:1902653
+  synonyms:
+  - conidiogenone biosynthetic process
+  - conidiogenone biosynthesis
+  - conidiogenone synthesis
+  - conidiogenone anabolism
+  - conidiogenone formation
+training:
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of rhodopsin,
+    a brilliant purplish-red, light-sensitive visual pigment found in the rod cells
+    of the retinas.
+  id: GO:0016063
+  inputs: []
+  label: rhodopsin biosynthetic process
+  outputs:
+  - PR:000001245
+  subclass_of:
+  - GO:0006726
+  - GO:0009059
+  - GO:0044249
+  - GO:0046154
+  - GO:1901566
+  synonyms:
+  - rhodopsin synthesis
+  - rhodopsin anabolism
+  - rhodopsin formation
+  - rhodopsin biosynthetic process
+  - rhodopsin biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of heme
+    O, a derivative of heme containing a 17-carbon hydroxyethylfarnesyl side chain
+    at position 8 of the tetrapyrrole macrocycle.
+  id: GO:0048034
+  inputs: []
+  label: heme O biosynthetic process
+  outputs:
+  - CHEBI:24480
+  subclass_of:
+  - GO:0006783
+  - GO:0048033
+  synonyms:
+  - heme O synthesis
+  - heme O formation
+  - heme O biosynthesis
+  - heme O anabolism
+  - haem O biosynthetic process
+  - heme O biosynthetic process
+  - haem O biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of ADP-L-glycero-beta-D-manno-heptose,
+    an ADP-L-glycero-D-manno-heptose having beta-configuration at the anomeric centre
+    of the heptose. ADP-L-glycero-beta-D-manno-heptose (also called ADP-L-beta-D-heptose
+    or ADP-L-glycero-D-manno-heptose) is a nucleotide-sugar precursor of the inner
+    core lipopolysaccharide (LPS) from D-glycero-beta-D-manno-heptose 7-phosphate.
+  id: GO:0097171
+  inputs: []
+  label: ADP-L-glycero-beta-D-manno-heptose biosynthetic process
+  outputs:
+  - CHEBI:61506
+  subclass_of:
+  - GO:0009226
+  - GO:0097170
+  synonyms:
+  - ADP-L-glycero-beta-D-manno-heptose formation
+  - ADP-L-glycero-beta-D-manno-heptose biosynthesis
+  - ADP-L-glycero-beta-D-manno-heptose biosynthetic process
+  - ADP-L-glycero-beta-D-manno-heptose synthesis
+  - ADP-L-glycero-beta-D-manno-heptose anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of candicidin.
+  id: GO:1901127
+  inputs: []
+  label: candicidin biosynthetic process
+  outputs:
+  - CHEBI:354984
+  subclass_of:
+  - GO:1901125
+  - GO:1901576
+  synonyms:
+  - candicidin biosynthesis
+  - candicidin synthesis
+  - candicidin formation
+  - candicidin biosynthetic process
+  - candicidin anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of p-cumate.
+  id: GO:1901783
+  inputs: []
+  label: p-cumate biosynthetic process
+  outputs:
+  - CHEBI:25822
+  subclass_of:
+  - GO:0019438
+  - GO:0072330
+  - GO:1901362
+  - GO:1901781
+  synonyms:
+  - p-cumate biosynthesis
+  - p-cumate biosynthetic process
+  - p-cumate anabolism
+  - p-cumate formation
+  - p-cumate synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of Kdo2-lipid
+    A, a lipopolysaccharide (LPS) component.
+  id: GO:0036104
+  inputs: []
+  label: Kdo2-lipid A biosynthetic process
+  outputs:
+  - CHEBI:58540
+  subclass_of:
+  - GO:0008654
+  - GO:0009247
+  - GO:0036103
+  - GO:0043650
+  - GO:1901271
+  - GO:1901570
+  synonyms:
+  - Kdo2-lipid A synthesis
+  - Kdo2-lipid A biosynthesis
+  - 3-deoxy-d-manno-octulosonic acid-lipid A biosynthesis
+  - Kdo2-lipid A formation
+  - Kdo2-lipid A biosynthetic process
+  - Kdo2-lipid A anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of hexadecanal,
+    the C16 straight chain aldehyde.
+  id: GO:0006634
+  inputs: []
+  label: hexadecanal biosynthetic process
+  outputs:
+  - CHEBI:17600
+  subclass_of:
+  - GO:0046184
+  - GO:0046458
+  synonyms:
+  - hexadecanal biosynthetic process
+  - hexadecanal biosynthesis
+  - hexadecanal anabolism
+  - hexadecanal formation
+  - palmitaldehyde biosynthesis
+  - palmitaldehyde biosynthetic process
+  - hexadecanal synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of sphingosine
+    (sphing-4-enine), trans-D-erytho-2-amino-octadec-4-ene-1,3-diol, a long chain
+    amino diol sphingoid base that occurs in most sphingolipids in animal tissues.
+  id: GO:0046512
+  inputs: []
+  label: sphingosine biosynthetic process
+  outputs:
+  - CHEBI:57756
+  subclass_of:
+  - GO:0006670
+  - GO:0034312
+  - GO:0044271
+  - GO:0046520
+  synonyms:
+  - sphingosine anabolism
+  - sphingosine synthesis
+  - sphingosine biosynthesis
+  - sphingosine formation
+  - sphingosine biosynthetic process
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of starch,
+    the most important reserve polysaccharide in plants.
+  id: GO:0019252
+  inputs: []
+  label: starch biosynthetic process
+  outputs:
+  - CHEBI:28017
+  subclass_of:
+  - GO:0005982
+  - GO:0009250
+  synonyms:
+  - starch biosynthetic process
+  - starch synthesis
+  - starch formation
+  - starch biosynthesis
+  - starch anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of dicarboxylic
+    acids, any organic acid containing two carboxyl (-COOH) groups.
+  id: GO:0043650
+  inputs: []
+  label: dicarboxylic acid biosynthetic process
+  outputs:
+  - CHEBI:35693
+  subclass_of:
+  - GO:0043648
+  - GO:0046394
+  synonyms:
+  - dicarboxylic acid formation
+  - dicarboxylic acid anabolism
+  - dicarboxylate biosynthesis
+  - dicarboxylic acid biosynthesis
+  - dicarboxylic acid biosynthetic process
+  - dicarboxylic acid synthesis
+  - dicarboxylate biosynthetic process

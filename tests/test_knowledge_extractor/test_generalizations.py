@@ -2,11 +2,22 @@
 import unittest
 
 import yaml
+from oaklib import get_implementation_from_shorthand
 
 from semantic_llama.knowledge_extractor import KnowledgeExtractor
 from tests import OUTPUT_DIR, INSTANCES_DIR
 
 CASES = [
+    ("drug.DrugMechanism",
+     [{"disease": "MESH:D014552",
+       "drug": "drugbank:DB00438"}
+      ],
+     [
+         ["disease", "drug"],
+     ],
+     ["sqlite:obo:mesh", "sqlite:obo:drugbank", "sqlite:obo:go", "sqlite:obo:uberon", "sqlite:obo:pr"],
+     "drug-mechanisms-001",
+    ),
     ("reaction.Reaction",
      [{"label": "pseudouridine 5'-phosphatase activity",
        "description": "Catalysis of the reaction: pseudouridine 5'-phosphate + H2O = pseudouridine + phosphate."},
@@ -23,7 +34,10 @@ CASES = [
          ["description"],
          ["label", "description"],
      ],
-     "reactions-001"),
+     [],
+     "reactions-001"
+     ),
+
 ]
 
 
@@ -40,8 +54,9 @@ class TestGeneralize(unittest.TestCase):
 
     def test_cases(self):
         """Tests generalization over all cases."""
-        for template, objs, combos, input_file in CASES:
+        for template, objs, combos, labelers, input_file in CASES:
             ke = self.ke_map[template]
+            ke.labelers = [get_implementation_from_shorthand(labeler) for labeler in labelers]
             print(f"Loading {input_file}")
             with open(INSTANCES_DIR / f"{input_file}.yaml") as f:
                 examples = yaml.safe_load(f)

@@ -70,6 +70,19 @@ named_entities:
   label: '28'
 - id: MESH:D009169
   label: Mycobacterium tuberculosis
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: '
+
+  Gene: Rv3378c
+
+  Reactions: 2 -> 3 + 4; 7 -> 23 + 24; 8 -> 25 + 26; 9 -> 27 + 28
+
+  Organism: Mycobacterium tuberculosis'
 results:
   gene: Rv3378c
   organism: MESH:D009169

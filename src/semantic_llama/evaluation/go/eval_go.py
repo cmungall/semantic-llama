@@ -11,6 +11,7 @@ from oaklib.datamodels.vocabulary import IS_A, LABEL_PREDICATE, HAS_DEFINITION_C
 from oaklib.interfaces.obograph_interface import OboGraphInterface
 from pydantic import BaseModel, Field
 
+from semantic_llama.evaluation.evaluation_engine import EvaluationEngine, Score
 from semantic_llama.knowledge_extractor import KnowledgeExtractor
 from semantic_llama.templates.metabolic_process import MetabolicProcess
 
@@ -21,35 +22,7 @@ BIOSYNTHESIS = "GO:0009058"
 HAS_PRIMARY_OUTPUT = "RO:0004008"
 
 
-def jaccard_index(a: Set, b: Set):
-    """Compute the Jaccard index between two sets."""
-    if not a and not b:
-        return None
-    return len(a & b) / len(a | b)
-
-
-class Score(BaseModel):
-    """
-    Scores for an individual prediction.
-
-    The scores are computed as the Jaccard index between the predicted and true sets.
-    """
-    jaccard: Optional[float]
-    false_positives: List[str]
-    false_negatives: List[str]
-
-    @staticmethod
-    def from_set(test_set: List, prediction_set: List):
-        test_set = set(test_set)
-        prediction_set = set(prediction_set)
-        return Score(
-            jaccard=jaccard_index(test_set, prediction_set),
-            false_positives=list(prediction_set - test_set),
-            false_negatives=list(test_set - prediction_set),
-        )
-
-
-class Prediction(BaseModel):
+class PredictionGO(BaseModel):
     predicted_object: MetabolicProcess = None
     test_object: MetabolicProcess = None
     scores: Dict[str, Score] = None
@@ -74,13 +47,12 @@ class EvaluationObjectSetGO(BaseModel):
     """
     test: List[MetabolicProcess] = None
     training: List[MetabolicProcess] = None
-    predictions: List[Prediction] = None
+    predictions: List[PredictionGO] = None
 
 
 
 @dataclass
-class EvalGO:
-    extractor: KnowledgeExtractor = None
+class EvalGO(EvaluationEngine):
     ontology: OboGraphInterface = None
     genus: str = BIOSYNTHESIS
     differentia_relation: str = HAS_PRIMARY_OUTPUT
@@ -129,7 +101,7 @@ class EvalGO:
             return False
         return True
 
-    def create_test_and_training(self, num_test: int = 10, num_training: int = 10):
+    def create_test_and_training(self, num_test: int = 10, num_training: int = 10) -> EvaluationObjectSetGO:
         """
         Create a test and training set of GO terms.
 
@@ -175,8 +147,8 @@ class EvalGO:
         for test_obj in eos.test[0:10]:
             print(yaml.dump(test_obj.dict()))
             predicted_obj = ke.generalize({"label": test_obj.label}, eos.training[0:4])
-            pred = Prediction(predicted_object=predicted_obj,
-                              test_object=test_obj)
+            pred = PredictionGO(predicted_object=predicted_obj,
+                                test_object=test_obj)
             pred.calculate_scores()
             eos.predictions.append(pred)
         return eos

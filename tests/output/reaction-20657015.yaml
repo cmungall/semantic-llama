@@ -118,6 +118,18 @@ named_entities:
   - NA
 - id: mammalian
   label: mammalian
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: "genes: RIMKLB; RIMKLA;\nreactions: N-acetylaspartate + l-glutamate\
+  \ = N-acetylaspartylglutamate + ADP; N-acetylaspartate + l-glutamate = beta-citrylglutamate;\
+  \ \ngene_reaction_pairings: RIMKLB: N-acetylaspartate + l-glutamate = N-acetylaspartylglutamate\
+  \ + ADP; RIMKLB: N-acetylaspartate + l-glutamate = beta-citrylglutamate; RIMKLA:\
+  \ N-acetylaspartate + l-glutamate = N-acetylaspartylglutamate + ADP; \norganism:\
+  \ mammalian"
 results:
   gene_reaction_pairings:
   - gene: HGNC:29228

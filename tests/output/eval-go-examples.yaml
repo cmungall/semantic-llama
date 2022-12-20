@@ -1,0 +1,393 @@
+predictions: null
+test:
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of griseofulvin,
+    an important antifungal drug that has been in use for a long time for treating
+    dermatophyte infections.
+  id: GO:0140878
+  inputs: []
+  label: griseofulvin biosynthetic process
+  outputs:
+  - CHEBI:27779
+  subclass_of:
+  - GO:0018130
+  - GO:0043386
+  - GO:1901362
+  synonyms:
+  - griseofulvin synthesis
+  - griseofulvin biosynthetic process
+  - griseofulvin biosynthesis
+  - griseofulvin anabolism
+  - griseofulvin formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of novofumigatonin,
+    a heavily oxygenated meroterpenoid containing a unique orthoester moiety.
+  id: GO:0140782
+  inputs: []
+  label: novofumigatonin biosynthetic process
+  outputs:
+  - CHEBI:156460
+  subclass_of:
+  - GO:0016114
+  - GO:0018130
+  - GO:0042181
+  - GO:1901362
+  synonyms:
+  - novofumigatonin synthesis
+  - novofumigatonin biosynthetic process
+  - novofumigatonin anabolism
+  - novofumigatonin formation
+  - novofumigatonin biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of paxilline,
+    a mycotoxin that acts as an inhibitor of mammalian maxi-K channels.
+  id: GO:0140873
+  inputs: []
+  label: paxilline biosynthetic process
+  outputs:
+  - CHEBI:34907
+  subclass_of:
+  - GO:0009709
+  - GO:0016102
+  - GO:0018130
+  - GO:0042181
+  - GO:0043386
+  - GO:0120255
+  - GO:1901362
+  - GO:1902645
+  synonyms:
+  - paxilline anabolism
+  - paxilline biosynthesis
+  - paxilline synthesis
+  - paxilline biosynthetic process
+  - paxilline formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of andrastin
+    A, a meroterpenoid that exhibits inhibitory activity against ras farnesyltransferase,
+    suggesting that it could have promising antitumor activity.
+  id: GO:0140876
+  inputs: []
+  label: andrastin A biosynthetic process
+  outputs:
+  - CHEBI:142823
+  subclass_of:
+  - GO:0006694
+  - GO:0042181
+  - GO:0043386
+  - GO:0046184
+  - GO:0120255
+  - GO:1900620
+  - GO:1901617
+  synonyms:
+  - andrastin A biosynthesis
+  - andrastin A synthesis
+  - andrastin A anabolism
+  - andrastin A formation
+  - andrastin A biosynthetic process
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of (M)-viriditoxin,
+    a fungal secondary metabolite with antibacterial activity.
+  id: GO:0140783
+  inputs: []
+  label: (M)-viriditoxin biosynthetic process
+  outputs:
+  - CHEBI:146007
+  subclass_of:
+  - GO:0030639
+  - GO:0043386
+  - GO:0046189
+  - GO:1901503
+  synonyms:
+  - viriditoxin biosynthesis
+  - (M)-viriditoxin synthesis
+  - (M)-viriditoxin anabolism
+  - (M)-viriditoxin formation
+  - viriditoxin synthesis
+  - viriditoxin formation
+  - viriditoxin anabolism
+  - (M)-viriditoxin biosynthetic process
+  - (M)-viriditoxin biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of ilicicolin
+    H, a 4-hydroxy-2-pyridone alkaloid that has potent and broad antifungal activities
+    by inhibiting the mitochondrial respiration chain.
+  id: GO:0140781
+  inputs: []
+  label: ilicicolin H biosynthetic process
+  outputs:
+  - CHEBI:77772
+  subclass_of:
+  - GO:0009821
+  - GO:0030639
+  - GO:0042181
+  - GO:0043386
+  - GO:0046189
+  - GO:0072525
+  synonyms:
+  - ilicicolin H formation
+  - ilicicolin H biosynthesis
+  - ilicicolin H biosynthetic process
+  - ilicicolin H synthesis
+  - ilicicolin H anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of conidiogenone
+    , a diterpene known to induce the conidiation.
+  id: GO:0140879
+  inputs: []
+  label: conidiogenone biosynthetic process
+  outputs:
+  - CHEBI:189095
+  subclass_of:
+  - GO:0016102
+  - GO:0042181
+  - GO:0043386
+  - GO:1901362
+  - GO:1902653
+  synonyms:
+  - conidiogenone biosynthetic process
+  - conidiogenone biosynthesis
+  - conidiogenone synthesis
+  - conidiogenone anabolism
+  - conidiogenone formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of terrein,
+    a fungal metabolite with ecological, antimicrobial, antiproliferative, and antioxidative
+    activities.
+  id: GO:0140880
+  inputs: []
+  label: terrein biosynthetic process
+  outputs:
+  - CHEBI:177543
+  subclass_of:
+  - GO:0043386
+  - GO:0046173
+  synonyms:
+  - terrein formation
+  - terrein anabolism
+  - terrein biosynthetic process
+  - terrein synthesis
+  - terrein biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of PR-toxin,
+    a bicyclic sesquiterpene belonging to the eremophilane class and acting as a mycotoxin.
+  id: GO:0140875
+  inputs: []
+  label: PR-toxin biosynthetic process
+  outputs:
+  - CHEBI:7883
+  subclass_of:
+  - GO:0016106
+  - GO:0018130
+  - GO:0043386
+  - GO:1901362
+  synonyms:
+  - PR-toxin synthesis
+  - PR-toxin biosynthesis
+  - PR-toxin biosynthetic process
+  - PR-toxin anabolism
+  - PR-toxin formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of paraherquonin,
+    a meroterpenoid with a unique, highly congested hexacyclic molecular architecture.
+  id: GO:0140874
+  inputs: []
+  label: paraherquonin biosynthetic process
+  outputs:
+  - CHEBI:156379
+  subclass_of:
+  - GO:0016114
+  - GO:0042181
+  - GO:1901336
+  - GO:1902645
+  synonyms:
+  - paraherquonin synthesis
+  - paraherquonin biosynthetic process
+  - paraherquonin formation
+  - paraherquonin biosynthesis
+  - paraherquonin anabolism
+training:
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of oligosaccharides,
+    molecules with between two and (about) 20 monosaccharide residues connected by
+    glycosidic linkages.
+  id: GO:0009312
+  inputs: []
+  label: oligosaccharide biosynthetic process
+  outputs:
+  - CHEBI:50699
+  subclass_of:
+  - GO:0009311
+  - GO:0016051
+  synonyms:
+  - oligosaccharide anabolism
+  - oligosaccharide biosynthetic process
+  - oligosaccharide biosynthesis
+  - oligosaccharide formation
+  - oligosaccharide synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of p-cresol.
+  id: GO:1901786
+  inputs: []
+  label: p-cresol biosynthetic process
+  outputs:
+  - CHEBI:17847
+  subclass_of:
+  - GO:0046189
+  - GO:1901784
+  synonyms:
+  - p-cresol anabolism
+  - p-cresol biosynthesis
+  - p-cresol synthesis
+  - p-cresol biosynthetic process
+  - p-cresol formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of camalexin,
+    an indole phytoalexin.
+  id: GO:0010120
+  inputs: []
+  label: camalexin biosynthetic process
+  outputs:
+  - CHEBI:22990
+  subclass_of:
+  - GO:0009700
+  - GO:0044272
+  - GO:0052317
+  synonyms:
+  - camalexin anabolism
+  - camalexin biosynthesis
+  - camalexin biosynthetic process
+  - camalexin formation
+  - camalexin synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of amino
+    acids containing a branched carbon skeleton, comprising isoleucine, leucine and
+    valine.
+  id: GO:0009082
+  inputs: []
+  label: branched-chain amino acid biosynthetic process
+  outputs:
+  - CHEBI:22918
+  subclass_of:
+  - GO:0009081
+  - GO:0016053
+  - GO:1901566
+  synonyms:
+  - branched chain family amino acid formation
+  - branched chain family amino acid synthesis
+  - branched chain family amino acid anabolism
+  - branched chain family amino acid biosynthetic process
+  - branched-chain amino acid biosynthetic process
+  - branched chain family amino acid biosynthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of phytoene.
+  id: GO:1901174
+  inputs: []
+  label: phytoene biosynthetic process
+  outputs:
+  - CHEBI:26119
+  subclass_of:
+  - GO:0016120
+  - GO:1901172
+  synonyms:
+  - phytoene biosynthetic process
+  - phytoene biosynthesis
+  - phytoene synthesis
+  - phytoene formation
+  - phytoene anabolism
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of (-)-exo-alpha-bergamotene.
+  id: GO:1901940
+  inputs: []
+  label: (-)-exo-alpha-bergamotene biosynthetic process
+  outputs:
+  - CHEBI:62756
+  subclass_of:
+  - GO:0051762
+  - GO:1900674
+  - GO:1901362
+  - GO:1901938
+  synonyms:
+  - (-)-exo-alpha-bergamotene synthesis
+  - (-)-exo-alpha-bergamotene anabolism
+  - (-)-exo-alpha-bergamotene biosynthetic process
+  - (-)-exo-alpha-bergamotene biosynthesis
+  - (-)-exo-alpha-bergamotene formation
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of clavulanic
+    acid, (2R,3Z,5R)-3-(2-hydroxyethylidene)-7-oxo-4-oxa-1-azabicyclo[3.2.0]heptane-2-carboxylic
+    acid.
+  id: GO:0033050
+  inputs: []
+  label: clavulanic acid biosynthetic process
+  outputs:
+  - CHEBI:487869
+  subclass_of:
+  - GO:0033049
+  - GO:0072330
+  - GO:0072339
+  synonyms:
+  - clavulanic acid anabolism
+  - clavulanic acid biosynthesis
+  - clavulanic acid biosynthetic process
+  - clavulanic acid formation
+  - clavulanic acid synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of homoserine,
+    alpha-amino-gamma-hydroxybutyric acid.
+  id: GO:0009090
+  inputs: []
+  label: homoserine biosynthetic process
+  outputs:
+  - CHEBI:62980
+  subclass_of:
+  - GO:0009070
+  - GO:0009092
+  synonyms:
+  - homoserine biosynthesis
+  - homoserine biosynthetic process
+  - homoserine anabolism
+  - homoserine formation
+  - homoserine synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of brexanolone.
+  id: GO:0062174
+  inputs: []
+  label: brexanolone biosynthetic process
+  outputs:
+  - CHEBI:50169
+  subclass_of:
+  - GO:0006694
+  - GO:0042181
+  - GO:0062173
+  - GO:1901617
+  synonyms:
+  - brexanolone anabolism
+  - allotetrahydroprogesterone biosynthetic process
+  - brexanolone biosynthesis
+  - allopregnanolone anabolism
+  - allopregnanolone biosynthesis
+  - brexanolone biosynthetic process
+  - allotetrahydroprogesterone anabolism
+  - allopregnanolone synthesis
+  - allotetrahydroprogesterone biosynthesis
+  - brexanolone synthesis
+  - allopregnanolone biosynthetic process
+  - allotetrahydroprogesterone synthesis
+- category: null
+  description: The chemical reactions and pathways resulting in the formation of hypochlorous
+    acid.
+  id: GO:0002149
+  inputs: []
+  label: hypochlorous acid biosynthetic process
+  outputs:
+  - CHEBI:24757
+  subclass_of:
+  - GO:0002148
+  - GO:0044283
+  - GO:1903409
+  synonyms:
+  - HClO biosynthetic process
+  - hypochlorous acid biosynthetic process
+  - hypochlorous acid biosynthesis
+  - HOCl biosynthetic process
+  - hypochlorite biosynthetic process

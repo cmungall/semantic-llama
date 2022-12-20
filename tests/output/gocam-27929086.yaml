@@ -66,6 +66,19 @@ named_entities:
   label: NLRP3
 - id: subcellular localization
   label: subcellular localization
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: "\ngenes: TRIM31; NLRP3;\norganisms: Homo sapiens;\ngene_organisms:\
+  \ TRIM31*Homo sapiens; NLRP3*Homo sapiens;\nactivities: proteasomal degradation;\
+  \ K48-linked polyubiquitination;\ngene_functions: TRIM31*proteasomal degradation;\
+  \ TRIM31*K48-linked polyubiquitination;\ncellular_processes: NLRP3 inflammasome\
+  \ activation; NLRP3 expression regulation;\npathways: host defence against microbial\
+  \ pathogens; immune homeostasis; \ngene_gene_interactions: TRIM31*NLRP3;\ngene_localizations:\
+  \ NLRP3*subcellular localization."
 results:
   activities:
   - proteasomal degradation

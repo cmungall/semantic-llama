@@ -32,3 +32,21 @@ class TestCompletion(unittest.TestCase):
         client = self.llm_client
         ann = client.complete(PROMPT)
         print(ann)
+
+    def test_drug_mech_db(self):
+        """Test drug mechanism database."""
+        client = self.llm_client
+        ann = client.complete("""
+        Explain the chain of events that relate a drug to a disease as a semi-colon separated list.
+        
+        Example:
+        
+        cortisone treats keratitis:
+        
+        cortisone increases glucocorticoid receptor; glucocorticoid receptor regulates COX; COX regulates prostaglandin; prostaglandin regulates inflammation; inflammation cause keratitis
+        
+        Text:
+        
+        imatinib treats chronic myeloid leukemia:
+        """)
+        print(ann)

@@ -7,6 +7,7 @@ from semantic_llama.knowledge_extractor import KnowledgeExtractor
 from tests import CASES_DIR, OUTPUT_DIR
 
 CASES = [
+    ("drug.DrugMechanism", "drug-DB00316-moa"),
     ("metagenome_study.Study", "environment-jgi2"),
     ("environmental_sample.Study", "environment-jgi1"),
     ("reaction.MultiGeneToReaction", "reaction-20657015"),

@@ -17,7 +17,7 @@ class OpenAIClient:
         self.api_key = get_apikey_value("openai")
         openai.api_key = self.api_key
 
-    def complete(self, prompt, **kwargs):
+    def complete(self, prompt, **kwargs) -> str:
         engine = self.engine
         cur = self.db_connection()
         res = cur.execute("SELECT payload FROM cache WHERE prompt=? AND engine=?", (prompt, engine))
