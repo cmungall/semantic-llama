@@ -1,0 +1,22 @@
+A number sign (#) is used with this entry because of evidence that alternating hemiplegia of childhood-1 (AHC1) is caused by heterozygous mutation in the ATP1A2 gene (182340) on chromosome 1q23.
+
+Familial hemiplegic migraine-2 (FHM2; 602481) is an allelic disorder with some overlapping features.
+
+
+▼ Description
+Alternating hemiplegia of childhood is a rare syndrome of episodic hemi- or quadriplegia lasting minutes to days. Most cases are accompanied by dystonic posturing, choreoathetoid movements, nystagmus, other ocular motor abnormalities, autonomic disturbances, and progressive cognitive impairment (Mikati et al., 1992). 
+
+The disorder may mimic or overlap with other disorders, including familial hemiplegic migraine (FHM1; 141500) and GLUT1 deficiency syndrome (606777) (Rotstein et al., 2009). 
+
+
+▼ Clinical Features
+Mikati et al. (1992) reported what appeared to be the first instance of familial occurrence of alternating hemiplegia of childhood. Inheritance appeared to be autosomal dominant. The proband, a 9-year-old boy, presented with developmental retardation, rare tonic-clonic seizures and frequent episodes of flaccid alternating hemiplegia that had been presumed to represent postictal paralysis. The hemiplegia spells, which started in his first year, did not respond to multiple antiepileptics. Between attacks, there was choreoathetosis and dystonic posturing. A brother, the father, a paternal uncle, and the maternal grandmother had similar histories of alternating hemiplegia. Investigations included negative CT and metabolic studies. EEG and SPECT scanning failed to reveal any significant slowing or major changes in cortical perfusion during hemiplegia as compared with nonhemiplegic periods. The karyotype demonstrated a balanced reciprocal translocation, 46,XY,t(3;9)(p26;q34) in the patient, in all the affected living relatives, and in 1 apparently unaffected sib. The asymptomatic mother had a normal karyotype. Both affected sibs were treated with and responded to flunarizine, a calcium-entry blocker, with a greater than 70% decrease in attack frequency. 
+
+Among a group of 22 presumably unrelated patients with alternating hemiplegia of childhood, Bourgeois et al. (1993) described onset before 18 months of age, repeated episodes of hemiplegia lasting from a few minutes to several days, the occurrence of tonic or dystonic attacks, nystagmus, dyspnea, cognitive impairment, and choreoathetosis. All of the patients also had episodes of quadriplegia that occurred either when a hemiplegia was shifting from one side to the other or as an isolated phenomenon. Six patients also had epileptic seizures, but Bourgeois et al. (1993) considered the 2 disorders to be distinct. Treatment with flunarizine was partially effective. 
+
+Kramer et al. (2000) reported 2 half sisters with alternating hemiplegia of childhood who had the same mother and different fathers. The authors ruled out mitochondrial abnormalities and suggested autosomal dominant inheritance. 
+
+Kanavakis et al. (2003) reported a family with alternating hemiplegia of childhood inherited in an autosomal dominant pattern. The proband was a 9-year-old boy with mental retardation, tonic-clonic seizures, dystonic attacks, and episodes of alternating hemiplegia starting at age 2.5 years. His mother, 3 brothers, and maternal uncle had similar symptoms. Other clinical features included autonomic changes in affected limbs and abnormal extraocular movements. Brain imaging, cytogenetic analysis, and mitochondrial DNA analysis were normal. Headache was not a feature. Flunarizine treatment reduced the severity of episodes. 
+
+▼ Inheritance
+The transmission pattern of AHC1 in the family reported by Kanavakis et al. (2003) and Swoboda et al. (2004) was consistent with autosomal dominant inheritance

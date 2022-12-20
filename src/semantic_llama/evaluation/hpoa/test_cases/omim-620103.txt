@@ -1,0 +1,23 @@
+▼ TEXT
+A number sign (#) is used with this entry because of evidence that spermatogenic failure-77 (SPGF77) is caused by homozygous or compound heterozygous mutation in the FKBP6 gene (604839) on chromosome 7q11.
+
+
+▼ Description
+Spermatogenic failure-77 (SPGF77) is characterized by male infertility due to extreme oligozoospermia or azoospermia. Nearly all spermatozoa present on semen analysis are morphologically abnormal, with amorphous, enlarged, and/or fragmented heads, and some are multiflagellated. Testicular tissue shows arrest at the round spermatid stage (Wyrwoll et al., 2022). 
+
+For a general phenotypic description and a discussion of genetic heterogeneity of spermatogenic failure, see SPGF1 (258150).
+
+
+▼ Clinical Features
+Wyrwoll et al. (2022) reported 6 unrelated infertile men with spermatogenic failure and mutation in the FKBP6 gene. Severe oligozoospermia was present in 5 of the men, and 1 was azoospermic. Four of the men had unilateral small testis, 2 of whom had a history of cryptorchidism and 1 of testicular torsion. Hormone analysis showed mildy increased follicle-stimulating hormone (FSH; see 136530) in 4 of the men, but all had normal luteinizing hormone (LH; see 152780) and testosterone levels. Semen analysis was performed in 4 of the 5 patients with extreme oligozoospermia, including 3 who had only 3, 4, and 17 sperm observed, respectively. The sperm showed morphologic abnormalities, including double and triple tails, with amorphous or fragmented and enlarged heads, as well as pinhead sperm. Because the sperm did not meet motility requirements for medically assisted reproduction, testicular sperm extraction was attempted in 4 patients and fine needle aspiration in 1 patient, but all were unsuccessful in retrieving viable sperm cells. The most advanced cell type observed in testicular histology specimens were round spermatids, which were present in 30 to 60% of tubules; patients with a lower prevalence of tubules showing round spermatids had much more abundant tubules showing meiotic arrest. An increase in the proportion of apoptotic cells in meiotic prophase I was observed, and quantification of cell numbers in meiotic substages indicated that cell loss occurred during late meiosis. Apoptotic metaphases were also increased in patients versus controls. The authors concluded that the onset of germ cell loss occurs in late meiosis and early spermiogenesis. 
+
+
+▼ Inheritance
+The transmission pattern of spermatogenic failure in the families reported by Wyrwoll et al. (2022) was consistent with autosomal recessive inheritance. 
+
+
+▼ REFERENCES
+Wyrwoll, M. J., Gaasbeek, C. M., Golubickaite, I., Stakaitis, R., Oud, M. S., Nagirnaja, L., Dion, C., Sindi, E. B., Leitch, H. G., Jayasena, C. N., Sironen, A., Dicke, A. K., and 16 others. The piRNA-pathway factor FKBP6 is essential for spermatogenesis but dispensable for control of meiotic LINE-1 expression in humans. Am. J. Hum. Genet. 109: 1850-1866, 2022. [PubMed: 36150389, related citations] [Full Text]
+
+Creation Date:Marla J. F. O'Neill : 10/25/2022
+Edit History:carol : 10/26/2022

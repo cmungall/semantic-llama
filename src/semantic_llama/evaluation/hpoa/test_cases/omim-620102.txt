@@ -1,0 +1,27 @@
+A number sign (#) is used with this entry because of evidence that retinitis pigmentosa-95 (RP95) is caused by homozygous or compound heterozygous mutation in the RAX2 gene (610362) on chromosome 19p13.
+
+
+▼ Description
+Retinitis pigmentosa-95 (RP95) is characterized by pale optic discs, attenuation of retinal vessels, and atrophy of the retinal pigment epithelium with bone-spicule pigmentation. Patients experience night blindness, and visual fields are restricted to approximately 10 degrees, with visual acuity ranging from normal to hand movement only. Age at onset of symptoms varies from childhood to the fifth decade of life (Van de Sompele et al., 2019). 
+
+For a general phenotypic description and a discussion of genetic heterogeneity of retinitis pigmentosa, see 268000.
+
+
+▼ Clinical Features
+Van de Sompele et al. (2019) reported 6 patients from 5 unrelated families of European origin (Belgium, Italy, Spain, and UK) who were clinically diagnosed with nonsyndromic retinitis pigmentosa and had mutations in the RAX2 gene. Age of onset varied from childhood to mid-40s, with an average in the mid-30s. Patients experienced night blindness as well as reduced visual fields and reduced visual acuity. Examination revealed visual acuity ranging from normal to hand movement only, as well as visual fields that were restricted to about 10 degrees in all patients, with pale optic discs, narrowed retinal vasculature, and peripheral or widespread bone-spicule pigmentation. Optical coherence tomography findings included preservation of the outer retinal structures in the macular area with loss of peripheral outer layers as well as foveal islands with photoreceptor sparing. Electroretinography was performed in 3 patients and showed nondetectable rod responses, with cone responses ranging from preserved (patient IV) to reduced (patient III) to nondetectable (patient II). The 2 Belgian patients (I and II) were also reported to have red/green color vision defects. 
+
+
+▼ Inheritance
+The transmission pattern of retinitis pigmentosa in the families reported by Van de Sompele et al. (2019) was consistent with autosomal recessive inheritance. 
+
+
+▼ Molecular Genetics
+From 2,086 families with inherited retinal disease in the European Retinal Disease Consortium, Van de Sompele et al. (2019) identified 6 patients from 5 unrelated families with nonsyndromic retinitis pigmentosa who had homozygous or compound heterozygous mutations in the RAX2 gene (610362.0005-610362.0008). The mutations, which were found by exome sequencing and confirmed by Sanger sequencing, segregated with disease in the families for which DNA was available. 
+
+
+▼ REFERENCES
+Van de Sompele, S., Smith, C., Karali, M., Corton, M., Van Schil, K., Peelman, F., Cherry, T., Rosseel, T., Verdin, H., Derolez, J., Van Laethem, T., Khan, K. N., and 15 others. Biallelic sequence and structural variants in RAX2 are a novel cause for autosomal recessive inherited retinal disease. Genet. Med. 21: 1319-1329, 2019. Note: Erratum: Genet. Med. 21: 1028 only, 2019. [PubMed: 30377383, images, related citations] [Full Text]
+
+
+Creation Date:Marla J. F. O'Neill : 10/25/2022
+Edit History:carol : 10/26/2022

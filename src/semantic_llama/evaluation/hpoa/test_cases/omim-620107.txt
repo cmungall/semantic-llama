@@ -1,0 +1,16 @@
+A number sign (#) is used with this entry because of evidence that orofaciodigital syndrome XIX (OFD19) is caused by homozygous mutation in the SCNM1 gene (608095) on chromosome 1q21.
+
+
+▼ Description
+Orofaciodigital syndrome XIX (OFD19) is an autosomal recessive ciliopathy characterized by tongue nodules; dental anomalies including congenital absence or abnormal shape of incisors; narrow, high-arched or cleft palate; retrognathia; and digital anomalies. Some patients have notching of the upper or lower lip (Iturrate et al., 2022). 
+
+
+▼ Clinical Features
+Iturrate et al. (2022) reported 4 patients, including a sib pair, from 3 families with an orofaciodigital syndrome. The patients ranged in age from 1 year and 10 months to 7 years and 5 months. All 4 patients had tongue nodules, abnormalities of the incisors, high-arched or cleft palate, and retrognathia. Three patients had midline notching of the upper or lower lip and accessory oral frenulae. Digital abnormalities were present in all patients and included postaxial polydactyly of the hands and feet. Three patients also had preaxial polydactyly of the feet with duplicated great toes, bifid nails of the great toes, or bifid distal phalanges. All patients had syndactyly and brachydactyly as well as limb shortening. Two patients had hypoplastic nails. All patients had normal intellectual and motor development, although 2 patients had speech delay. One patient had an ectatic supratentorial ventricular system on brain MRI. Abdominal and/or renal ultrasounds were normal in all patients. One patient had a patent ductus arteriosus and small atrial septal defect. 
+
+
+▼ Inheritance
+The transmission pattern of orofaciodigital syndrome XIX in the families reported by Iturrate et al. (2022) was consistent with autosomal recessive inheritance. 
+
+▼ REFERENCES
+Mutations in SCNM1 cause orofaciodigital syndrome due to minor intron splicing defects affecting primary cilia. Am. J. Hum. Genet. 109: 1828-1849, 2022.

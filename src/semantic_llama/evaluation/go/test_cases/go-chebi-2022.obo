@@ -1,0 +1,799 @@
+format-version: 1.2
+subsetdef: chebi_ph7_3 "Rhea list of ChEBI terms representing the major species at pH 7.3."
+subsetdef: gocheck_do_not_annotate "Term not to be used for direct annotation"
+subsetdef: gocheck_do_not_manually_annotate "Term not to be used for direct manual annotation"
+subsetdef: goslim_agr "AGR slim"
+subsetdef: goslim_aspergillus "Aspergillus GO slim"
+subsetdef: goslim_candida "Candida GO slim"
+subsetdef: goslim_chembl "ChEMBL protein targets summary"
+subsetdef: goslim_drosophila "Drosophila GO slim"
+subsetdef: goslim_flybase_ribbon "FlyBase Drosophila GO ribbon slim"
+subsetdef: goslim_generic "Generic GO slim"
+subsetdef: goslim_metagenomics "Metagenomics GO slim"
+subsetdef: goslim_mouse "Mouse GO slim"
+subsetdef: goslim_pir "PIR GO slim"
+subsetdef: goslim_plant "Plant GO slim"
+subsetdef: goslim_pombe "Fission yeast GO slim"
+subsetdef: goslim_synapse "synapse GO slim"
+subsetdef: goslim_yeast "Yeast GO slim"
+subsetdef: prokaryote_subset "GO subset for prokaryotes"
+synonymtypedef: syngo_official_label "label approved by the SynGO project"
+synonymtypedef: systematic_synonym "Systematic synonym" EXACT
+default-namespace: gene_ontology
+import: http://purl.obolibrary.org/obo/go/extensions/go-bridge.owl
+import: http://purl.obolibrary.org/obo/go/extensions/go-gci.owl
+import: http://purl.obolibrary.org/obo/go/extensions/ro_pending.owl
+import: http://purl.obolibrary.org/obo/go/imports/caro_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/chebi_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/cl_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/ddanat_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/fao_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/go-catalytic-activities-participants.owl
+import: http://purl.obolibrary.org/obo/go/imports/go-pattern-conformance.ttl
+import: http://purl.obolibrary.org/obo/go/imports/go-taxon-groupings.owl
+import: http://purl.obolibrary.org/obo/go/imports/go_taxon_constraints.owl
+import: http://purl.obolibrary.org/obo/go/imports/ncbitaxon_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/oba_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/opl_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/pato_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/po_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/pr_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/reactome_xrefs_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/ro_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/so_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/uberon_import.owl
+import: http://purl.obolibrary.org/obo/go/imports/x-disjoint.owl
+ontology: go
+property_value: http://purl.org/dc/elements/1.1/description "The Gene Ontology (GO) provides a framework and set of concepts for describing the functions of gene products from all organisms." xsd:string
+property_value: http://purl.org/dc/elements/1.1/title "Gene Ontology" xsd:string
+property_value: http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/4.0/
+
+[Term]
+id: GO:0000514
+name: 3-sulfino-L-alanine: proton, glutamate antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: 3-sulfino-L-alanine (cysteinesulfinate) (out) + H+(in) + L-glutamate(in) = 3-sulfino-L-alanine(in) + H+(out) + L-glutamate(out)." [PMID:11566871, RHEA:70967]
+xref: RHEA:70967
+is_a: GO:0015172 ! acidic amino acid transmembrane transporter activity
+is_a: GO:0015175 ! neutral L-amino acid transmembrane transporter activity
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:14321 ! glutamate(1-)
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:61085 ! 3-sulfino-L-alanine(1-)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23042 xsd:anyURI
+created_by: pg
+creation_date: 2022-03-21T17:18:20Z
+
+[Term]
+id: GO:0000515
+name: aspartate:glutamate, proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(out) + L-aspartate(in) + L-glutamate(out) = H+(in) + L-aspartate(out) + L-glutamate(in)." [PMID:11566871, RHEA:70783]
+xref: RHEA:70783
+is_a: GO:0015172 ! acidic amino acid transmembrane transporter activity
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:14321 ! glutamate(1-)
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:35391 ! aspartate(1-)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23041 xsd:anyURI
+created_by: pg
+creation_date: 2022-03-21T17:33:23Z
+
+[Term]
+id: GO:0140070
+name: hydrogen peroxide channel activity
+namespace: molecular_function
+def: "Enables the transfer of hydrogen peroxide from one side of a membrane to the other." [PMID:23541115, PMID:27256569]
+synonym: "hydrogen peroxide transmembrane transporter activity" RELATED []
+is_a: GO:0015267 ! channel activity
+intersection_of: GO:0015267 ! channel activity
+intersection_of: has_primary_input CHEBI:16240 ! hydrogen peroxide
+relationship: part_of GO:0080170 ! hydrogen peroxide transmembrane transport
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24070 xsd:anyURI
+created_by: pg
+creation_date: 2022-09-27T11:35:19Z
+
+[Term]
+id: GO:0140781
+name: ilicicolin H biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of ilicicolin H, a 4-hydroxy-2-pyridone alkaloid that has potent and broad antifungal activities by inhibiting the mitochondrial respiration chain." [PMID:30905148, PMID:31216742, PMID:34947016]
+synonym: "ilicicolin H anabolism" EXACT []
+synonym: "ilicicolin H biosynthesis" EXACT []
+synonym: "ilicicolin H formation" EXACT []
+synonym: "ilicicolin H synthesis" EXACT []
+is_a: GO:0009821 ! alkaloid biosynthetic process
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:77772 ! ilicicolin H
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/22982 xsd:anyURI
+created_by: pg
+creation_date: 2022-03-31T11:15:26Z
+
+[Term]
+id: GO:0140782
+name: novofumigatonin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of novofumigatonin, a heavily oxygenated meroterpenoid containing a unique orthoester moiety." [PMID:29968715]
+synonym: "novofumigatonin anabolism" EXACT []
+synonym: "novofumigatonin biosynthesis" EXACT []
+synonym: "novofumigatonin formation" EXACT []
+synonym: "novofumigatonin synthesis" EXACT []
+is_a: GO:0016114 ! terpenoid biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:156460 ! novofumigatonin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/22449 xsd:anyURI
+created_by: pg
+creation_date: 2022-03-31T11:37:31Z
+
+[Term]
+id: GO:0140783
+name: (M)-viriditoxin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of (M)-viriditoxin, a fungal secondary metabolite with antibacterial activity." [PMID:31045362, PMID:31304040]
+synonym: "(M)-viriditoxin anabolism" EXACT []
+synonym: "(M)-viriditoxin biosynthesis" EXACT []
+synonym: "(M)-viriditoxin formation" EXACT []
+synonym: "(M)-viriditoxin synthesis" EXACT []
+synonym: "viriditoxin anabolism" BROAD []
+synonym: "viriditoxin biosynthesis" BROAD []
+synonym: "viriditoxin formation" BROAD []
+synonym: "viriditoxin synthesis" BROAD []
+is_a: GO:0030639 ! polyketide biosynthetic process
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:146007 ! (M)-viriditoxin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/22448 xsd:anyURI
+created_by: pg
+creation_date: 2022-03-31T11:41:47Z
+
+[Term]
+id: GO:0140784
+name: metal ion sensor activity
+namespace: molecular_function
+def: "Binding to and responding, e.g. by conformational change, to changes in the cellular level of a metal ion." [GOC:pg]
+intersection_of: GO:0140299 ! small molecule sensor activity
+intersection_of: has_input CHEBI:25213 ! metal cation
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23126 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-01T08:40:55Z
+
+[Term]
+id: GO:0140785
+name: amino acid sensor activity
+namespace: molecular_function
+def: "Binding to and responding, e.g. by conformational change, to changes in the cellular level of an amino acid." [GOC:pg]
+synonym: "amino acid sensing activity" EXACT []
+intersection_of: GO:0140299 ! small molecule sensor activity
+intersection_of: has_input CHEBI:33709 ! amino acid
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23126 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-01T08:44:02Z
+
+[Term]
+id: GO:0140786
+name: glutamine sensor activity
+namespace: molecular_function
+def: "Binding to and responding, e.g. by conformational change, to changes in the cellular level of glutamine." [PMID:34535752]
+synonym: "glutamine sensing activity" EXACT []
+intersection_of: GO:0140299 ! small molecule sensor activity
+intersection_of: has_input CHEBI:28300 ! glutamine
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23124 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-01T08:54:10Z
+
+[Term]
+id: GO:0140787
+name: phosphate ion uniporter activity
+namespace: molecular_function
+def: "Catalysis of the active transport of a phosphate ion across a membrane by a mechanism involving conformational change, where energy for active transport is derived from membrane potential if the solute is charged." [PMID:29642010]
+intersection_of: GO:0022810 ! membrane potential driven uniporter activity
+intersection_of: has_primary_input CHEBI:35780 ! phosphate ion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23132 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-05T07:42:20Z
+
+[Term]
+id: GO:0140788
+name: L-glutamate uniporter activity
+namespace: molecular_function
+def: "Catalysis of the active transport of a L-glutamate across a membrane by a mechanism involving conformational change, where energy for active transport is derived from membrane potential if the solute is charged." [PMID:27133463, PMID:29642010]
+synonym: "glutamate uniporter activity" BROAD []
+xref: RHEA:66336 {source="skos:broadMatch"}
+intersection_of: GO:0022810 ! membrane potential driven uniporter activity
+intersection_of: has_primary_input CHEBI:29985 ! L-glutamate(1-)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23143 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-06T07:05:14Z
+
+[Term]
+id: GO:0140799
+name: glycine:proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: glycine(out) + H+(in) = glycine(in) + H+(out)." [PMID:16701208, PMID:26912364]
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:57305 ! glycine zwitterion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23160 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-07T16:05:04Z
+
+[Term]
+id: GO:0140800
+name: gamma-aminobutyric acid:proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: 4-aminobutanoate(out) + H+(in) = 4-aminobutanoate(in) + H+(out)." [PMID:16701208, PMID:26912364, PMID:27601664]
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:59888 ! gamma-aminobutyric acid zwitterion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23159 xsd:anyURI
+created_by: pg
+creation_date: 2022-04-07T16:08:18Z
+
+[Term]
+id: GO:0140812
+name: orotate:anion antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: orotate(out) + anion (in) = orotate (in) + anion (out)." [PMID:21350910, PMID:35144162]
+synonym: "orotate:organic anion antiporter activity" NARROW []
+is_a: GO:0008514 ! organic anion transmembrane transporter activity
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:22563 ! anion
+intersection_of: has_primary_input CHEBI:30839 ! orotate
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23307 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-12T05:51:36Z
+
+[Term]
+id: GO:0140813
+name: urate:anion antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: urate(out) + anion (in) = urate (in) + anion (out)." [PMID:12024214, PMID:18411268]
+synonym: "urate:organic anion antiporter activity" NARROW []
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:17775 ! 7,9-dihydro-1H-purine-2,6,8(3H)-trione
+intersection_of: has_primary_input CHEBI:22563 ! anion
+relationship: part_of GO:0015747 ! urate transport
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23306 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-12T05:57:12Z
+
+[Term]
+id: GO:0140814
+name: glycine betaine:sodium:chloride symporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: glycine betaine(out) + Na+(out) + Cl-(out)= glycine betaine(in) + Na+(in) + Cl-(in)." [PMID:10358010]
+synonym: "sodium/chloride-dependent glycine betaine transporter activity" BROAD []
+xref: RHEA:71175
+intersection_of: GO:0015293 ! symporter activity
+intersection_of: has_primary_input CHEBI:17750 ! glycine betaine
+intersection_of: has_primary_input CHEBI:17996 ! chloride
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+relationship: part_of GO:0031460 ! glycine betaine transport
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23298 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-12T06:05:59Z
+
+[Term]
+id: GO:0140819
+name: UDP-beta-L-arabinofuranose transporter activity
+namespace: molecular_function
+def: "Enables the transfer of UDP-beta-L-arabinofuranose from one side of a membrane to the other." [PMID:28373556]
+intersection_of: GO:0022857 ! transmembrane transporter activity
+intersection_of: has_primary_input CHEBI:61463 ! UDP-beta-L-arabinofuranose(2-)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/21524 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-16T06:45:42Z
+
+[Term]
+id: GO:0140821
+name: UDP-beta-L-arabinofuranose import into Golgi lumen
+namespace: biological_process
+def: "The directed movement of UDP-beta-L-arabinofuranose from the cytosol to the Golgi apparatus of a cell." [PMID:28373556]
+synonym: "cytosol to Golgi apparatus UDP-beta-L-arabinofuranose transport" EXACT []
+intersection_of: GO:0055085 ! transmembrane transport
+intersection_of: has_primary_input CHEBI:61463 ! UDP-beta-L-arabinofuranose(2-)
+intersection_of: has_target_end_location GO:0005794 ! Golgi apparatus
+intersection_of: has_target_start_location GO:0005829 ! cytosol
+intersection_of: results_in_transport_across GO:0016020 ! membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/21524 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-16T06:59:22Z
+
+[Term]
+id: GO:0140826
+name: zinc:proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of zinc from one side of a membrane to the other according to the reaction: H+(out) + Zn2+(in) = H+(in) + Zn2+(out)." [PMID:19366695, PMID:30893306]
+comment: Some transporters exchange 1 H+ for a Zn2+ while others are electroneutral and exchange 2 H+.
+xref: RHEA:28839 {source="skos:narrowMatch"}
+xref: RHEA:72627 {source="skos:narrowMatch"}
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:63056 ! zinc cation
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23359 xsd:anyURI
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23874 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-20T05:22:59Z
+
+[Term]
+id: GO:0140827
+name: zinc chaperone activity
+namespace: molecular_function
+def: "Binding to and delivering zinc ions to a target protein." [PMID:35584675]
+intersection_of: GO:0140104 ! molecular carrier activity
+intersection_of: has_primary_input CHEBI:63056 ! zinc cation
+relationship: has_part GO:0008270 ! zinc ion binding
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23363 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-20T06:19:17Z
+
+[Term]
+id: GO:0140828
+name: metal cation:monoatomic cation antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: solute(out) + Na+(in) = solute(in) + Na+(out)." [GOC:pg]
+synonym: "solute:metal cation antiporter activity" BROAD []
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:23906 ! monoatomic cation
+intersection_of: has_primary_input CHEBI:25213 ! metal cation
+created_by: pg
+creation_date: 2022-05-23T14:30:46Z
+
+[Term]
+id: GO:0140829
+name: bicarbonate:anion antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: solute(in) + HCO3-(out) = solute(out) + HCO3-(in)." [PMID:12440690]
+xref: TC:2.A.31.1.1
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:17544 ! hydrogencarbonate
+intersection_of: has_primary_input CHEBI:22563 ! anion
+relationship: part_of GO:0015701 ! bicarbonate transport
+created_by: pg
+creation_date: 2022-05-24T12:25:35Z
+
+[Term]
+id: GO:0140830
+name: L-glutamine, sodium:proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(in) + L-glutamine(out) + Na+(out) = H+(out) + L-glutamine(in) + Na+(in)." [PMID:10619430, PMID:11742981, PMID:11850497]
+xref: RHEA:71127
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+intersection_of: has_primary_input CHEBI:58359 ! L-glutamine zwitterion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23382 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-24T12:29:37Z
+
+[Term]
+id: GO:0140831
+name: L-asparagine, sodium:proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(in) + L-asparagine(out) + Na+(out) = H+(out) + L-asparagine(in) + Na+(in)." [PMID:10619430, PMID:11742981]
+xref: RHEA:71131
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+intersection_of: has_primary_input CHEBI:58048 ! L-asparagine zwitterion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23383 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-24T12:35:49Z
+
+[Term]
+id: GO:0140832
+name: L-histidine, sodium:proton antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(in) + L-histidine(out) + Na+(out) = H+(out) + L-histidine(in) + Na+(in)." [PMID:10619430, PMID:11742981]
+xref: RHEA:71135
+intersection_of: GO:0015299 ! solute:proton antiporter activity
+intersection_of: has_primary_input CHEBI:24636 ! proton
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+intersection_of: has_primary_input CHEBI:57595 ! L-histidine zwitterion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23384 xsd:anyURI
+created_by: pg
+creation_date: 2022-05-24T12:37:29Z
+
+[Term]
+id: GO:0140848
+name: amino acid:monoatomic cation antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: solute(out) + monoatomic cation(in) = solute(in) + monoatomic cation(out). Monoatomic cations include H+, Mg2+, Ca2+, etc." [GOC:curators]
+intersection_of: GO:0015298 ! solute:cation antiporter activity
+intersection_of: has_primary_input CHEBI:23906 ! monoatomic cation
+intersection_of: has_primary_input CHEBI:33709 ! amino acid
+created_by: pg
+creation_date: 2022-05-30T13:15:04Z
+
+[Term]
+id: GO:0140872
+name: viridicatumtoxin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of viridicatumtoxin, a tetracycline-like fungal meroterpenoid with a unique, fused spirobicyclic ring system." [PMID:20534346, PMID:24161266]
+synonym: "viridicatumtoxin anabolism" EXACT []
+synonym: "viridicatumtoxin biosynthesis" EXACT []
+synonym: "viridicatumtoxin formation" EXACT []
+synonym: "viridicatumtoxin synthesis" EXACT []
+xref: MetaCyc:PWY-7659
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:85616 ! viridicatumtoxin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23599 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T07:12:13Z
+
+[Term]
+id: GO:0140873
+name: paxilline biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of paxilline, a mycotoxin that acts as an inhibitor of mammalian maxi-K channels." [PMID:23949005]
+synonym: "paxilline anabolism" EXACT []
+synonym: "paxilline biosynthesis" EXACT []
+synonym: "paxilline formation" EXACT []
+synonym: "paxilline synthesis" EXACT []
+xref: MetaCyc:PWY-7493
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:34907 ! paxilline
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23590 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T07:12:13Z
+
+[Term]
+id: GO:0140874
+name: paraherquonin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of paraherquonin, a meroterpenoid with a unique, highly congested hexacyclic molecular architecture." [PMID:27602587]
+synonym: "paraherquonin anabolism" EXACT []
+synonym: "paraherquonin biosynthesis" EXACT []
+synonym: "paraherquonin formation" EXACT []
+synonym: "paraherquonin synthesis" EXACT []
+is_a: GO:0016114 ! terpenoid biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:156379 ! paraherquonin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23591 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T10:31:37Z
+
+[Term]
+id: GO:0140875
+name: PR-toxin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of PR-toxin, a bicyclic sesquiterpene belonging to the eremophilane class and acting as a mycotoxin." [PMID:24239699, PMID:27921136]
+synonym: "PR-toxin anabolism" EXACT []
+synonym: "PR-toxin biosynthesis" EXACT []
+synonym: "PR-toxin formation" EXACT []
+synonym: "PR-toxin synthesis" EXACT []
+is_a: GO:0016106 ! sesquiterpenoid biosynthetic process
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:7883 ! PR-toxin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23592 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T10:37:05Z
+
+[Term]
+id: GO:0140876
+name: andrastin A biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of andrastin A, a meroterpenoid that exhibits inhibitory activity against ras farnesyltransferase, suggesting that it could have promising antitumor activity." [DOI:10.1016/j.tet.2013.07.029]
+synonym: "andrastin A anabolism" EXACT []
+synonym: "andrastin A biosynthesis" EXACT []
+synonym: "andrastin A formation" EXACT []
+synonym: "andrastin A synthesis" EXACT []
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:142823 ! andrastin A(1-)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23594 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T10:42:54Z
+
+[Term]
+id: GO:0140877
+name: mevastatin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of mevastatin , also known as compactin or ML-236B, and which acts as a potent competitive inhibitor of HMG-CoA reductase." [PMID:12172803, PMID:12242508]
+synonym: "mevastatin anabolism" EXACT []
+synonym: "mevastatin biosynthesis" EXACT []
+synonym: "mevastatin formation" EXACT []
+synonym: "mevastatin synthesis" EXACT []
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:34848 ! mevastatin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23597 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T10:50:15Z
+
+[Term]
+id: GO:0140878
+name: griseofulvin biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of griseofulvin, an important antifungal drug that has been in use for a long time for treating dermatophyte infections." [PMID:20534346, PMID:23978092]
+synonym: "griseofulvin anabolism" EXACT []
+synonym: "griseofulvin biosynthesis" EXACT []
+synonym: "griseofulvin formation" EXACT []
+synonym: "griseofulvin synthesis" EXACT []
+xref: MetaCyc:PWY-7653
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:27779 ! griseofulvin
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23598 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T07:12:13Z
+
+[Term]
+id: GO:0140879
+name: conidiogenone biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of conidiogenone , a diterpene known to induce the conidiation." [PMID:30343633]
+synonym: "conidiogenone anabolism" EXACT []
+synonym: "conidiogenone biosynthesis" EXACT []
+synonym: "conidiogenone formation" EXACT []
+synonym: "conidiogenone synthesis" EXACT []
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:189095 ! conidiogenone
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23600 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-05T11:01:27Z
+
+[Term]
+id: GO:0140880
+name: terrein biosynthetic process
+namespace: biological_process
+def: "The chemical reactions and pathways resulting in the formation of terrein, a fungal metabolite with ecological, antimicrobial, antiproliferative, and antioxidative activities." [PMID:24816227]
+synonym: "terrein anabolism" EXACT []
+synonym: "terrein biosynthesis" EXACT []
+synonym: "terrein formation" EXACT []
+synonym: "terrein synthesis" EXACT []
+is_a: GO:0043386 ! mycotoxin biosynthetic process
+intersection_of: GO:0009058 ! biosynthetic process
+intersection_of: has_primary_output CHEBI:177543 ! terrein
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23601 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-06T06:27:15Z
+
+[Term]
+id: GO:0140882
+name: zinc export across plasma membrane
+namespace: biological_process
+def: "The directed movement of zinc ions from a cell, into the extracellular region." [PMID:17355957]
+synonym: "zinc ion export from cell" EXACT []
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:29105 ! zinc(2+)
+intersection_of: has_target_end_location GO:0005576 ! extracellular region
+intersection_of: has_target_start_location GO:0005829 ! cytosol
+intersection_of: results_in_transport_across GO:0005886 ! plasma membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23603 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-08T04:56:15Z
+
+[Term]
+id: GO:0140892
+name: sodium,bicarbonate:chloride antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction chloride(in) + 2 hydrogencarbonate(out) + Na+(out) = chloride(out) + 2 hydrogencarbonate(in) + Na+(in)." [PMID:18577713, PMID:20389022, PMID:8189393]
+synonym: "sodium-dependent chloride/bicarbonate exchanger activity" EXACT []
+xref: TC:2.A.31.2.4
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:17544 ! hydrogencarbonate
+intersection_of: has_primary_input CHEBI:17996 ! chloride
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23675 xsd:anyURI
+created_by: pg
+creation_date: 2022-07-20T11:59:45Z
+
+[Term]
+id: GO:0140900
+name: chloride:bicarbonate antiporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: chloride(in) + HCO3-(out) = chloride(out) + HCO3-(in)." [PMID:10428871, PMID:16606687, RHEA:72203]
+synonym: "bicarbonate:chloride antiporter activity" EXACT []
+xref: RHEA:72203
+xref: TC:2.A.53.2.18
+intersection_of: GO:0015297 ! antiporter activity
+intersection_of: has_primary_input CHEBI:17544 ! hydrogencarbonate
+intersection_of: has_primary_input CHEBI:17996 ! chloride
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23828 xsd:anyURI
+created_by: pg
+creation_date: 2022-08-17T14:47:35Z
+
+[Term]
+id: GO:0140901
+name: L-asparagine:sodium symporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: L-asparagine(out) + Na+(out) = L-asparagine(in) + Na+(in)." [PMID:21511949, PMID:28416685]
+synonym: "asparagine:sodium symporter activity" EXACT []
+synonym: "sodium:asparagine symporter activity" EXACT []
+synonym: "sodium:L-asparagine symporter activity" EXACT []
+xref: RHEA:71383
+xref: TC:2.A.18.6.13
+is_a: GO:0005295 ! neutral L-amino acid:sodium symporter activity
+intersection_of: GO:0015293 ! symporter activity
+intersection_of: has_primary_input CHEBI:58048 ! L-asparagine zwitterion
+intersection_of: has_primary_input CHEBI:66916 ! alanine zwitterion
+created_by: pg
+creation_date: 2022-08-18T05:58:25Z
+
+[Term]
+id: GO:0140902
+name: L-glutamine:sodium symporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: L-glutamine(out) + Na+(out) = L-glutamine(in) + Na+(in)." [PMID:28416685]
+synonym: "glutamine:sodium symporter activity" EXACT []
+synonym: "sodium:glutamine symporter activity" EXACT []
+synonym: "sodium:L-glutamine symporter activity" EXACT []
+xref: TC:2.A.18.6.13
+is_a: GO:0005295 ! neutral L-amino acid:sodium symporter activity
+intersection_of: GO:0015293 ! symporter activity
+intersection_of: has_primary_input CHEBI:58359 ! L-glutamine zwitterion
+intersection_of: has_primary_input CHEBI:66916 ! alanine zwitterion
+created_by: pg
+creation_date: 2022-08-18T06:09:17Z
+
+[Term]
+id: GO:0140914
+name: zinc ion import into secretory vesicle
+namespace: biological_process
+def: "The directed import of zinc(2+) from the cytosol, across an organelle membrane, into a secretory vesicle." [PMID:19496757]
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:29105 ! zinc(2+)
+intersection_of: has_target_end_location GO:0099503 ! secretory vesicle
+intersection_of: has_target_start_location GO:0005829 ! cytosol
+intersection_of: results_in_transport_across GO:0030667 ! secretory granule membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23879 xsd:anyURI
+created_by: pg
+creation_date: 2022-09-23T06:54:18Z
+
+[Term]
+id: GO:0140915
+name: zinc ion import into zymogen granule
+namespace: biological_process
+def: "The directed import of zinc(2+) from the cytosol, across an organelle membrane, into a zymogen granule." [PMID:20133611]
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:29105 ! zinc(2+)
+intersection_of: has_target_end_location GO:0042588 ! zymogen granule
+intersection_of: has_target_start_location GO:0005829 ! cytosol
+intersection_of: results_in_transport_across GO:0042589 ! zymogen granule membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23908 xsd:anyURI
+created_by: pg
+creation_date: 2022-09-23T06:57:52Z
+
+[Term]
+id: GO:0140916
+name: zinc ion import into lysosome
+namespace: biological_process
+def: "The directed import of zinc(2+) from the cytosol, across an organelle membrane, into a lysosome." [PMID:25808614]
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:29105 ! zinc(2+)
+intersection_of: has_target_end_location GO:0043202 ! lysosomal lumen
+intersection_of: has_target_start_location GO:0005829 ! cytosol
+intersection_of: results_in_transport_across GO:0005765 ! lysosomal membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23907 xsd:anyURI
+created_by: pg
+creation_date: 2022-09-23T06:58:57Z
+
+[Term]
+id: GO:0140917
+name: zinc ion import into mitochondrion
+namespace: biological_process
+def: "The directed import of zinc(2+) from the cytosol, across an organelle membrane, into a mitochondrion." [PMID:21289295]
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:29105 ! zinc(2+)
+intersection_of: has_target_end_location GO:0005759 ! mitochondrial matrix
+intersection_of: has_target_start_location GO:0005829 ! cytosol
+intersection_of: results_in_transport_across GO:0005743 ! mitochondrial inner membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23890 xsd:anyURI
+created_by: pg
+creation_date: 2022-09-23T07:01:26Z
+
+[Term]
+id: GO:0140924
+name: L-kynurenine transmembrane transport
+namespace: biological_process
+def: "The directed movement of L-kynurenine across a membrane." [PMID:35245456]
+intersection_of: GO:0055085 ! transmembrane transport
+intersection_of: has_primary_input CHEBI:57959 ! L-kynurenine zwitterion
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24204 xsd:anyURI
+created_by: pg
+creation_date: 2022-10-18T13:08:26Z
+
+[Term]
+id: GO:0140925
+name: L-phenylalanine import across plasma membrane
+namespace: biological_process
+def: "The directed movement of L-phenylalanine from outside of a cell, across the plasma membrane and into the cytosol." [PMID:11069779]
+intersection_of: GO:0006810 ! transport
+intersection_of: has_primary_input CHEBI:58095 ! L-phenylalanine zwitterion
+intersection_of: has_target_end_location GO:0005829 ! cytosol
+intersection_of: has_target_start_location GO:0005576 ! extracellular region
+intersection_of: results_in_transport_across GO:0005886 ! plasma membrane
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24183 xsd:anyURI
+created_by: pg
+creation_date: 2022-10-18T13:11:20Z
+
+[Term]
+id: GO:0140926
+name: L-kynurenine transmembrane transporter activity
+namespace: molecular_function
+def: "Enables the transfer of L-kynurenine from one side of a membrane to the other." [PMID:35245456]
+intersection_of: GO:0022857 ! transmembrane transporter activity
+intersection_of: has_primary_input CHEBI:57959 ! L-kynurenine zwitterion
+relationship: part_of GO:0140924 ! L-kynurenine transmembrane transport
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24205 xsd:anyURI
+created_by: pg
+creation_date: 2022-10-18T13:14:59Z
+
+[Term]
+id: GO:0140927
+name: cyclic-di-GMP transmembrane transporter activity
+namespace: molecular_function
+def: "Enables the transfer of cyclic-di-GMP from one side of a membrane to the other." [PMID:34965418]
+intersection_of: GO:0022857 ! transmembrane transporter activity
+intersection_of: has_primary_input CHEBI:58805 ! c-di-GMP(2-)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24013 xsd:anyURI
+created_by: pg
+creation_date: 2022-10-18T13:17:30Z
+
+[Term]
+id: GO:0140929
+name: mannose:sodium symporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-mannose(out) + Na+(out) = D-mannose(in) + Na+(in)." [PMID:22212718, PMID:23451068, PMID:24573086]
+intersection_of: GO:0015293 ! symporter activity
+intersection_of: has_primary_input CHEBI:16024 ! D-mannose
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24185 xsd:anyURI
+created_by: pg
+creation_date: 2022-10-20T14:15:09Z
+
+[Term]
+id: GO:0140930
+name: fructose:sodium symporter activity
+namespace: molecular_function
+def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-fructose(out) + Na+(out) = D-fructose(in) + Na+(in)." [PMID:22212718, PMID:23451068]
+intersection_of: GO:0015293 ! symporter activity
+intersection_of: has_primary_input CHEBI:15824 ! D-fructose
+intersection_of: has_primary_input CHEBI:29101 ! sodium(1+)
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/24185 xsd:anyURI
+created_by: pg
+creation_date: 2022-10-20T14:15:18Z
+
+[Term]
+id: GO:0160039
+name: serotonin-gated chloride channel activity
+namespace: molecular_function
+def: "Enables the transmembrane transfer of a chloride ion by a channel that opens when the biogenic amine serotonin has been bound by the channel complex or one of its constituent parts. Serotonin (5-hydroxytryptamine) is a neurotransmitter and hormone found in vertebrates and invertebrates." [PMID:11100728]
+xref: TC:1.A.9
+xref: Wikipedia:Ligand-gated_ion_channel
+is_a: GO:0022824 ! transmitter-gated ion channel activity
+is_a: GO:0099589 ! serotonin receptor activity
+intersection_of: GO:0022834 ! ligand-gated channel activity
+intersection_of: has_primary_input CHEBI:17996 ! chloride
+intersection_of: regulated_by GO:0051378 ! serotonin binding
+relationship: part_of GO:0007210 ! serotonin receptor signaling pathway
+created_by: rynl
+creation_date: 2022-07-12T18:19:13Z
+
+[Term]
+id: GO:0160043
+name: catecholamine secretion, neurotransmission
+namespace: biological_process
+def: "The regulated release of catecholamine by a cell in which the catecholamine acts as a neurotransmitter." [PMID:10191060]
+intersection_of: GO:0007269 ! neurotransmitter secretion
+intersection_of: has_primary_input CHEBI:33567 ! catecholamine
+property_value: term_tracker_item https://github.com/geneontology/go-ontology/issues/23804 xsd:anyURI
+created_by: rynl
+creation_date: 2022-08-17T00:36:44Z
+
+[Term]
+id: GO:0160050
+name: xanthine binding
+namespace: molecular_function
+def: "Binding to xanthine, a purine base." [PMID:32345632, PMID:34125892]
+intersection_of: GO:0005488 ! binding
+intersection_of: has_input CHEBI:15318 ! xanthine
+created_by: rynl
+creation_date: 2022-09-27T17:42:21Z
+

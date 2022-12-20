@@ -1,0 +1,21 @@
+A number sign (#) is used with this entry because of evidence that amelogenesis imperfecta type IK (AI1K) is caused by heterozygous mutation in the SP6 gene (608613) on chromosome 17q21.
+
+
+▼ Description
+Amelogenesis imperfecta type 1K (AI1K) is characterized by hypoplastic enamel of all teeth. In some individuals, the pulp chambers may be enlarged and some molars may exhibit taurodontism (summary by Kim et al., 2021). 
+
+
+▼ Clinical Features
+Smith et al. (2020) described a 4-generation British family in which 9 members exhibited generalized hypoplastic amelogenesis imperfecta with an irregular surface involving all teeth. 
+
+Kim et al. (2021) described a 9-year-old boy with hypoplastic enamel resulting in small teeth with wide interdental spacing. Panoramic radiographs revealed severe hypoplastic enamel in all developing teeth and rocket-shaped developing roots of the canine and premolars. After full eruption, these teeth showed a blunt root apex with enlarged pulp chambers. The first permanent molars exhibited taurodontism and vertically extended pulp chamber resulting in short roots. 
+
+
+▼ Inheritance
+Amelogenesis imperfecta segregated as an autosomal dominant trait in
+the family described by Smith et al. (2020).
+
+▼ REFERENCES
+Kim, Y. J., Lee, Y., Zhang, H., Song, J.-S., Hu, J. C.-C., Simmer, J. P., Kim, J.-W. A novel de novo SP6 mutation causes severe hypoplastic amelogenesis imperfecta. Genes (Basel) 12: 346, 2021. [PubMed: 33652941, related citations] [Full Text]
+
+Smith, C. E. L., Whitehouse, L. L. E., Poulter, J. A., Wilkinson Hewitt, L., Nadat, F., Jackson, B. R., Manfield, I. W., Edwards, T. A., Rodd, H. D., Inglehearn, C. F., Mighell, A. J. A missense variant in specificity protein 6 (SP6) is associated with amelogenesis imperfecta. Hum. Molec. Genet. 29: 1417-1425, 2020. [PubMed: 32167558, images, related citations] [Full Text]
