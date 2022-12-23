@@ -1,25 +1,391 @@
-input_file: /Users/cjm/repos/semantic-llama/tests/input/cases/mendelian-disease-sly.txt
+input_id: /Users/cjm/repos/semantic-llama/tests/input/cases/mendelian-disease-sly.txt
+input_text: "Sly syndrome, also called mucopolysaccharidosis type VII (MPS-VII), is\
+  \ an autosomal recessive lysosomal storage disease caused by a deficiency of the\
+  \ enzyme \u03B2-glucuronidase. This enzyme is responsible for breaking down large\
+  \ sugar molecules called glycosaminoglycans (AKA GAGs, or mucopolysaccharides).\
+  \ The inability to break down GAGs leads to a buildup in many tissues and organs\
+  \ of the body. The severity of the disease can vary widely.\n"
+input_title: null
 named_entities:
+- id: N/A
+  label: N/A
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Unknown
+  characteristic: In some patients
+  id: Facial muscle weakness (in some patients)
+  label: Facial muscle weakness
+  onset_of_symptom: Unknown
+  severity: Unknown
+- affects: null
+  characteristic: in some patients
+  id: Ptosis (in some patients)
+  label: Ptosis
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Unknown
+  characteristic: In some patients
+  id: High-arched palate (in some patients)
+  label: High-arched palate
+  onset_of_symptom: Unknown
+  severity: Unknown
+- id: HP:0001371
+  label: Joint contractures
+- affects: null
+  characteristic: In some Patients
+  id: Scoliosis (in some patients)
+  label: Scoliosis
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Hands
+  characteristic: Claw hand shape
+  id: Claw hand deformities (in severe cases)
+  label: Claw hand deformities
+  onset_of_symptom: Unknown
+  severity: Severe
+- id: HP:0001761
+  label: Pes cavus
+- decades: []
+  id: Early childhood - adulthood
+  juvenile_or_adult: null
+  label: null
+  years_old: Early childhood - adulthood
+- affects: Foot
+  characteristic: Toe deformity
+  id: Hammer toes
+  label: Hammer toes
+  onset_of_symptom: Early childhood - adulthood
+  severity: Mild - Severe
+- id: HP:0001760
+  label: Foot deformities
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Muscles
+  characteristic: In some patients
+  id: Shoulder muscle weakness (in some patients)
+  label: Shoulder muscle weakness
+  onset_of_symptom: Unknown
+  severity: Unknown
+- id: HP:0006006
+  label: Hypotrophy of the small hand muscles
+- decades:
+  - Not applicable
+  id: Not applicable
+  juvenile_or_adult: Not applicable
+  label: Not applicable
+  years_old: Not applicable
+- affects: Muscle
+  characteristic: in some patients
+  id: Fiber-type predominance seen on muscle biopsy (in some patients)
+  label: Fiber-type predominance seen on muscle biopsy
+  onset_of_symptom: Not applicable
+  severity: Not applicable
+- affects: null
+  characteristic: In some patients
+  id: Fiber size variation (in some patients)
+  label: Fiber size variation
+  onset_of_symptom: null
+  severity: null
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: N/A
+  characteristic: In some patients
+  id: Internal nuclei (in some patients)
+  label: Internal nuclei
+  onset_of_symptom: N/A
+  severity: N/A
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: N/A
+  characteristic: In some patients
+  id: Increased connective tissue (in some patients)
+  label: Increased connective tissue
+  onset_of_symptom: N/A
+  severity: N/A
+- affects: null
+  characteristic: in some patients
+  id: Nemaline rods (in some patients)
+  label: Nemaline rods
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Some patients
+  characteristic: Atrophy
+  id: Group fiber atrophy (in some patients)
+  label: Group fiber atrophy
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Unknown
+  characteristic: present in some patients
+  id: Angular fibers (in some patients)
+  label: Angular fibers
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: neurogenic disorder
+  characteristic: consistent
+  id: EMG consistent with chronic neurogenic disorder
+  label: EMG
+  onset_of_symptom: N/A
+  severity: chronic
+- decades:
+  - undefined
+  id: undefined
+  juvenile_or_adult: undefined
+  label: undefined
+  years_old: undefined
+- affects: undefined
+  characteristic: in some patients
+  id: Delayed motor development (in some patients)
+  label: Delayed motor development
+  onset_of_symptom: undefined
+  severity: undefined
+- id: HP:0002460
+  label: Distal limb muscle weakness due to peripheral neuropathy
+- decades: []
+  id: distal limb
+  juvenile_or_adult: null
+  label: distal limb
+  years_old: null
+- affects: peripheral neuropathy
+  characteristic: muscle atrophy
+  id: Distal limb muscle atrophy due to peripheral neuropathy
+  label: Distal limb muscle atrophy
+  onset_of_symptom: distal limb
+  severity: due to
+- decades:
+  - N/A
+  id: Gradual over weeks to months
+  juvenile_or_adult: N/A
+  label: Gradual over weeks to months
+  years_old: N/A
+- affects: Walking
+  characteristic: Difficulty in initiating and controlling steps
+  id: '''Steppage'' gait'
+  label: '''Steppage'' gait'
+  onset_of_symptom: Gradual over weeks to months
+  severity: Moderate
+- id: HP:0009027
+  label: Foot drop
+- id: HP:0002936
+  label: Distal sensory impairment
+- id: HP:0001265
+  label: Hyporeflexia
+- id: HP:0001284
+  label: Areflexia
+- id: HP:0000006
+  label: Autosomal dominant
+- id: NEFL, 162280.0001
+  label: NEFL
+- id: UBERON:0007023
+  label: adult
+- id: PATO:0001190
+  label: juvenile
+- decades:
+  - '1'
+  id: first decade
+  juvenile_or_adult: juvenile
+  label: first decade
+  years_old: '1'
+- id: Autosomal dominant Charcot-Marie-Tooth disorder
+  label: Autosomal dominant Charcot-Marie-Tooth disorder
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Walking or running
+  characteristic: Difficulty
+  id: Difficulty in walking or running
+  label: Difficulty in walking or running
+  onset_of_symptom: Unknown
+  severity: Unknown
+- id: HP:0003677
+  label: slowly progressive
+- affects: lower limbs
+  characteristic: slowly progressive distal weakness and wasting of the lower limbs
+  id: slowly progressive distal weakness and wasting of the lower limbs
+  label: unspecified
+  onset_of_symptom: HP:0003677
+  severity: unspecified
+- id: HP:0003376
+  label: steppage gait
+- id: HP:0001761
+  label: pes cavus
+- id: HP:0001765
+  label: hammertoes
+- decades: []
+  id: Present at birth
+  juvenile_or_adult: juvenile
+  label: Present at birth
+  years_old: '0'
+- affects: Hands
+  characteristic: Curved fingers
+  id: claw hands
+  label: Claw hands
+  onset_of_symptom: Present at birth
+  severity: Moderate to severe
+- affects: upper limb
+  characteristic: involvement
+  id: upper limb involvement
+  label: upper limb involvement
+  onset_of_symptom: null
+  severity: null
+- id: MONDO:0015626
+  label: peroneal muscular atrophy
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: stocking and glove distribution
+  characteristic: decreased vibration sense
+  id: decreased vibration sense with stocking and glove distribution
+  label: Neuropathy symptom
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades:
+  - Undefined
+  id: Undefined
+  juvenile_or_adult: Undefined
+  label: Undefined
+  years_old: Undefined
+- affects: Hand muscles
+  characteristic: Atrophy
+  id: hypotrophy of the hand muscles
+  label: Hypotrophy of the hand muscles
+  onset_of_symptom: Undefined
+  severity: Undefined
+- id: HP:0000006
+  label: Autosomal Dominant
+- id: HGNC:7739
+  label: NEFL
+- decades:
+  - Second
+  - Third
+  id: Second and third decade
+  juvenile_or_adult: Adult
+  label: Decade
+  years_old: 20-30
+- decades:
+  - '1'
+  id: first decade
+  juvenile_or_adult: juvenile
+  label: first decade
+  years_old: '1'
+- decades:
+  - '2'
+  id: second decade
+  juvenile_or_adult: juvenile
+  label: second decade
+  years_old: '10'
+- id: N/A
+  label: N/A
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Many tissues and organs
+  characteristic: Buildup
+  id: Buildup of glycosaminoglycans (GAGs) in many tissues and organs
+  label: Glycosaminoglycans (GAGs)
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: varies widely
+  characteristic: Severity
+  id: Severity of the disease varies widely
+  label: disease
+  onset_of_symptom: N/A
+  severity: varies widely
 - id: HP:0000007
-  label: Autosomal Recessive
+  label: Autosomal recessive
 - id: HGNC:4696
   label: Beta-glucuronidase
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  years_old: <the value for years_old>
+
+  decades: <semicolon-separated list of decadess>
+
+  juvenile_or_adult: <the value for juvenile_or_adult>
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: "name: Sly Syndrome\ndescription: An autosomal recessive lysosomal\
+  \ storage disease caused by a deficiency of the enzyme \u03B2-glucuronidase\nsynonyms:\
+  \ Mucopolysaccharidosis Type VII (MPS-VII)\nsubclass_of: N/A\nsymptoms: Buildup\
+  \ of glycosaminoglycans (GAGs) in many tissues and organs; Severity of the disease\
+  \ varies widely\ninheritance: Autosomal recessive\ngenes: Beta-glucuronidase\ndisease_onsets:\
+  \ N/A\nlabel: Sly Syndrome"
 results:
-  description: "Autosomal recessive lysosomal storage disease caused by deficiency\
-    \ of enzyme \u03B2-glucuronidase"
+  description: "An autosomal recessive lysosomal storage disease caused by a deficiency\
+    \ of the enzyme \u03B2-glucuronidase"
+  disease_onsets:
+  - N/A
   genes:
   - HGNC:4696
+  id: null
   inheritance: HP:0000007
+  label: Sly Syndrome
   name: Sly Syndrome
+  publications: []
   subclass_of:
-  - Autosomal Recessive Lysosomal Storage Disease
+  - N/A
   symptoms:
-  - Buildup in many tissues and organs of the body
+  - Buildup of glycosaminoglycans (GAGs) in many tissues and organs
+  - Severity of the disease varies widely
   synonyms:
   - Mucopolysaccharidosis Type VII (MPS-VII)
-text: "Sly syndrome, also called mucopolysaccharidosis type VII (MPS-VII), is an autosomal\
-  \ recessive lysosomal storage disease caused by a deficiency of the enzyme \u03B2\
-  -glucuronidase. This enzyme is responsible for breaking down large sugar molecules\
-  \ called glycosaminoglycans (AKA GAGs, or mucopolysaccharides). The inability to\
-  \ break down GAGs leads to a buildup in many tissues and organs of the body. The\
-  \ severity of the disease can vary widely.\n"

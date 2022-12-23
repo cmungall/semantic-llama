@@ -24,6 +24,8 @@ class DrugMechanism(ConfiguredBaseModel):
     disease: Optional[str] = Field(None, description="""the name of the disease that is treated""")
     drug: Optional[str] = Field(None, description="""the name of the drug that treats the disease""")
     mechanism_links: Optional[List[MechanismLink]] = Field(default_factory=list, description="""semicolon-separated list of links, where each link is a triple connecting two entities via a relationship type""")
+    references: Optional[List[str]] = Field(default_factory=list)
+    source_text: Optional[str] = Field(None)
     
 
 

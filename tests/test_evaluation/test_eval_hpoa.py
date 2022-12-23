@@ -1,61 +1,67 @@
 """Core tests."""
 import unittest
+from random import shuffle
 
 import yaml
 
-from semantic_llama.evaluation.drugmechdb.datamodel.drugmechdb import Mechanism, Graph
-from semantic_llama.evaluation.drugmechdb.eval_drugmechdb import EvalDrugMechDB
+from semantic_llama.evaluation.hpoa.eval_hpoa import EvalHPOA
 from tests import CASES_DIR, OUTPUT_DIR
 
-NORMALIZED_OUT = OUTPUT_DIR / "drugmechdb-normalized.yaml"
-PREDICTIONS_OUT = OUTPUT_DIR / "eval-drugmechdb-predictions.yaml"
+NORMALIZED_OUT = OUTPUT_DIR / "hpoa-normalized.yaml"
+PREDICTIONS_OMIM_OUT = OUTPUT_DIR / "eval-hpoa-predictions-omim.yaml"
+PREDICTIONS_PUBS_OUT = OUTPUT_DIR / "eval-hpoa-predictions-pubs.yaml"
+PREDICTIONS_ALL_OUT = OUTPUT_DIR / "eval-hpoa-predictions-all.yaml"
 
-class TestDrugMechDB(unittest.TestCase):
+
+class Testhpoa(unittest.TestCase):
     """Test GO evaluation."""
 
     def setUp(self) -> None:
-        """Set up all extractors in advance."""
-        self.engine = EvalDrugMechDB()
+        """Set up all engines in advance."""
+        self.engine = EvalHPOA()
 
-    def test_data_model(self):
-        g = Graph(id="x")
-        m = Mechanism(
-            directed=True,
-            graph={
-                "id": "DB11888_MESH_D007251_1",
-            }
-        )
-
-    def test_load_exemplars(self):
-        mechanisms = self.engine.load_exemplars()
-        objs = [m.dict() for m in mechanisms]
+    def test_load_hpoa(self):
+        diseases = self.engine.annotations_to_diseases()
+        objs = [m.dict() for m in diseases]
         print(yaml.dump(objs[0:5]))
-        self.assertGreater(len(mechanisms), 0)
+        self.assertGreater(len(diseases), 0)
 
-    def test_load_source_database(self):
-        mechanisms = self.engine.load_source_database()
-        print(f"Loaded {len(mechanisms)} mechanisms")
-        objs = [m.dict() for m in mechanisms]
-        with open(NORMALIZED_OUT, "w") as f:
-            yaml.dump(objs, f)
+    def test_diseases(self):
+        diseases = self.engine.diseases()
+        for disease in diseases:
+            text = self.engine.disease_text(disease.id)
+            self.assertIsNotNone(text)
+            self.assertGreater(len(text), 100)
+        objs = [m.dict() for m in diseases]
         print(yaml.dump(objs[0:5]))
-        self.assertGreater(len(mechanisms), 0)
+        self.assertGreater(len(diseases), 0)
 
-    def test_load_target_database(self):
-        mechanisms = self.engine.load_target_database()
-        print(f"Loaded {len(mechanisms)} mechanisms")
-        objs = [m.dict() for m in mechanisms[0:5]]
-        print(yaml.dump(objs))
-        self.assertGreater(len(mechanisms), 0)
+    def test_diseases_by_publication(self):
+        t2d = self.engine.diseases_by_publication()
+        for k, disease in t2d.items():
+            text = self.engine.disease_text(disease.id)
+            self.assertIsNotNone(text)
+            self.assertGreater(len(text), 100)
+            print(f"## {k}: {disease.id} ")
+            print(yaml.dump(disease.dict()))
 
-    def test_eval_small(self):
+    def test_eval_pubs(self):
         evaluator = self.engine
-        evaluator.num_tests = 3
-        evaluator.num_training = 3
-        mechanisms = self.engine.load_exemplars()
-        evaluator.data = mechanisms
-        eos = evaluator.eval()
-        with open(PREDICTIONS_OUT, "w") as f:
+        eos = evaluator.eval("pubs")
+        with open(PREDICTIONS_PUBS_OUT, "w") as f:
             yaml.dump(eos.dict(), f)
 
+    def test_eval_all(self):
+        evaluator = self.engine
+        eos = evaluator.eval()
+        with open(PREDICTIONS_ALL_OUT, "w") as f:
+            yaml.dump(eos.dict(), f)
 
+    def test_eval_omim(self):
+        """
+        Evaluates extraction purely from OMIM texts
+        """
+        evaluator = self.engine
+        eos = evaluator.eval("omim")
+        with open(PREDICTIONS_OMIM_OUT, "w") as f:
+            yaml.dump(eos.dict(), f)

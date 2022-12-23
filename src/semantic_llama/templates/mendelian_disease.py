@@ -26,7 +26,27 @@ class ConfiguredBaseModel(
     pass
 
 
-class MendelianDisease(ConfiguredBaseModel):
+class ExtractionResult(ConfiguredBaseModel):
+    """
+    A result of extracting knowledge on text
+    """
+
+    input_id: Optional[str] = Field(None)
+    input_title: Optional[str] = Field(None)
+    input_text: Optional[str] = Field(None)
+    raw_completion_output: Optional[str] = Field(None)
+    prompt: Optional[str] = Field(None)
+    results: Optional[Any] = Field(None)
+    named_entities: Optional[List[Any]] = Field(default_factory=list)
+
+
+class NamedEntity(ConfiguredBaseModel):
+
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+
+
+class MendelianDisease(NamedEntity):
 
     name: Optional[str] = Field(None, description="""the name of the disease""")
     description: Optional[str] = Field(None, description="""a description of the disease""")
@@ -35,9 +55,13 @@ class MendelianDisease(ConfiguredBaseModel):
     symptoms: Optional[List[str]] = Field(default_factory=list)
     inheritance: Optional[str] = Field(None)
     genes: Optional[List[str]] = Field(default_factory=list)
+    disease_onsets: Optional[List[str]] = Field(default_factory=list)
+    publications: Optional[List[Publication]] = Field(default_factory=list)
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
 
 
-class NamedEntity(ConfiguredBaseModel):
+class DiseaseCategory(NamedEntity):
 
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
@@ -54,6 +78,16 @@ class Symptom(NamedEntity):
     characteristic: Optional[str] = Field(None)
     affects: Optional[str] = Field(None)
     severity: Optional[str] = Field(None)
+    onset_of_symptom: Optional[str] = Field(None)
+    id: Optional[str] = Field(None)
+    label: Optional[str] = Field(None, description="""The label of the named thing""")
+
+
+class Onset(NamedEntity):
+
+    years_old: Optional[str] = Field(None)
+    decades: Optional[List[str]] = Field(default_factory=list)
+    juvenile_or_adult: Optional[str] = Field(None)
     id: Optional[str] = Field(None)
     label: Optional[str] = Field(None, description="""The label of the named thing""")
 
@@ -91,10 +125,13 @@ class AnnotatorResult(ConfiguredBaseModel):
 
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
-MendelianDisease.update_forward_refs()
+ExtractionResult.update_forward_refs()
 NamedEntity.update_forward_refs()
+MendelianDisease.update_forward_refs()
+DiseaseCategory.update_forward_refs()
 Gene.update_forward_refs()
 Symptom.update_forward_refs()
+Onset.update_forward_refs()
 Inheritance.update_forward_refs()
 Relationship.update_forward_refs()
 CompoundExpression.update_forward_refs()

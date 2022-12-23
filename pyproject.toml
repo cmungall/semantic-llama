@@ -27,6 +27,11 @@ Jinja2 = "^3.1.2"
 python-multipart = "^0.0.5"
 mkdocs-mermaid2-plugin = "^0.6.0"
 linkml-owl = "^0.2.4"
+beautifulsoup4 = "^4.11.1"
+eutils = "^0.6.0"
+class-resolver = "^0.3.10"
+inflect = "^6.0.2"
+bioc = "^2.0.post5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

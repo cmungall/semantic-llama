@@ -1,18 +1,17 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from random import shuffle
-from typing import List, Tuple, Dict, Set, Optional
+from typing import Dict, List
 
-import pydantic
 import yaml
 from oaklib import get_implementation_from_shorthand
 from oaklib.datamodels.obograph import LogicalDefinitionAxiom
-from oaklib.datamodels.vocabulary import IS_A, LABEL_PREDICATE, HAS_DEFINITION_CURIE
+from oaklib.datamodels.vocabulary import IS_A
 from oaklib.interfaces.obograph_interface import OboGraphInterface
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
+from semantic_llama.engines.text_model_knowledge_engine import TextModelKnowledgeEngine
 from semantic_llama.evaluation.evaluation_engine import EvaluationEngine, Score
-from semantic_llama.knowledge_extractor import KnowledgeExtractor
 from semantic_llama.templates.metabolic_process import MetabolicProcess
 
 TEST_CASES_DIR = Path(__file__).parent / "test_cases"
@@ -45,10 +44,10 @@ class EvaluationObjectSetGO(BaseModel):
     """
     A result of extracting knowledge on text
     """
+
     test: List[MetabolicProcess] = None
     training: List[MetabolicProcess] = None
     predictions: List[PredictionGO] = None
-
 
 
 @dataclass
@@ -62,7 +61,7 @@ class EvalGO(EvaluationEngine):
         if not isinstance(ontology, OboGraphInterface):
             raise TypeError
         self.ontology = ontology
-        self.extractor = KnowledgeExtractor("metabolic_process.MetabolicProcess")
+        self.extractor = TextModelKnowledgeEngine("metabolic_process.MetabolicProcess")
         self.extractor.labelers = [ontology]
 
     def make_term_from_ldef(self, ldef: LogicalDefinitionAxiom) -> MetabolicProcess:
@@ -101,7 +100,9 @@ class EvalGO(EvaluationEngine):
             return False
         return True
 
-    def create_test_and_training(self, num_test: int = 10, num_training: int = 10) -> EvaluationObjectSetGO:
+    def create_test_and_training(
+        self, num_test: int = 10, num_training: int = 10
+    ) -> EvaluationObjectSetGO:
         """
         Create a test and training set of GO terms.
 
@@ -109,7 +110,9 @@ class EvalGO(EvaluationEngine):
         """
         ontology = self.ontology
         entities = set(ontology.descendants([self.genus], [IS_A]))
-        print(f"Found {len(entities)} entities that are descendants of genus {self.genus}; {list(entities)[0:5]}")
+        print(
+            f"Found {len(entities)} entities that are descendants of genus {self.genus}; {list(entities)[0:5]}"
+        )
         assert "GO:0140872" in entities
         all_test_ids = set(self.valid_test_ids())
         assert "GO:0140872" in all_test_ids
@@ -123,7 +126,7 @@ class EvalGO(EvaluationEngine):
         print(f"Found {len(entities)} entities from {type(ontology)}")
         ldefs = list(ontology.logical_definitions(entities))
         shuffle(ldefs)
-        #ldefs = list(ontology.logical_definitions())
+        # ldefs = list(ontology.logical_definitions())
         print(f"Found {len(ldefs)} logical definitions")
         ldefs = [ldef for ldef in ldefs if self.ldef_matches(ldef)]
         print(f"Found {len(ldefs)} matching logical definitions")
@@ -147,13 +150,7 @@ class EvalGO(EvaluationEngine):
         for test_obj in eos.test[0:10]:
             print(yaml.dump(test_obj.dict()))
             predicted_obj = ke.generalize({"label": test_obj.label}, eos.training[0:4])
-            pred = PredictionGO(predicted_object=predicted_obj,
-                                test_object=test_obj)
+            pred = PredictionGO(predicted_object=predicted_obj, test_object=test_obj)
             pred.calculate_scores()
             eos.predictions.append(pred)
         return eos
-
-
-
-
-

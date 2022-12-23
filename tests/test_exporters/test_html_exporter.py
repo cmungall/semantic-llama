@@ -18,10 +18,9 @@ class TestExportHTML(unittest.TestCase):
         self.exporter = HTMLExporter()
         with open(str(INPUT_DIR / "eds-output.pickle"), "rb") as f:
             self.extraction_result = pickle.load(f)
-        #print(yaml.dump(self.extraction_result.dict()))
+        # print(yaml.dump(self.extraction_result.dict()))
 
     def test_export(self):
         """Test export."""
         with open(str(OUTPUT_DIR / "eds-output.html"), "w", encoding="utf-8") as f:
             self.exporter.export(self.extraction_result, f)
-

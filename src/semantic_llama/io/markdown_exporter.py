@@ -11,7 +11,6 @@ from semantic_llama.templates.core import ExtractionResult
 
 @dataclass
 class MarkdownExporter(Exporter):
-
     def export(self, extraction_output: ExtractionResult, output: Union[str, Path, TextIO]):
         if isinstance(output, Path):
             output = str(output)
@@ -31,7 +30,13 @@ class MarkdownExporter(Exporter):
         output.write("\n\nCompletion:\n\n")
         self.details(extraction_output.raw_completion_output, output)
 
-    def export_object(self, obj: pydantic.BaseModel, extraction_output: ExtractionResult, output: TextIO, indent: int):
+    def export_object(
+        self,
+        obj: pydantic.BaseModel,
+        extraction_output: ExtractionResult,
+        output: TextIO,
+        indent: int,
+    ):
         for field in obj.__fields__.values():
             if indent < 0:
                 output.write(f"\n\n### {field.name}\n\n")
@@ -39,19 +44,26 @@ class MarkdownExporter(Exporter):
                 output.write(f"\n{'  ' * indent}- {field.name}:")
             value = getattr(obj, field.name)
             if isinstance(value, pydantic.BaseModel):
-                self.export_object(value, extraction_output, output, indent+1)
+                self.export_object(value, extraction_output, output, indent + 1)
             elif isinstance(value, list):
                 for item in value:
                     if isinstance(item, pydantic.BaseModel):
-                        self.export_object(item, extraction_output=extraction_output, output=output, indent=indent+1)
+                        self.export_object(
+                            item,
+                            extraction_output=extraction_output,
+                            output=output,
+                            indent=indent + 1,
+                        )
                     else:
-                        self.export_atom(item, extraction_output, output, indent+1)
+                        self.export_atom(item, extraction_output, output, indent + 1)
             else:
-                self.export_atom(value, extraction_output, output, indent+1)
+                self.export_atom(value, extraction_output, output, indent + 1)
         output.write("\n")
 
     def export_atom(self, value, extraction_output: ExtractionResult, output: TextIO, indent: int):
-        matches = [ne for ne in extraction_output.named_entities if ne.id == value and is_curie(ne.id)]
+        matches = [
+            ne for ne in extraction_output.named_entities if ne.id == value and is_curie(ne.id)
+        ]
         output.write(f"\n{'  ' * indent}- ")
         if matches:
             match = matches[0]

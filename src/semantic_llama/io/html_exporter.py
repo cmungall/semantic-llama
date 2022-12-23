@@ -1,7 +1,7 @@
 import html
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TextIO, Union, Any
+from typing import Any, TextIO, Union
 
 import pydantic
 import yaml
@@ -39,7 +39,9 @@ class HTMLExporter(Exporter):
         self.h2("Results")
         self.export_object(obj, extraction_output, -1)
 
-    def export_object(self, obj: pydantic.BaseModel, extraction_output: ExtractionResult, indent: int):
+    def export_object(
+        self, obj: pydantic.BaseModel, extraction_output: ExtractionResult, indent: int
+    ):
         self.open_div()
         if indent >= 0:
             self.open_ul()
@@ -50,7 +52,7 @@ class HTMLExporter(Exporter):
                 self.li(f"<i>{field.name}</i>: ")
             value = getattr(obj, field.name)
             if isinstance(value, pydantic.BaseModel):
-                self.export_object(value, extraction_output, indent+1)
+                self.export_object(value, extraction_output, indent + 1)
             elif isinstance(value, list):
                 self.open_ul()
                 n = 1
@@ -58,19 +60,23 @@ class HTMLExporter(Exporter):
                     self.li(f"<b>item: {n}</b>: ")
                     n += 1
                     if isinstance(item, pydantic.BaseModel):
-                        self.export_object(item, extraction_output=extraction_output, indent=indent+1)
+                        self.export_object(
+                            item, extraction_output=extraction_output, indent=indent + 1
+                        )
                     else:
-                        self.export_atom(item, extraction_output, indent+1)
+                        self.export_atom(item, extraction_output, indent + 1)
                 self.close_ul()
             else:
-                self.export_atom(value, extraction_output, indent+1)
+                self.export_atom(value, extraction_output, indent + 1)
         if indent >= 0:
             self.open_ul()
         self.close_div()
 
     def export_atom(self, value, extraction_output: ExtractionResult, indent: int):
         output = self.output
-        matches = [ne for ne in extraction_output.named_entities if ne.id == value and is_curie(ne.id)]
+        matches = [
+            ne for ne in extraction_output.named_entities if ne.id == value and is_curie(ne.id)
+        ]
         if matches:
             match = matches[0]
             output.write(f"{match.label} {self.link(match.id)}")
@@ -86,7 +92,7 @@ class HTMLExporter(Exporter):
         output.write("\n</details>\n")
 
     def link(self, curie: str) -> str:
-        return f"<a href=\"https://bioregistry.io/{curie}\">{curie}</a>"
+        return f'<a href="https://bioregistry.io/{curie}">{curie}</a>'
 
     def open_ul(self):
         self.output.write("<ul>\n")

@@ -54,8 +54,22 @@ class GoCamAnnotations(ConfiguredBaseModel):
     )
     gene_localizations: Optional[List[GeneSubcellularLocalizationRelationship]] = Field(
         default_factory=list,
-        description="""semicolon-separated list of gene to subcellular localization relationships""",
+        description="""semicolon-separated list of genes plus their location in the cell; for example, \"gene1 / cytoplasm; gene2 / mitochondrion\"""",
     )
+
+
+class ExtractionResult(ConfiguredBaseModel):
+    """
+    A result of extracting knowledge on text
+    """
+
+    input_id: Optional[str] = Field(None)
+    input_title: Optional[str] = Field(None)
+    input_text: Optional[str] = Field(None)
+    raw_completion_output: Optional[str] = Field(None)
+    prompt: Optional[str] = Field(None)
+    results: Optional[Any] = Field(None)
+    named_entities: Optional[List[Any]] = Field(default_factory=list)
 
 
 class NamedEntity(ConfiguredBaseModel):
@@ -165,6 +179,7 @@ class AnnotatorResult(ConfiguredBaseModel):
 # Update forward refs
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 GoCamAnnotations.update_forward_refs()
+ExtractionResult.update_forward_refs()
 NamedEntity.update_forward_refs()
 Gene.update_forward_refs()
 Pathway.update_forward_refs()

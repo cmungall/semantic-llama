@@ -11,11 +11,11 @@ An evaluation engine incorporates different components to evaluate KE:
 """
 
 from dataclasses import dataclass
-from typing import Optional, List, Set
+from typing import List, Optional, Set
 
 from pydantic import BaseModel
 
-from semantic_llama.knowledge_extractor import KnowledgeExtractor
+from semantic_llama.engines.text_model_knowledge_engine import TextModelKnowledgeEngine
 
 
 def jaccard_index(a: Set, b: Set):
@@ -31,10 +31,11 @@ class Score(BaseModel):
 
     The scores are computed as the Jaccard index between the predicted and true sets.
     """
+
     jaccard: Optional[float]
-    false_positives: List[str]
-    false_negatives: List[str]
-    common: List[str]
+    false_positives: Optional[List[Optional[str]]]
+    false_negatives: Optional[List[Optional[str]]]
+    common: Optional[List[str]]
 
     @staticmethod
     def from_set(test_set: List, prediction_set: List):
@@ -47,11 +48,12 @@ class Score(BaseModel):
             common=list(test_set & prediction_set),
         )
 
+
 @dataclass
 class EvaluationEngine:
     """Base class for all evaluation engines"""
 
-    extractor: KnowledgeExtractor = None
+    extractor: TextModelKnowledgeEngine = None
     """Knowledge extractor to use"""
 
     num_tests: int = 10

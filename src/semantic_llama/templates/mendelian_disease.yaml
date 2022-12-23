@@ -17,6 +17,7 @@ imports:
 
 classes:
   MendelianDisease:
+    is_a: NamedEntity
     attributes:
       name:
         description: the name of the disease
@@ -35,7 +36,7 @@ classes:
           - value: PBD-ZSS
       subclass_of:
         multivalued: true
-        range: MendelianDisease
+        range: DiseaseCategory
         examples:
           - value: lysosomal disease
           - value: autosomal recessive disorder
@@ -56,26 +57,62 @@ classes:
           - value: PEX1
           - value: PEX2
           - value: PEX3
+        annotations:
+          prompt: >-
+            semicolon separated list of gene symbols; for example: PEX1; PEX2; PEX3
+      disease_onsets:
+        range: Onset
+        multivalued: true
+        annotations:
+          prompt: >-
+            semi-colon separated list of onsets at which the disease occurs, for example: adult; juvenile; first decade
+      publications:
+        range: Publication
+        multivalued: true
+        annotations:
+          prompt.skip: "true"
+
+  DiseaseCategory:
+    is_a: NamedEntity
+    id_prefixes:
+      - MONDO
+    annotations:
+      annotators: sqlite:obo:mondo
 
   Gene:
     is_a: NamedEntity
     id_prefixes:
       - HGNC
     annotations:
-      annotators: gilda:, bioportal:hgnc-nr
+      annotators: gilda:, bioportal:hgnc-nr, sqlite:obo:pr
 
   Symptom:
     is_a: NamedEntity
     id_prefixes:
       - HP
     annotations:
-      annotators: sqlite:obo:hp
+      annotators: sqlite:obo:hp, sqlite:obo:mondo
     attributes:
       characteristic:
       affects:
       severity:
+      onset_of_symptom:
+        range: Onset
+
+  Onset:
+    is_a: NamedEntity
+    id_prefixes:
+      - HP
+    annotations:
+      annotators: sqlite:obo:hp, sqlite:obo:hsapdv
+    attributes:
+      years_old:
+      decades:
+        multivalued: true
+      juvenile_or_adult:
+
 
   Inheritance:
     is_a: NamedEntity
     annotations:
-      annotators: sqlite:obo:hp
+      annotators: sqlite:obo:hp, sqlite:obo:geno

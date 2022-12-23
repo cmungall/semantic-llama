@@ -4,9 +4,11 @@ import unittest
 import yaml
 from oaklib import get_implementation_from_shorthand
 
-from semantic_llama.knowledge_extractor import KnowledgeExtractor
+from semantic_llama.clients.pubmed_client import PubmedClient
+from semantic_llama.engines import create_engine
+from semantic_llama.engines.text_model_knowledge_engine import TextModelKnowledgeEngine
 from semantic_llama.templates.biological_process import BiologicalProcess
-from semantic_llama.templates.gocam import GoCamAnnotations
+from semantic_llama.templates.gocam import ExtractionResult, GoCamAnnotations
 
 TEMPLATE = "gocam.GoCamAnnotations"
 
@@ -74,11 +76,11 @@ gene_localizations: β-Catenin - Nuclear; US3 - Hyperphosphorylation
 """
 
 TEST_PROCESS = BiologicalProcess(
-                label="autophagosome assembly",
-                description="The formation of a double membrane-bounded structure, the autophagosome, that occurs when a specialized membrane sac, called the isolation membrane, starts to enclose a portion of the cytoplasm",
-                subclass_of="GO:0022607",
-                outputs=["GO:0005776"],
-            )
+    label="autophagosome assembly",
+    description="The formation of a double membrane-bounded structure, the autophagosome, that occurs when a specialized membrane sac, called the isolation membrane, starts to enclose a portion of the cytoplasm",
+    subclass_of="GO:0022607",
+    outputs=["GO:0005776"],
+)
 
 RAW_PARSE = {
     "genes": ["β-Catenin", "cGAS", "STING", "US3", "IFN", "ISG"],
@@ -98,7 +100,7 @@ class TestCore(unittest.TestCase):
 
     def setUp(self) -> None:
         """Set up."""
-        self.ke = KnowledgeExtractor(TEMPLATE)
+        self.ke = create_engine(TEMPLATE, TextModelKnowledgeEngine)
 
     def test_setup(self):
         """Tests template and module is loaded"""
@@ -117,7 +119,7 @@ class TestCore(unittest.TestCase):
 
     def test_generalize(self):
         """Tests generalization."""
-        ke = KnowledgeExtractor("biological_process.BiologicalProcess")
+        ke = TextModelKnowledgeEngine("biological_process.BiologicalProcess")
         ke.labelers = [get_implementation_from_shorthand("sqlite:obo:go")]
         examples = [
             """
@@ -143,10 +145,10 @@ class TestCore(unittest.TestCase):
         self.assertEqual(["CHEBI:151400"], ann.outputs)
 
     def test_serialize_example(self):
-        ke = KnowledgeExtractor("biological_process.BiologicalProcess")
+        ke = TextModelKnowledgeEngine("biological_process.BiologicalProcess")
         ke.labelers = [get_implementation_from_shorthand("sqlite:obo:go")]
-        ser = ke._serialize_example(TEST_PROCESS)
-        #print(f"SERIALIZED={ser}")
+        ser = ke.serialize_object(TEST_PROCESS)
+        # print(f"SERIALIZED={ser}")
         self.assertIn("outputs: autophagosome", ser)
 
     def test_extract(self):
@@ -160,6 +162,16 @@ class TestCore(unittest.TestCase):
             raise ValueError(f"Expected GoCamAnnotations, got {type(results)}")
         self.assertIn("HGNC:2514", results.genes)
 
+    def test_extract_with_stub(self):
+        """Tests end to end knowledge extraction."""
+        ke = self.ke
+        ann = ke.extract_from_text(PAPER, object={"pathways": ["GO:0140896"]})
+        print(f"RESULTS={ann}")
+        print(yaml.dump(ann.dict()))
+        results = ann.results
+        if not isinstance(results, GoCamAnnotations):
+            raise ValueError(f"Expected GoCamAnnotations, got {type(results)}")
+        self.assertIn("HGNC:2514", results.genes)
 
     def test_subextract(self):
         """Tests end to end knowledge extraction."""
@@ -254,3 +266,86 @@ class TestCore(unittest.TestCase):
         ke = self.ke
         annotated = ke.ground_annotation_object(RAW_PARSE)
         print(yaml.dump(annotated.dict()))
+
+    def test_mapping(self):
+        """Tests mapping of annotation object to OAK model."""
+        ke = self.ke
+        cases = [
+            (
+                "uberon",
+                [
+                    "pinky",
+                    "brain",
+                    "cerebellum",
+                    "feet",
+                    "epithelia",
+                    "skin",
+                    "hair",
+                    "lungs",
+                    "pancreatic",
+                    "nerves",
+                    "nostrils",
+                ],
+            ),
+            (
+                "go",
+                [
+                    "Wnt signaling",
+                    "apoptosis",
+                    "lactase",
+                    "positive regulation of alpha-glucoside transport",
+                    "development of lungs",
+                ],
+            ),
+        ]
+        for ontology, terms in cases:
+            ann = ke.map_terms(terms, ontology)
+            print(yaml.dump(ann))
+
+    def test_extract_from_pubmed(self):
+        """Tests end to end knowledge extraction."""
+        ke = self.ke
+        pmc = PubmedClient()
+        text = pmc.text("PMID:27929086")
+        print(text)
+        ann = ke.extract_from_text(PAPER)
+        print(f"RESULTS={ann}")
+        print(yaml.dump(ann.dict()))
+
+    def test_merge(self):
+        bp1 = BiologicalProcess(
+            label="bp",
+            description="d1",
+            synonyms=["s1a", "s1b", "shared"],
+            inputs=["c1", "c2"],
+        )
+        bp2 = BiologicalProcess(
+            label="bp",
+            description="d2",
+            synonyms=["s2a", "s2b", "shared"],
+            outputs=["c3", "c4"],
+        )
+        r1 = ExtractionResult(results=bp1)
+        r2 = ExtractionResult(results=bp2)
+        bp = self.ke.merge_resultsets([r1, r2]).results
+        print(yaml.dump(bp.dict()))
+        self.assertEqual("bp", bp.label)
+        self.assertEqual("d2", bp.description)
+        self.assertCountEqual(["s1a", "s1b", "s2a", "s2b", "shared"], bp.synonyms)
+        self.assertEqual(5, len(bp.synonyms), "Expected 5 distinct synonyms")
+        self.assertCountEqual(["c1", "c2", "c3", "c4"], bp.inputs + bp.outputs)
+        self.assertCountEqual(["c1", "c2"], bp.inputs)
+        self.assertCountEqual(["c3", "c4"], bp.outputs)
+
+    def test_merge_with_pmids(self):
+        """Tests end to end knowledge extraction."""
+        ke = self.ke
+        pmids = ["32716108", "27929086"]
+        pmc = PubmedClient()
+        rsets = []
+        for pmid in pmids:
+            text = pmc.text(f"PMID:{pmid}")
+            rsets.append(ke.extract_from_text(text))
+        print(f"Merging {len(rsets)} results")
+        merged = ke.merge_resultsets(rsets)
+        print(yaml.dump(merged.dict()))

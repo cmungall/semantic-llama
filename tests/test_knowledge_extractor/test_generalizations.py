@@ -4,40 +4,47 @@ import unittest
 import yaml
 from oaklib import get_implementation_from_shorthand
 
-from semantic_llama.knowledge_extractor import KnowledgeExtractor
-from tests import OUTPUT_DIR, INSTANCES_DIR
+from semantic_llama.engines.text_model_knowledge_engine import TextModelKnowledgeEngine
+from tests import INSTANCES_DIR, OUTPUT_DIR
 
 CASES = [
-    ("drug.DrugMechanism",
-     [{"disease": "MESH:D014552",
-       "drug": "drugbank:DB00438"}
-      ],
-     [
-         ["disease", "drug"],
-     ],
-     ["sqlite:obo:mesh", "sqlite:obo:drugbank", "sqlite:obo:go", "sqlite:obo:uberon", "sqlite:obo:pr"],
-     "drug-mechanisms-001",
+    (
+        "drug.DrugMechanism",
+        [{"disease": "MESH:D014552", "drug": "drugbank:DB00438"}],
+        [
+            ["disease", "drug"],
+        ],
+        [
+            "sqlite:obo:mesh",
+            "sqlite:obo:drugbank",
+            "sqlite:obo:go",
+            "sqlite:obo:uberon",
+            "sqlite:obo:pr",
+        ],
+        "drug-mechanisms-001",
     ),
-    ("reaction.Reaction",
-     [{"label": "pseudouridine 5'-phosphatase activity",
-       "description": "Catalysis of the reaction: pseudouridine 5'-phosphate + H2O = pseudouridine + phosphate."},
-      {"label": "L-altrarate dehydratase activity",
-       "description": "Catalysis of the reaction: L-altrarate = 5-dehydro-4-deoxy-D-glucarate + H2O.",
-       },
-
-      # rhea:40031
-      {"description": "ent-copalyl diphosphate + H2O = diphosphate + ent-manool"},
-
-      ],
-     [
-         ["label"],
-         ["description"],
-         ["label", "description"],
-     ],
-     [],
-     "reactions-001"
-     ),
-
+    (
+        "reaction.Reaction",
+        [
+            {
+                "label": "pseudouridine 5'-phosphatase activity",
+                "description": "Catalysis of the reaction: pseudouridine 5'-phosphate + H2O = pseudouridine + phosphate.",
+            },
+            {
+                "label": "L-altrarate dehydratase activity",
+                "description": "Catalysis of the reaction: L-altrarate = 5-dehydro-4-deoxy-D-glucarate + H2O.",
+            },
+            # rhea:40031
+            {"description": "ent-copalyl diphosphate + H2O = diphosphate + ent-manool"},
+        ],
+        [
+            ["label"],
+            ["description"],
+            ["label", "description"],
+        ],
+        [],
+        "reactions-001",
+    ),
 ]
 
 
@@ -45,11 +52,11 @@ class TestGeneralize(unittest.TestCase):
     """Test generalization."""
 
     def setUp(self) -> None:
-        """Set up all extractors in advance."""
+        """Set up all engines in advance."""
         ke_map = {}
         for c in CASES:
             template = c[0]
-            ke_map[template] = KnowledgeExtractor(template)
+            ke_map[template] = TextModelKnowledgeEngine(template)
         self.ke_map = ke_map
 
     def test_cases(self):
@@ -74,5 +81,7 @@ class TestGeneralize(unittest.TestCase):
                     nu_obj["_combo"] = list(combo)
                     nu_obj["_input"] = test_obj
                     nu_objs.append(nu_obj)
-            with open(str(OUTPUT_DIR / f"generalized-{input_file}.yaml"), "w", encoding="utf-8") as f:
+            with open(
+                str(OUTPUT_DIR / f"generalized-{input_file}.yaml"), "w", encoding="utf-8"
+            ) as f:
                 yaml.dump(nu_objs, f)

@@ -1,108 +1,60 @@
 """
 Main Knowledge Extractor class.
 """
-import importlib
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from types import ModuleType
-from typing import Dict, List, Optional, TextIO, Tuple, Union, Any, Iterator
+from typing import Any, Dict, List, Optional, Tuple, Union
 
-import openai
 import pydantic
-from linkml_runtime import SchemaView
 from linkml_runtime.linkml_model import ClassDefinition, SlotDefinition
-from oaklib import get_implementation_from_shorthand, BasicOntologyInterface
+from oaklib import get_implementation_from_shorthand
 from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
-from oaklib.interfaces import TextAnnotatorInterface
-from oaklib.utilities.apikey_manager import get_apikey_value
 
-from semantic_llama.clients import OpenAIClient
-from semantic_llama.templates.core import NamedEntity, ExtractionResult
+from semantic_llama.engines.engine import EXAMPLE, FIELD, OBJECT, KnowledgeEngine, ANNOTATION_KEY_PROMPT_SKIP, \
+    ANNOTATION_KEY_PROMPT, ANNOTATION_KEY_ANNOTATORS
+from semantic_llama.templates.core import ExtractionResult, NamedEntity
 
 this_path = Path(__file__).parent
 
-EXAMPLE = Union[str, pydantic.BaseModel, dict]
-FIELD = str
+
 RESPONSE_ATOM = Union[str, "ResponseAtom"]
 RESPONSE_DICT = Dict[FIELD, Union[RESPONSE_ATOM, List[RESPONSE_ATOM]]]
 
 
-DATAMODELS = [
-    "treatment.DiseaseTreatmentSummary",
-    "gocam.GoCamAnnotations",
-    "bioloigical_process.BiologicalProcess",
-    "environmental_sample.Study",
-    "mendelian_disease.MendelianDisease",
-    "reaction.Reaction",
-    "recipe.Recipe",
-]
 
 @dataclass
-class KnowledgeExtractor(object):
+class TextModelKnowledgeEngine(KnowledgeEngine):
     """Knowledge extractor."""
 
-    template: str
-    template_class: ClassDefinition = None
-    template_pyclass = None
-    template_module: ModuleType = None
-    schemaview: SchemaView = None
-    api_key: str = None
     engine: str = "text-davinci-003"
-    annotator: TextAnnotatorInterface = None
-    annotators: Dict[str, List[TextAnnotatorInterface]] = None
-    labelers: List[BasicOntologyInterface] = None
-    client: OpenAIClient = None
-    recurse: bool = False
-    named_entities: List[NamedEntity] = None
-    last_text: str = None
-    last_prompt: str = None
+    recurse: bool = True
 
-    def __post_init__(self):
-        self.template_class = self._get_template_class(self.template)
-        self.client = OpenAIClient()
-        self.api_key = self._get_openai_api_key()
-        openai.api_key = self.api_key
-
-    def extract_from_text(self, text: str, cls: ClassDefinition = None) -> ExtractionResult:
+    def extract_from_text(
+        self, text: str, cls: ClassDefinition = None, object: OBJECT = None
+    ) -> ExtractionResult:
         """
         Extract annotations from the given text.
 
         :param text:
         :param cls:
+        :param object: optional stub object
         :return:
         """
-        raw_text = self._raw_extract(text, cls)
+        raw_text = self._raw_extract(text, cls, object=object)
         logging.info(f"RAW TEXT: {raw_text}")
-        r = self.parse_completion_payload(raw_text, cls)
-        return ExtractionResult(input_text=text,
-                                raw_completion_output=raw_text,
-                                prompt=self.last_prompt,
-                                results=r,
-                                named_entities=self.named_entities)
+        r = self.parse_completion_payload(raw_text, cls, object=object)
+        return ExtractionResult(
+            input_text=text,
+            raw_completion_output=raw_text,
+            prompt=self.last_prompt,
+            results=r,
+            named_entities=self.named_entities,
+        )
 
     def _extract_from_text_to_dict(self, text: str, cls: ClassDefinition = None) -> RESPONSE_DICT:
         raw_text = self._raw_extract(text, cls)
         return self._parse_response_to_dict(raw_text, cls)
-
-    def extract_from_file(self, file: Union[str, Path, TextIO]) -> pydantic.BaseModel:
-        """
-        Extract annotations from the given text.
-
-        :param file:
-        :return:
-        """
-        if isinstance(file, str):
-            file = Path(file)
-        if isinstance(file, Path):
-            with file.open() as f:
-                text = f.read()
-        else:
-            text = file.read()
-        self.last_text = text
-        r = self.extract_from_text(text)
-        r.input_id = str(file)
-        return r
 
     def generalize(
         self, object: Union[pydantic.BaseModel, dict], examples: List[EXAMPLE]
@@ -118,7 +70,7 @@ class KnowledgeExtractor(object):
         sv = self.schemaview
         prompt = "example:\n"
         for example in examples:
-            prompt += f"{self._serialize_example(example)}\n\n"
+            prompt += f"{self.serialize_object(example)}\n\n"
         prompt += "\n\n===\n\n"
         if isinstance(object, pydantic.BaseModel):
             object = object.dict()
@@ -129,13 +81,84 @@ class KnowledgeExtractor(object):
         print(f"PROMPT: {prompt}")
         payload = self.client.complete(prompt)
         prediction = self.parse_completion_payload(payload, object=object)
-        return ExtractionResult(input_text=prompt,
-                                raw_completion_output=payload,
-                                #prompt=self.last_prompt,
-                                results=[prediction],
-                                named_entities=self.named_entities)
+        return ExtractionResult(
+            input_text=prompt,
+            raw_completion_output=payload,
+            # prompt=self.last_prompt,
+            results=[prediction],
+            named_entities=self.named_entities,
+        )
 
-    def _serialize_example(self, example: EXAMPLE, cls: ClassDefinition = None) -> str:
+    def map_terms(self, terms: List[str], ontology: str) -> Dict[str, List[str]]:
+        """
+        Map the given terms to the given ontology.
+
+        EXPERIMENTAL
+
+        currently GPT-3 does not do so well with this task.
+
+        :param terms:
+        :param ontology:
+        :return:
+        """
+        # TODO: make a separate config
+        examples = {
+            "go": {
+                "nucleui": "nucleus",
+                "mitochondrial": "mitochondrion",
+                "signaling": "signaling pathway",
+                "cysteine biosynthesis": "cysteine biosynthetic process",
+                "alcohol dehydrogenase": "alcohol dehydrogenase activity",
+            },
+            "uberon": {
+                "feet": "pes",
+                "forelimb, left": "left forelimb",
+                "hippocampus": "Ammons horn",
+            },
+        }
+        ontology = ontology.lower()
+        if ontology in examples:
+            example = examples[ontology]
+        else:
+            example = examples["uberon"]
+        prompt = "Normalize the following semicolon separated list of terms to the {ontology.upper()} ontology\n\n"
+        prompt += "For example:\n\n"
+        for k, v in example.items():
+            prompt += f"{k}: {v}\n"
+        prompt += "===\n\nTerms:"
+        prompt += "; ".join(terms)
+        prompt += "===\n\n"
+        payload = self.client.complete(prompt)
+        # outer parse
+        best_results = []
+        for sep in ["\n", "; "]:
+            results = payload.split(sep)
+            if len(results) > len(best_results):
+                best_results = results
+
+        def normalize(s: str) -> str:
+            s = s.strip()
+            s.replace("_", " ")
+            return s.lower()
+
+        mappings = {}
+        for result in best_results:
+            if ":" not in result:
+                logging.error(f"Count not parse result: {result}")
+                continue
+            k, v = result.strip().split(":", 1)
+            k = k.strip()
+            v = v.strip()
+            for t in terms:
+                if normalize(t) == normalize(k):
+                    mappings[t] = v
+                    break
+        for t in terms:
+            if t not in mappings:
+                logging.warning(f"Could not map term: {t}")
+        return mappings
+
+    def serialize_object(self, example: EXAMPLE, cls: ClassDefinition = None) -> str:
         if cls is None:
             cls = self.template_class
         if isinstance(example, str):
@@ -162,52 +185,33 @@ class KnowledgeExtractor(object):
         sv = self.schemaview
         if slot.range in sv.all_classes():
             if self.labelers:
-                for labeler in self.labelers:
+                labelers = list(self.labelers)
+            else:
+                labelers = []
+            labelers += self.get_annotators(sv.get_class(slot.range))
+            if labelers:
+                for labeler in labelers:
                     label = labeler.label(val)
                     if label:
                         return label
         return val
 
-    def _get_openai_api_key(self):
-        """Get the OpenAI API key from the environment."""
-        # return os.environ.get("OPENAI_API_KEY")
-        return get_apikey_value("openai")
-
-    def _raw_extract(self, text, cls: ClassDefinition = None) -> str:
+    def _raw_extract(self, text, cls: ClassDefinition = None, object: OBJECT = None) -> str:
         """
         Extract annotations from the given text.
 
         :param text:
         :return:
         """
-        prompt = self.get_completion_prompt(cls, text)
+        prompt = self.get_completion_prompt(cls, text, object=object)
         self.last_prompt = prompt
-        full_text = f"{prompt}\n\nText:\n{text}\n\n===\n\n"
-        payload = self.client.complete(full_text)
+        full_text = prompt
+        payload = self.client.complete(prompt)
         return payload
 
-    def _get_template_class(self, template: str) -> ClassDefinition:
-        """Get the class for the given template."""
-        logging.info(f"Loading schema for {template}")
-        module_name, class_name = template.split(".", 1)
-        templates_path = this_path / "templates"
-        path_to_template = str(templates_path / f"{module_name}.yaml")
-        mod = importlib.import_module(f"semantic_llama.templates.{module_name}")
-        self.template_module = mod
-        self.template_pyclass = mod.__dict__[class_name]
-        sv = SchemaView(path_to_template)
-        self.schemaview = sv
-        logging.info(f"Getting class for template {template}")
-        cls = None
-        for c in sv.all_classes().values():
-            if c.name == class_name:
-                cls = c
-                break
-        if not cls:
-            raise ValueError(f"Template {template} not found")
-        return cls
-
-    def get_completion_prompt(self, cls: ClassDefinition = None, text: str = None) -> str:
+    def get_completion_prompt(
+        self, cls: ClassDefinition = None, text: str = None, object: OBJECT = None
+    ) -> str:
         """Get the prompt for the given template."""
         if cls is None:
             cls = self.template_class
@@ -218,10 +222,10 @@ class KnowledgeExtractor(object):
         else:
             prompt = "Split the following piece of text into fields in the following format:\n\n"
         for slot in self.schemaview.class_induced_slots(cls.name):
-            if "prompt.skip" in slot.annotations:
+            if ANNOTATION_KEY_PROMPT_SKIP in slot.annotations:
                 continue
-            if "prompt" in slot.annotations:
-                slot_prompt = slot.annotations["prompt"].value
+            if ANNOTATION_KEY_PROMPT in slot.annotations:
+                slot_prompt = slot.annotations[ANNOTATION_KEY_PROMPT].value
             elif slot.description:
                 slot_prompt = slot.description
             else:
@@ -231,6 +235,16 @@ class KnowledgeExtractor(object):
                     slot_prompt = f"the value for {slot.name}"
             prompt += f"{slot.name}: <{slot_prompt}>\n"
         # prompt += "Do not answer if you don't know\n\n"
+        prompt = f"{prompt}\n\nText:\n{text}\n\n===\n\n"
+        if object:
+            if cls is None:
+                cls = self.template_class
+            if isinstance(object, pydantic.BaseModel):
+                object = object.dict()
+            for k, v in object.items():
+                if v:
+                    slot = self.schemaview.induced_slot(k, cls.name)
+                    prompt += f"{k}: {self._serialize_value(v, slot)}\n"
         return prompt
 
     def _parse_response_to_dict(
@@ -314,6 +328,9 @@ class KnowledgeExtractor(object):
                 for sep in [" - ", ":", "/", "*", "-"]:
                     if all([sep in v for v in vals]):
                         vals = [dict(zip(slots_of_range, v.split(sep, 1))) for v in vals]
+                        for v in vals:
+                            for k in v.keys():
+                                v[k] = v[k].strip()
                         transformed = True
                         break
                 if not transformed:
@@ -336,7 +353,7 @@ class KnowledgeExtractor(object):
 
         :param results:
         :param cls:
-        :param object:
+        :param object: stub object
         :return:
         """
         raw = self._parse_response_to_dict(results, cls)
@@ -417,7 +434,10 @@ class KnowledgeExtractor(object):
             if obj:
                 if self.named_entities is None:
                     self.named_entities = []
-                obj.id = text
+                try:
+                    obj.id = text
+                except ValueError as e:
+                    logging.error(f"No id for {obj} {e}")
                 self.named_entities.append(obj)
         return text
 
@@ -437,10 +457,10 @@ class KnowledgeExtractor(object):
         if self.annotators and cls.name in self.annotators:
             annotators = self.annotators[cls.name]
         else:
-            if "annotators" not in cls.annotations:
-                logging.error(f"No annotators for {cls.name}")
+            if ANNOTATION_KEY_ANNOTATORS not in cls.annotations:
+                logging.error(f"ground_text: No annotators for {cls.name}")
                 return
-            annotators = cls.annotations["annotators"].value.split(", ")
+            annotators = cls.annotations[ANNOTATION_KEY_ANNOTATORS].value.split(", ")
         logging.info(f" Annotators: {annotators}")
         for annotator in annotators:
             if isinstance(annotator, str):
@@ -452,13 +472,3 @@ class KnowledgeExtractor(object):
                     return result
             except Exception as e:
                 logging.error(f"Error with {annotator} for {text}: {e}")
-
-    def cached_completions(self, search_term: str = None, engine: str = None) -> Iterator[Tuple[str, str]]:
-        if engine is None:
-            engine = self.engine
-        cur = self.client.db_connection()
-        res = cur.execute("SELECT prompt, payload FROM cache WHERE engine=?", (engine,))
-        for row in res:
-            if search_term and search_term not in row[0]:
-                continue
-            yield row

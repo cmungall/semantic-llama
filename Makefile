@@ -10,7 +10,7 @@ test:
 	$(RUN) pytest
 
 $(TEMPLATE_DIR)/%.py: src/$(PACKAGE)/templates/%.yaml
-	$(RUN) gen-pydantic $< > $@
+	$(RUN) gen-pydantic $< > $@.tmp && mv $@.tmp $@
 
 %.py: %.yaml
 	$(RUN) gen-pydantic $< > $@

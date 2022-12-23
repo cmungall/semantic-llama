@@ -28,85 +28,143 @@ named_entities:
   label: TRIM31
 - id: HGNC:16400
   label: NLRP3
+- id: HGNC:5992
+  label: "IL-1\u03B2"
+- id: CHEBI:CHEBI:16412
+  label: LPS
 - id: MESH:D006801
   label: Homo sapiens
-- id: HGNC:16289
+- id: NCBITaxon:10090
+  label: Mus musculus
+- id: TRIM31*
   label: TRIM31
 - id: MESH:D006801
   label: Homo sapiens
-- id: HGNC:16400
+- id: NLRP3*
   label: NLRP3
 - id: MESH:D006801
   label: Homo sapiens
+- id: "IL-1\u03B2*"
+  label: "IL-1\u03B2"
+- id: MESH:D006801
+  label: Homo sapiens
+- id: LPS*
+  label: LPS
+- id: MESH:D006801
+  label: Homo sapiens
+- id: GO:0005488
+  label: binding
+- id: K48-linked polyubiquitination
+  label: K48-linked polyubiquitination
 - id: proteasomal degradation
   label: Proteasomal Degradation
+- id: expression
+  label: Expression
+- id: secrection
+  label: secrection
+- id: TRIM31*
+  label: TRIM31
+- id: GO:0005488
+  label: binding
+- id: TRIM31*
+  label: TRIM31
 - id: K48-linked polyubiquitination
   label: K48-linked polyubiquitination
 - id: TRIM31*
   label: TRIM31
 - id: proteasomal degradation
   label: Proteasomal Degradation
-- id: TRIM31*,
-  label: TRIM31*
-- id: K48-linked polyubiquitination
-  label: K48-linked polyubiquitination
-- id: GO:0044546
-  label: NLRP3 inflammasome activation
-- id: NLRP3 expression regulation
-  label: NLRP3 Expression Regulation
-- id: host defence against microbial pathogens
-  label: Host Defence Against Microbial Pathogens
+- id: NLRP3*
+  label: NLRP3
+- id: Expression
+  label: Expression
+- id: "IL-1\u03B2*"
+  label: "IL-1\u03B2"
+- id: GO:0046903
+  label: secretion
+- id: inflammasome activation
+  label: inflammasome activation
 - id: immune homeostasis
   label: Immune Homeostasis
-- id: HGNC:16289
+- id: NLRP3 inflammasome
+  label: NLRP3 inflammasome
+- id: TRIM31*
   label: TRIM31
 - id: HGNC:16400
   label: NLRP3
+- id: "IL-1\u03B2*"
+  label: "IL-1\u03B2"
+- id: CHEBI:CHEBI:16412
+  label: LPS
+- id: TRIM31*
+  label: TRIM31
+- id: GO:0005737
+  label: cytoplasm
 - id: HGNC:16400
   label: NLRP3
-- id: subcellular localization
-  label: subcellular localization
+- id: GO:0005739
+  label: mitochondrion
 prompt: 'Split the following piece of text into fields in the following format:
 
 
   label: <The label of the named thing>
 
   '
-raw_completion_output: "\ngenes: TRIM31; NLRP3;\norganisms: Homo sapiens;\ngene_organisms:\
-  \ TRIM31*Homo sapiens; NLRP3*Homo sapiens;\nactivities: proteasomal degradation;\
-  \ K48-linked polyubiquitination;\ngene_functions: TRIM31*proteasomal degradation;\
-  \ TRIM31*K48-linked polyubiquitination;\ncellular_processes: NLRP3 inflammasome\
-  \ activation; NLRP3 expression regulation;\npathways: host defence against microbial\
-  \ pathogens; immune homeostasis; \ngene_gene_interactions: TRIM31*NLRP3;\ngene_localizations:\
-  \ NLRP3*subcellular localization."
+raw_completion_output: "\ngenes: TRIM31; NLRP3; IL-1\u03B2; LPS\norganisms: Homo sapiens;\
+  \ Mus musculus\ngene_organisms: TRIM31*:Homo sapiens; NLRP3*:Homo sapiens; IL-1\u03B2\
+  *:Homo sapiens; LPS*:Homo sapiens\nactivities: binding; K48-linked polyubiquitination;\
+  \ proteasomal degradation; expression; secrection\ngene_functions: TRIM31*:binding;\
+  \ TRIM31*:K48-linked polyubiquitination; TRIM31*:proteasomal degradation; NLRP3*:expression;\
+  \ IL-1\u03B2*:secretion\ncellular_processes: inflammasome activation; immune homeostasis\n\
+  pathways: NLRP3 inflammasome\ngene_gene_interactions: TRIM31*:NLRP3; IL-1\u03B2\
+  *:LPS\ngene_localizations: TRIM31*/cytoplasm; NLRP3*/mitochondrion"
 results:
   activities:
-  - proteasomal degradation
+  - GO:0005488
   - K48-linked polyubiquitination
+  - proteasomal degradation
+  - expression
+  - secrection
   cellular_processes:
-  - GO:0044546
-  - NLRP3 expression regulation
+  - inflammasome activation
+  - immune homeostasis
   gene_functions:
   - gene: TRIM31*
-    molecular_activity: proteasomal degradation
-  - gene: TRIM31*,
+    molecular_activity: GO:0005488
+  - gene: TRIM31*
     molecular_activity: K48-linked polyubiquitination
+  - gene: TRIM31*
+    molecular_activity: proteasomal degradation
+  - gene: NLRP3*
+    molecular_activity: Expression
+  - gene: "IL-1\u03B2*"
+    molecular_activity: GO:0046903
   gene_gene_interactions:
-  - gene1: HGNC:16289
+  - gene1: TRIM31*
     gene2: HGNC:16400
+  - gene1: "IL-1\u03B2*"
+    gene2: CHEBI:CHEBI:16412
   gene_localizations:
+  - gene: TRIM31*
+    location: GO:0005737
   - gene: HGNC:16400
-    location: subcellular localization
+    location: GO:0005739
   gene_organisms:
-  - gene: HGNC:16289
+  - gene: TRIM31*
     organism: MESH:D006801
-  - gene: HGNC:16400
+  - gene: NLRP3*
+    organism: MESH:D006801
+  - gene: "IL-1\u03B2*"
+    organism: MESH:D006801
+  - gene: LPS*
     organism: MESH:D006801
   genes:
   - HGNC:16289
   - HGNC:16400
+  - HGNC:5992
+  - CHEBI:CHEBI:16412
   organisms:
   - MESH:D006801
+  - NCBITaxon:10090
   pathways:
-  - host defence against microbial pathogens
-  - immune homeostasis
+  - NLRP3 inflammasome

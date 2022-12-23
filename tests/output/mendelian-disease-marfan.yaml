@@ -1,45 +1,507 @@
-input_file: /Users/cjm/repos/semantic-llama/tests/input/cases/mendelian-disease-marfan.txt
+input_id: /Users/cjm/repos/semantic-llama/tests/input/cases/mendelian-disease-marfan.txt
+input_text: Marfan syndrome is a genetic disorder that affects connective tissue,
+  which is the material between cells of the body that gives the tissues form and
+  strength. Connective tissue is found all over the body and multiple organ systems
+  may be affected in individuals with Marfan syndrome. The heart and blood vessels
+  (cardiovascular), skeletal, and eye (ocular) systems are most often affected. Major
+  symptoms include overgrowth of the long bones of the arms and legs, abnormal side-to-side
+  curvature of the spine (scoliosis), indentation or protrusion of the chest wall
+  (pectus deformity), dislocation of the lenses of the eyes (ectopia lentis), nearsightedness
+  (myopia), widening (aneurysm) and tear (dissection) of the main artery that carries
+  blood away from the heart (aorta), floppiness of the mitral valve (mitral valve
+  prolapse) and backward flow of blood through the aortic and mitral valves (aortic
+  and mitral regurgitation). The specific symptoms and the severity of Marfan syndrome
+  vary greatly from person to person. Marfan syndrome is inherited as an autosomal
+  dominant trait, meaning that only one abnormal copy of the Marfan gene inherited
+  from one parent is sufficient to have the condition. Defects or deletions (pathogenic
+  variants) of the fibrillin-1 (FBN1) gene have been shown to cause Marfan syndrome.
+input_title: null
 named_entities:
-- id: HP:0000007
-  label: Autosomal Recessive
-- id: HGNC:4696
-  label: Beta-glucuronidase
-- id: HP:0000545
-  label: Nearsightedness
+- id: N/A
+  label: N/A
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Unknown
+  characteristic: In some patients
+  id: Facial muscle weakness (in some patients)
+  label: Facial muscle weakness
+  onset_of_symptom: Unknown
+  severity: Unknown
+- affects: null
+  characteristic: in some patients
+  id: Ptosis (in some patients)
+  label: Ptosis
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Unknown
+  characteristic: In some patients
+  id: High-arched palate (in some patients)
+  label: High-arched palate
+  onset_of_symptom: Unknown
+  severity: Unknown
+- id: HP:0001371
+  label: Joint contractures
+- affects: null
+  characteristic: In some Patients
+  id: Scoliosis (in some patients)
+  label: Scoliosis
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Hands
+  characteristic: Claw hand shape
+  id: Claw hand deformities (in severe cases)
+  label: Claw hand deformities
+  onset_of_symptom: Unknown
+  severity: Severe
+- id: HP:0001761
+  label: Pes cavus
+- decades: []
+  id: Early childhood - adulthood
+  juvenile_or_adult: null
+  label: null
+  years_old: Early childhood - adulthood
+- affects: Foot
+  characteristic: Toe deformity
+  id: Hammer toes
+  label: Hammer toes
+  onset_of_symptom: Early childhood - adulthood
+  severity: Mild - Severe
+- id: HP:0001760
+  label: Foot deformities
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Muscles
+  characteristic: In some patients
+  id: Shoulder muscle weakness (in some patients)
+  label: Shoulder muscle weakness
+  onset_of_symptom: Unknown
+  severity: Unknown
+- id: HP:0006006
+  label: Hypotrophy of the small hand muscles
+- decades:
+  - Not applicable
+  id: Not applicable
+  juvenile_or_adult: Not applicable
+  label: Not applicable
+  years_old: Not applicable
+- affects: Muscle
+  characteristic: in some patients
+  id: Fiber-type predominance seen on muscle biopsy (in some patients)
+  label: Fiber-type predominance seen on muscle biopsy
+  onset_of_symptom: Not applicable
+  severity: Not applicable
+- affects: null
+  characteristic: In some patients
+  id: Fiber size variation (in some patients)
+  label: Fiber size variation
+  onset_of_symptom: null
+  severity: null
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: N/A
+  characteristic: In some patients
+  id: Internal nuclei (in some patients)
+  label: Internal nuclei
+  onset_of_symptom: N/A
+  severity: N/A
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: N/A
+  characteristic: In some patients
+  id: Increased connective tissue (in some patients)
+  label: Increased connective tissue
+  onset_of_symptom: N/A
+  severity: N/A
+- affects: null
+  characteristic: in some patients
+  id: Nemaline rods (in some patients)
+  label: Nemaline rods
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Some patients
+  characteristic: Atrophy
+  id: Group fiber atrophy (in some patients)
+  label: Group fiber atrophy
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Unknown
+  characteristic: present in some patients
+  id: Angular fibers (in some patients)
+  label: Angular fibers
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: neurogenic disorder
+  characteristic: consistent
+  id: EMG consistent with chronic neurogenic disorder
+  label: EMG
+  onset_of_symptom: N/A
+  severity: chronic
+- decades:
+  - undefined
+  id: undefined
+  juvenile_or_adult: undefined
+  label: undefined
+  years_old: undefined
+- affects: undefined
+  characteristic: in some patients
+  id: Delayed motor development (in some patients)
+  label: Delayed motor development
+  onset_of_symptom: undefined
+  severity: undefined
+- id: HP:0002460
+  label: Distal limb muscle weakness due to peripheral neuropathy
+- decades: []
+  id: distal limb
+  juvenile_or_adult: null
+  label: distal limb
+  years_old: null
+- affects: peripheral neuropathy
+  characteristic: muscle atrophy
+  id: Distal limb muscle atrophy due to peripheral neuropathy
+  label: Distal limb muscle atrophy
+  onset_of_symptom: distal limb
+  severity: due to
+- decades:
+  - N/A
+  id: Gradual over weeks to months
+  juvenile_or_adult: N/A
+  label: Gradual over weeks to months
+  years_old: N/A
+- affects: Walking
+  characteristic: Difficulty in initiating and controlling steps
+  id: '''Steppage'' gait'
+  label: '''Steppage'' gait'
+  onset_of_symptom: Gradual over weeks to months
+  severity: Moderate
+- id: HP:0009027
+  label: Foot drop
+- id: HP:0002936
+  label: Distal sensory impairment
+- id: HP:0001265
+  label: Hyporeflexia
+- id: HP:0001284
+  label: Areflexia
 - id: HP:0000006
   label: Autosomal dominant
-results:
-  description: A genetic disorder that affects connective tissue
-  genes:
-  - Fibrillin-1 (FBN1) gene
-  inheritance: HP:0000006
-  name: Marfan Syndrome
-  subclass_of:
+- id: NEFL, 162280.0001
+  label: NEFL
+- id: UBERON:0007023
+  label: adult
+- id: PATO:0001190
+  label: juvenile
+- decades:
+  - '1'
+  id: first decade
+  juvenile_or_adult: juvenile
+  label: first decade
+  years_old: '1'
+- id: Autosomal dominant Charcot-Marie-Tooth disorder
+  label: Autosomal dominant Charcot-Marie-Tooth disorder
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Walking or running
+  characteristic: Difficulty
+  id: Difficulty in walking or running
+  label: Difficulty in walking or running
+  onset_of_symptom: Unknown
+  severity: Unknown
+- id: HP:0003677
+  label: slowly progressive
+- affects: lower limbs
+  characteristic: slowly progressive distal weakness and wasting of the lower limbs
+  id: slowly progressive distal weakness and wasting of the lower limbs
+  label: unspecified
+  onset_of_symptom: HP:0003677
+  severity: unspecified
+- id: HP:0003376
+  label: steppage gait
+- id: HP:0001761
+  label: pes cavus
+- id: HP:0001765
+  label: hammertoes
+- decades: []
+  id: Present at birth
+  juvenile_or_adult: juvenile
+  label: Present at birth
+  years_old: '0'
+- affects: Hands
+  characteristic: Curved fingers
+  id: claw hands
+  label: Claw hands
+  onset_of_symptom: Present at birth
+  severity: Moderate to severe
+- affects: upper limb
+  characteristic: involvement
+  id: upper limb involvement
+  label: upper limb involvement
+  onset_of_symptom: null
+  severity: null
+- id: MONDO:0015626
+  label: peroneal muscular atrophy
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: stocking and glove distribution
+  characteristic: decreased vibration sense
+  id: decreased vibration sense with stocking and glove distribution
+  label: Neuropathy symptom
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades:
+  - Undefined
+  id: Undefined
+  juvenile_or_adult: Undefined
+  label: Undefined
+  years_old: Undefined
+- affects: Hand muscles
+  characteristic: Atrophy
+  id: hypotrophy of the hand muscles
+  label: Hypotrophy of the hand muscles
+  onset_of_symptom: Undefined
+  severity: Undefined
+- id: HP:0000006
+  label: Autosomal Dominant
+- id: HGNC:7739
+  label: NEFL
+- decades:
+  - Second
+  - Third
+  id: Second and third decade
+  juvenile_or_adult: Adult
+  label: Decade
+  years_old: 20-30
+- decades:
+  - '1'
+  id: first decade
+  juvenile_or_adult: juvenile
+  label: first decade
+  years_old: '1'
+- decades:
+  - '2'
+  id: second decade
+  juvenile_or_adult: juvenile
+  label: second decade
+  years_old: '10'
+- id: N/A
+  label: N/A
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Many tissues and organs
+  characteristic: Buildup
+  id: Buildup of glycosaminoglycans (GAGs) in many tissues and organs
+  label: Glycosaminoglycans (GAGs)
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades:
   - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: varies widely
+  characteristic: Severity
+  id: Severity of the disease varies widely
+  label: disease
+  onset_of_symptom: N/A
+  severity: varies widely
+- id: HP:0000007
+  label: Autosomal recessive
+- id: HGNC:4696
+  label: Beta-glucuronidase
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- id: n/a
+  label: n/a
+- decades:
+  - N/A
+  id: N/A
+  juvenile_or_adult: N/A
+  label: N/A
+  years_old: N/A
+- affects: Overgrowth
+  characteristic: Long bones of arms and legs
+  id: Overgrowth of long bones of arms and legs
+  label: Overgrowth of long bones of arms and legs
+  onset_of_symptom: N/A
+  severity: N/A
+- decades:
+  - n/a
+  id: n/a
+  juvenile_or_adult: n/a
+  label: n/a
+  years_old: n/a
+- affects: spine
+  characteristic: side-to-side curvature of spine
+  id: abnormal side-to-side curvature of spine (scoliosis)
+  label: abnormal side-to-side curvature of spine (scoliosis)
+  onset_of_symptom: n/a
+  severity: abnormal
+- affects: Chest wall
+  characteristic: Indentation or protrusion of chest wall
+  id: indentation or protrusion of chest wall (pectus deformity)
+  label: Pectus deformity
+  onset_of_symptom: null
+  severity: null
+- decades: []
+  id: Variable
+  juvenile_or_adult: juvenile
+  label: Variable
+  years_old: '0'
+- affects: Eyes
+  characteristic: Dislocation of lenses of eyes
+  id: dislocation of lenses of eyes (ectopia lentis)
+  label: Dislocation of lenses of eyes (ectopia lentis)
+  onset_of_symptom: Variable
+  severity: Variable
+- decades: []
+  id: Generally during childhood
+  juvenile_or_adult: juvenile
+  label: Generally
+  years_old: childhood
+- affects: Vision
+  characteristic: Difficulty seeing faraway objects
+  id: nearsightedness (myopia)
+  label: Nearsightedness (myopia)
+  onset_of_symptom: Generally during childhood
+  severity: Varies
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: Main Artery
+  characteristic: Widening/Tear
+  id: widening (aneurysm) and tear (dissection) of the main artery that carries blood
+    away from the heart (its aorta)
+  label: Aortic Aneurysm/Dissection
+  onset_of_symptom: Unknown
+  severity: Unknown
+- decades: []
+  id: Unknown
+  juvenile_or_adult: Unknown
+  label: Unknown
+  years_old: Unknown
+- affects: mitral valve, aortic valve, and mitral valves
+  characteristic: floppiness
+  id: floppiness of the mitral valve (mitral valve prolapse) and backward flow of
+    blood through the aortic and mitral valves (aortic and mitral regurgitation)
+  label: mitral valve prolapse and aortic and mitral regurgitation
+  onset_of_symptom: Unknown
+  severity: Backward flow of blood through the valves
+- id: HP:0000006
+  label: Autosomal Dominant
+- id: HGNC:3603
+  label: FBN1
+- id: UBERON:0007023
+  label: Adult
+- id: PATO:0001190
+  label: juvenile
+- decades:
+  - '1'
+  id: first decade
+  juvenile_or_adult: juvenile
+  label: first decade
+  years_old: '1'
+prompt: 'Split the following piece of text into fields in the following format:
+
+
+  years_old: <the value for years_old>
+
+  decades: <semicolon-separated list of decadess>
+
+  juvenile_or_adult: <the value for juvenile_or_adult>
+
+  label: <The label of the named thing>
+
+  '
+raw_completion_output: "Name: Marfan Syndrome \nDescription: A genetic disorder affecting\
+  \ connective tissue that gives tissues form and strength; multiple organ systems\
+  \ may be affected\nSynonyms: Marfan'S Syndrome, Frequency Marfan Syndrome, Marfans\
+  \ Syndrome\nSubclass_of: n/a\nSymptoms: Overgrowth of long bones of arms and legs;\
+  \ abnormal side-to-side curvature of spine (scoliosis); indentation or protrusion\
+  \ of chest wall (pectus deformity); dislocation of lenses of eyes (ectopia lentis);\
+  \ nearsightedness (myopia); widening (aneurysm) and tear (dissection) of the main\
+  \ artery that carries blood away from the heart (its aorta); floppiness of the mitral\
+  \ valve (mitral valve prolapse) and backward flow of blood through the aortic and\
+  \ mitral valves (aortic and mitral regurgitation)\nInheritance: Autosomal Dominant\n\
+  Genes: FBN1\nDisease_onsets: Adult; juvenile; first decade\nLabel: N/A"
+results:
+  description: A genetic disorder affecting connective tissue that gives tissues form
+    and strength; multiple organ systems may be affected
+  disease_onsets:
+  - UBERON:0007023
+  - PATO:0001190
+  - first decade
+  genes:
+  - HGNC:3603
+  id: null
+  inheritance: HP:0000006
+  label: N/A
+  name: Marfan Syndrome
+  publications: []
+  subclass_of:
+  - n/a
   symptoms:
-  - Overgrowth of the long bones of the arms and legs
-  - Abnormal side-to-side curvature of the spine
-  - Indentation or protrusion of the chest wall
-  - Dislocation of the lenses of the eyes
-  - HP:0000545
-  - Widening and tear of the main artery that carries blood away from the heart
-  - Floppiness of the mitral valve
-  - Backward flow of blood through the aortic and mitral valves
+  - Overgrowth of long bones of arms and legs
+  - abnormal side-to-side curvature of spine (scoliosis)
+  - indentation or protrusion of chest wall (pectus deformity)
+  - dislocation of lenses of eyes (ectopia lentis)
+  - nearsightedness (myopia)
+  - widening (aneurysm) and tear (dissection) of the main artery that carries blood
+    away from the heart (its aorta)
+  - floppiness of the mitral valve (mitral valve prolapse) and backward flow of blood
+    through the aortic and mitral valves (aortic and mitral regurgitation)
   synonyms:
-  - Marfsan Syndrome
-text: Marfan syndrome is a genetic disorder that affects connective tissue, which
-  is the material between cells of the body that gives the tissues form and strength.
-  Connective tissue is found all over the body and multiple organ systems may be affected
-  in individuals with Marfan syndrome. The heart and blood vessels (cardiovascular),
-  skeletal, and eye (ocular) systems are most often affected. Major symptoms include
-  overgrowth of the long bones of the arms and legs, abnormal side-to-side curvature
-  of the spine (scoliosis), indentation or protrusion of the chest wall (pectus deformity),
-  dislocation of the lenses of the eyes (ectopia lentis), nearsightedness (myopia),
-  widening (aneurysm) and tear (dissection) of the main artery that carries blood
-  away from the heart (aorta), floppiness of the mitral valve (mitral valve prolapse)
-  and backward flow of blood through the aortic and mitral valves (aortic and mitral
-  regurgitation). The specific symptoms and the severity of Marfan syndrome vary greatly
-  from person to person. Marfan syndrome is inherited as an autosomal dominant trait,
-  meaning that only one abnormal copy of the Marfan gene inherited from one parent
-  is sufficient to have the condition. Defects or deletions (pathogenic variants)
-  of the fibrillin-1 (FBN1) gene have been shown to cause Marfan syndrome.
+  - Marfan'S Syndrome, Frequency Marfan Syndrome, Marfans Syndrome

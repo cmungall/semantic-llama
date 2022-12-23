@@ -42,231 +42,258 @@ named_entities:
   label: TRIM31
 - id: HGNC:16400
   label: NLRP3
+- id: HGNC:5992
+  label: "IL-1\u03B2"
+- id: CHEBI:CHEBI:16412
+  label: LPS
 - id: MESH:D006801
   label: Homo sapiens
-- id: HGNC:16289
+- id: NCBITaxon:10090
+  label: Mus musculus
+- id: TRIM31*
   label: TRIM31
 - id: MESH:D006801
   label: Homo sapiens
-- id: HGNC:16400
+- id: NLRP3*
   label: NLRP3
 - id: MESH:D006801
   label: Homo sapiens
+- id: "IL-1\u03B2*"
+  label: "IL-1\u03B2"
+- id: MESH:D006801
+  label: Homo sapiens
+- id: LPS*
+  label: LPS
+- id: MESH:D006801
+  label: Homo sapiens
+- id: GO:0005488
+  label: binding
+- id: K48-linked polyubiquitination
+  label: K48-linked polyubiquitination
 - id: proteasomal degradation
   label: Proteasomal Degradation
+- id: expression
+  label: Expression
+- id: secrection
+  label: secrection
+- id: TRIM31*
+  label: TRIM31
+- id: GO:0005488
+  label: binding
+- id: TRIM31*
+  label: TRIM31
 - id: K48-linked polyubiquitination
   label: K48-linked polyubiquitination
 - id: TRIM31*
   label: TRIM31
 - id: proteasomal degradation
   label: Proteasomal Degradation
-- id: TRIM31*,
-  label: TRIM31*
-- id: K48-linked polyubiquitination
-  label: K48-linked polyubiquitination
-- id: GO:0044546
-  label: NLRP3 inflammasome activation
-- id: NLRP3 expression regulation
-  label: NLRP3 Expression Regulation
-- id: host defence against microbial pathogens
-  label: Host Defence Against Microbial Pathogens
+- id: NLRP3*
+  label: NLRP3
+- id: Expression
+  label: Expression
+- id: "IL-1\u03B2*"
+  label: "IL-1\u03B2"
+- id: GO:0046903
+  label: secretion
+- id: inflammasome activation
+  label: inflammasome activation
 - id: immune homeostasis
   label: Immune Homeostasis
-- id: HGNC:16289
+- id: NLRP3 inflammasome
+  label: NLRP3 inflammasome
+- id: TRIM31*
   label: TRIM31
 - id: HGNC:16400
   label: NLRP3
+- id: "IL-1\u03B2*"
+  label: "IL-1\u03B2"
+- id: CHEBI:CHEBI:16412
+  label: LPS
+- id: TRIM31*
+  label: TRIM31
+- id: GO:0005737
+  label: cytoplasm
 - id: HGNC:16400
   label: NLRP3
-- id: subcellular localization
-  label: subcellular localization
+- id: GO:0005739
+  label: mitochondrion
 - id: HGNC:5992
-  label: "IL-1\u03B2"
-- id: HGNC:5993
-  label: IL-1R
-- id: HGNC:5992
-  label: IL1b
+  label: Il1b
 - id: HGNC:5993
   label: Il1r1
 - id: HGNC:16400
   label: NLRP3
 - id: HGNC:1499
   label: caspase-1
-- id: MESH:D051379
-  label: Mouse
-- id: MESH:D051379
-  label: Mice
-- id: MESH:D008264
-  label: Bone Marrow-Derived Macrophages
+- id: F4/80
+  label: F4/80
+- id: NCBITaxon:10090
+  label: Mus Musculus
 - id: HGNC:5992
-  label: "IL-1\u03B2"
-- id: MESH:D051379
-  label: Mouse
-- id: IL-1R*
-  label: IL-1R*
-- id: MESH:D051379
-  label: Mouse
-- id: HGNC:5992
-  label: IL1b
-- id: MESH:D051379
-  label: Mouse
+  label: Il1b
+- id: NCBITaxon:10090
+  label: Mus Musculus
 - id: HGNC:5993
   label: Il1r1
-- id: MESH:D051379
-  label: Mouse
+- id: NCBITaxon:10090
+  label: Mus Musculus
 - id: HGNC:16400
   label: NLRP3
-- id: MESH:D051379
-  label: Mouse
+- id: NCBITaxon:10090
+  label: Mus Musculus
 - id: HGNC:1499
   label: caspase-1
-- id: MESH:D051379
-  label: Mouse
-- id: GO:0006954
-  label: Inflammatory Response
-- id: Suppressing of Detrimental Inflammasome
-  label: Suppressing of Detrimental Inflammasome
+- id: NCBITaxon:10090
+  label: Mus Musculus
+- id: F4/80
+  label: F4/80
+- id: NCBITaxon:10090
+  label: Mus Musculus
+- id: targeting
+  label: Targeting
+- id: suppressing
+  label: suppressing
+- id: validating
+  label: validating
 - id: HGNC:5992
-  label: "IL-1\u03B2"
-- id: GO:0006954
-  label: Inflammatory Response
-- id: IL-1R*
-  label: IL-1R*
-- id: Suppressing of Detrimental Inflammasome
-  label: Suppressing of Detrimental Inflammasome
-- id: HGNC:5992
-  label: IL1b
-- id: GO:0006954
-  label: Inflammatory Response
+  label: Il1b
+- id: targeting
+  label: Targeting
 - id: HGNC:5993
   label: Il1r1
-- id: Suppressing of Detrimental Inflammasome
-  label: Suppressing of Detrimental Inflammasome
+- id: targeting
+  label: Targeting
 - id: HGNC:16400
   label: NLRP3
-- id: GO:0006954
-  label: Inflammatory Response
+- id: targeting
+  label: Targeting
 - id: HGNC:1499
   label: caspase-1
-- id: GO:0006954
-  label: Inflammatory Response
-- id: Photoreceptor Cell Death
-  label: Photoreceptor Cell Death
-- id: Retinal Explants Co-culture
-  label: Retinal Explants Co-culture
-- id: Activation of Bone Marrow-Derived Macrophages
-  label: Activation of Bone Marrow-Derived Macrophages
-- id: Blue Light-Induced Retinal Degeneration
-  label: Blue Light-Induced Retinal Degeneration
-- id: IL-1R Allosteric Modulation
-  label: IL-1R Allosteric Modulation
+- id: targeting
+  label: Targeting
+- id: F4/80
+  label: F4/80
+- id: Targeting
+  label: Targeting
+- id: MESH:C529594
+  label: rytvela
+- id: suppressing
+  label: suppressing
+- id: Kineret
+  label: Kineret
+- id: suppressing
+  label: suppressing
+- id: neuro-retinal degeneration
+  label: Neuro-retinal Degeneration
+- id: neuronal ativation
+  label: Neuronal Activation
+- id: macrophage-induced photoreceptor death
+  label: Macrophage-induced Photoreceptor Death
+- id: interleukin-1 pathway
+  label: interleukin-1 pathway
 - id: HGNC:5992
-  label: "IL-1\u03B2"
-- id: HGNC:5993
-  label: IL-1R
-- id: HGNC:5992
-  label: IL1b
+  label: Il1b
 - id: HGNC:5993
   label: Il1r1
+- id: HGNC:16400
+  label: NLRP3
+- id: HGNC:1499
+  label: caspase-1
 - id: HGNC:5992
-  label: "IL-1\u03B2"
-- id: Subretinal Space
-  label: Subretinal Space
-- id: HGNC:5993
-  label: IL-1R
-- id: Astrocytes
-  label: Astrocytes
-- id: HGNC:5993
-  label: IL-1R
-- id: Bipolar
-  label: Bipolar
-- id: HGNC:5993
-  label: IL-1R
-- id: Vascular Cells
-  label: Vascular Cells
-- id: HGNC:5992
-  label: IL1b
+  label: Il1b
 - id: Perivascular Macrophages
   label: Perivascular Macrophages
+- id: HGNC:5993
+  label: Il1r1
+- id: astrocytes, bipolar, and vascular cells
+  label: null
+- id: HGNC:16400
+  label: NLRP3
+- id: subretinal space
+  label: subretinal space
+- id: HGNC:1499
+  label: caspase-1
+- id: subretinal space
+  label: subretinal space
+- id: F4/80
+  label: F4/80
+- id: mononuclear phagocytes
+  label: Mononuclear Phagocytes
 prompt: 'Split the following piece of text into fields in the following format:
 
 
   label: <The label of the named thing>
 
   '
-raw_completion_output: "\ngenes: IL-1\u03B2; IL-1R; IL1b; Il1r1; NLRP3; caspase-1\n\
-  organisms: Mouse; Mice; Bone Marrow-Derived Macrophages\ngene_organisms: IL-1\u03B2\
-  *Mouse; IL-1R*Mouse; IL1b*Mouse; Il1r1*Mouse; NLRP3*Mouse; caspase-1*Mouse\nactivities:\
-  \ Inflammatory Response; Suppressing of Detrimental Inflammasome\ngene_functions:\
-  \ IL-1\u03B2*Inflammatory Response; IL-1R*Suppressing of Detrimental Inflammasome;\
-  \ IL1b*Inflammatory Response; Il1r1*Suppressing of Detrimental Inflammasome; NLRP3*Inflammatory\
-  \ Response; caspase-1*Inflammatory Response\ncellular_processes: Photoreceptor Cell\
-  \ Death; Retinal Explants Co-culture; Activation of Bone Marrow-Derived Macrophages\n\
-  pathways: Blue Light-Induced Retinal Degeneration; IL-1R Allosteric Modulation \n\
-  gene_gene_interactions: IL-1\u03B2*IL-1R; IL1b*Il1r1\ngene_localizations: IL-1\u03B2\
-  *Subretinal Space; IL-1R*Astrocytes; IL-1R*Bipolar; IL-1R*Vascular Cells; IL1b*Perivascular\
-  \ Macrophages"
+raw_completion_output: "\ngenes: Il1b; Il1r1; NLRP3; caspase-1; F4/80;\norganisms:\
+  \ Mus Musculus;\ngene_organisms: Il1b / Mus Musculus; Il1r1 / Mus Musculus; NLRP3\
+  \ / Mus Musculus; caspase-1 / Mus Musculus; F4/80 / Mus Musculus; \nactivities:\
+  \ targeting; suppressing; validating;\ngene_functions: Il1b / targeting; Il1r1 /\
+  \ targeting; NLRP3 / targeting; caspase-1 / targeting; F4/80 / targeting; rytvela\
+  \ / suppressing; Kineret / suppressing;\ncellular_processes: neuro-retinal degeneration;\
+  \ neuronal ativation; macrophage-induced photoreceptor death;\npathways: interleukin-1\
+  \ pathway;\ngene_gene_interactions: Il1b and Il1r1; NLRP3 and caspase-1;\ngene_localizations:\
+  \ Il1b / perivascular macrophages; Il1r1 / astrocytes, bipolar, and vascular cells;\
+  \ NLRP3 / subretinal space; caspase-1 / subretinal space; F4/80 / mononuclear phagocytes."
 results:
   activities:
-  - GO:0006954
-  - Suppressing of Detrimental Inflammasome
+  - targeting
+  - suppressing
+  - validating
   cellular_processes:
-  - Photoreceptor Cell Death
-  - Retinal Explants Co-culture
-  - Activation of Bone Marrow-Derived Macrophages
+  - neuro-retinal degeneration
+  - neuronal ativation
+  - macrophage-induced photoreceptor death
   gene_functions:
   - gene: HGNC:5992
-    molecular_activity: GO:0006954
-  - gene: IL-1R*
-    molecular_activity: Suppressing of Detrimental Inflammasome
-  - gene: HGNC:5992
-    molecular_activity: GO:0006954
+    molecular_activity: targeting
   - gene: HGNC:5993
-    molecular_activity: Suppressing of Detrimental Inflammasome
+    molecular_activity: targeting
   - gene: HGNC:16400
-    molecular_activity: GO:0006954
+    molecular_activity: targeting
   - gene: HGNC:1499
-    molecular_activity: GO:0006954
+    molecular_activity: targeting
+  - gene: F4/80
+    molecular_activity: Targeting
+  - gene: MESH:C529594
+    molecular_activity: suppressing
+  - gene: Kineret
+    molecular_activity: suppressing
   gene_gene_interactions:
   - gene1: HGNC:5992
     gene2: HGNC:5993
-  - gene1: HGNC:5992
-    gene2: HGNC:5993
+  - gene1: HGNC:16400
+    gene2: HGNC:1499
   gene_localizations:
   - gene: HGNC:5992
-    location: Subretinal Space
-  - gene: HGNC:5993
-    location: Astrocytes
-  - gene: HGNC:5993
-    location: Bipolar
-  - gene: HGNC:5993
-    location: Vascular Cells
-  - gene: HGNC:5992
     location: Perivascular Macrophages
+  - gene: HGNC:5993
+    location: astrocytes, bipolar, and vascular cells
+  - gene: HGNC:16400
+    location: subretinal space
+  - gene: HGNC:1499
+    location: subretinal space
+  - gene: F4/80
+    location: mononuclear phagocytes
   gene_organisms:
   - gene: HGNC:5992
-    organism: MESH:D051379
-  - gene: IL-1R*
-    organism: MESH:D051379
-  - gene: HGNC:5992
-    organism: MESH:D051379
+    organism: NCBITaxon:10090
   - gene: HGNC:5993
-    organism: MESH:D051379
+    organism: NCBITaxon:10090
   - gene: HGNC:16400
-    organism: MESH:D051379
+    organism: NCBITaxon:10090
   - gene: HGNC:1499
-    organism: MESH:D051379
+    organism: NCBITaxon:10090
+  - gene: F4/80
+    organism: NCBITaxon:10090
   genes:
-  - HGNC:5992
-  - HGNC:5993
   - HGNC:5992
   - HGNC:5993
   - HGNC:16400
   - HGNC:1499
+  - F4/80
   organisms:
-  - MESH:D051379
-  - MESH:D051379
-  - MESH:D008264
+  - NCBITaxon:10090
   pathways:
-  - Blue Light-Induced Retinal Degeneration
-  - IL-1R Allosteric Modulation
+  - interleukin-1 pathway
