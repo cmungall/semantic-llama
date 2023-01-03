@@ -1,3 +1,9 @@
+# NEW NAME/REPO: https://github.com/monarch-initiative/ontogpt
+
+semantic-llama is now ontogpt
+
+This repo is ARCHIVED, use the repo above!!!
+
 # Semantic llama
 
 Semantic Large LAnguage Model Annotation
